@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Tipbros
+//  MusicApp
 //
-//  Created by phung on 11/12/19.
-//  Copyright © 2019 Vinova. All rights reserved.
+//  Created by admin on 22/03/2020.
+//  Copyright © 2020 SangNX. All rights reserved.
 //
 
 import UIKit

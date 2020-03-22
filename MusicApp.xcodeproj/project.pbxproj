@@ -16,8 +16,12 @@
 		84E5BEB724272693004F74FF /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEB424272693004F74FF /* BaseTableViewController.swift */; };
 		84E5BEB824272693004F74FF /* BaseViewXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEB524272693004F74FF /* BaseViewXib.swift */; };
 		84E5BEB924272693004F74FF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEB624272693004F74FF /* BaseViewController.swift */; };
-		84E5BEBD24272ACF004F74FF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEBB24272ACF004F74FF /* HomeViewController.swift */; };
-		84E5BEBE24272ACF004F74FF /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E5BEBC24272ACF004F74FF /* HomeViewController.xib */; };
+		84E5BECE24272E77004F74FF /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEC824272E77004F74FF /* HomePresenter.swift */; };
+		84E5BECF24272E77004F74FF /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEC924272E77004F74FF /* HomeRouter.swift */; };
+		84E5BED024272E77004F74FF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BECA24272E77004F74FF /* HomeViewController.swift */; };
+		84E5BED124272E77004F74FF /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BECB24272E77004F74FF /* HomeProtocols.swift */; };
+		84E5BED224272E77004F74FF /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BECC24272E77004F74FF /* HomeInteractor.swift */; };
+		84E5BED324272E77004F74FF /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E5BECD24272E77004F74FF /* HomeViewController.xib */; };
 		8AF3136248A5D025630D6D67 /* Pods_MusicApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A54C8607A6B9C8FE42BFC5D /* Pods_MusicApp.framework */; };
 		DB42B575242716AF00CF1458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB42B574242716AF00CF1458 /* AppDelegate.swift */; };
 		DB42B57E242716B100CF1458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB42B57D242716B100CF1458 /* Assets.xcassets */; };
@@ -59,8 +63,12 @@
 		84E5BEB424272693004F74FF /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		84E5BEB524272693004F74FF /* BaseViewXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewXib.swift; sourceTree = "<group>"; };
 		84E5BEB624272693004F74FF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		84E5BEBB24272ACF004F74FF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		84E5BEBC24272ACF004F74FF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		84E5BEC824272E77004F74FF /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		84E5BEC924272E77004F74FF /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		84E5BECA24272E77004F74FF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		84E5BECB24272E77004F74FF /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
+		84E5BECC24272E77004F74FF /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		84E5BECD24272E77004F74FF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		916F204B5AC1EC9390B74695 /* Pods_MusicAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6E754AFB16081ED0E1D96E /* Pods_MusicApp_MusicAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicApp_MusicAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4333235D8BC4AFE48A5D099 /* Pods-MusicApp-MusicAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicApp-MusicAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MusicApp-MusicAppUITests/Pods-MusicApp-MusicAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -166,10 +174,22 @@
 		84E5BEBA24272A40004F74FF /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				84E5BEBB24272ACF004F74FF /* HomeViewController.swift */,
-				84E5BEBC24272ACF004F74FF /* HomeViewController.xib */,
+				84E5BEC724272E66004F74FF /* Home */,
 			);
 			path = Module;
+			sourceTree = "<group>";
+		};
+		84E5BEC724272E66004F74FF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				84E5BEC824272E77004F74FF /* HomePresenter.swift */,
+				84E5BEC924272E77004F74FF /* HomeRouter.swift */,
+				84E5BECA24272E77004F74FF /* HomeViewController.swift */,
+				84E5BECB24272E77004F74FF /* HomeProtocols.swift */,
+				84E5BECC24272E77004F74FF /* HomeInteractor.swift */,
+				84E5BECD24272E77004F74FF /* HomeViewController.xib */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		8B3C457E304FDD0498D85C28 /* Pods */ = {
@@ -349,7 +369,7 @@
 			files = (
 				DB42B581242716B100CF1458 /* LaunchScreen.storyboard in Resources */,
 				DB42B57E242716B100CF1458 /* Assets.xcassets in Resources */,
-				84E5BEBE24272ACF004F74FF /* HomeViewController.xib in Resources */,
+				84E5BED324272E77004F74FF /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,13 +500,17 @@
 				84E5BEB724272693004F74FF /* BaseTableViewController.swift in Sources */,
 				84E5BEB924272693004F74FF /* BaseViewController.swift in Sources */,
 				DB42B575242716AF00CF1458 /* AppDelegate.swift in Sources */,
+				84E5BECE24272E77004F74FF /* HomePresenter.swift in Sources */,
 				84E5BEAF242725D7004F74FF /* AppConstant.swift in Sources */,
 				84E5BEB224272632004F74FF /* UseDefaultHelper.swift in Sources */,
-				84E5BEBD24272ACF004F74FF /* HomeViewController.swift in Sources */,
+				84E5BED124272E77004F74FF /* HomeProtocols.swift in Sources */,
 				84E5BEB824272693004F74FF /* BaseViewXib.swift in Sources */,
 				84E5BEAA242725D0004F74FF /* UIView+Extension.swift in Sources */,
 				84E5BEAB242725D0004F74FF /* String+Extension.swift in Sources */,
 				84E5BEAC242725D0004F74FF /* UITableView+Extension.swift in Sources */,
+				84E5BECF24272E77004F74FF /* HomeRouter.swift in Sources */,
+				84E5BED024272E77004F74FF /* HomeViewController.swift in Sources */,
+				84E5BED224272E77004F74FF /* HomeInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
