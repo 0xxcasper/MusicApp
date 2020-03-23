@@ -7,6 +7,8 @@ target 'MusicApp' do
 
   # Pods for MusicApp
   pod 'SVProgressHUD'
+  pod 'Alamofire', '4.8.2'
+  pod 'SDWebImage', '~> 5.0'
 
 
   target 'MusicAppTests' do
