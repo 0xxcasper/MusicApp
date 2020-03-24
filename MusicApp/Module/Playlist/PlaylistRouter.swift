@@ -1,5 +1,5 @@
 //
-//  SearchRouter.swift
+//  PlaylistRouter.swift
 //  MusicApp
 //
 //  Created admin on 24/03/2020.
@@ -10,17 +10,18 @@
 
 import UIKit
 
-class SearchRouter: SearchWireframeProtocol {
+class PlaylistRouter: PlaylistWireframeProtocol {
 
     weak var viewController: UIViewController?
 
-    static func createModule() -> UIViewController {
+    static func createModule(type: PlaylistViewControllerType) -> UIViewController {
         // Change to get view from storyboard if not using progammatic UI
-        let view = SearchViewController(nibName: nil, bundle: nil)
-        let interactor = SearchInteractor()
-        let router = SearchRouter()
-        let presenter = SearchPresenter(interface: view, interactor: interactor, router: router)
+        let view = PlaylistViewController(nibName: nil, bundle: nil)
+        let interactor = PlaylistInteractor()
+        let router = PlaylistRouter()
+        let presenter = PlaylistPresenter(interface: view, interactor: interactor, router: router)
 
+        view.type = type
         view.presenter = presenter
         interactor.presenter = presenter
         router.viewController = view

@@ -23,9 +23,6 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpNavigation()
-        setUpTableView()
-        registerCell()
     }
     
     func setUpNavigation() {
@@ -48,14 +45,6 @@ class BaseViewController: UIViewController {
     
     @objc func backButtonTapped() {
         self.pop()
-    }
-    
-    func setUpTableView() {
-
-    }
-    
-    func registerCell() {
-        
     }
     
     func hideTabbar() {
@@ -90,7 +79,7 @@ extension BaseViewController {
     }
     
     func push(controller: UIViewController, animated: Bool = true) {
-        controller.hidesBottomBarWhenPushed = true
+        controller.hidesBottomBarWhenPushed = false
         self.navigationController?.pushViewController(controller, animated: animated)
     }
 

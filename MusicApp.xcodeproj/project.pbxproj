@@ -23,12 +23,6 @@
 		84E5BED224272E77004F74FF /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BECC24272E77004F74FF /* HomeInteractor.swift */; };
 		84E5BED324272E77004F74FF /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E5BECD24272E77004F74FF /* HomeViewController.xib */; };
 		84E5BED5242730A0004F74FF /* MainTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BED4242730A0004F74FF /* MainTabbar.swift */; };
-		84E5BEDD24273126004F74FF /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BED724273126004F74FF /* SearchPresenter.swift */; };
-		84E5BEDE24273126004F74FF /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BED824273126004F74FF /* SearchRouter.swift */; };
-		84E5BEDF24273126004F74FF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BED924273126004F74FF /* SearchViewController.swift */; };
-		84E5BEE024273126004F74FF /* SearchProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEDA24273126004F74FF /* SearchProtocols.swift */; };
-		84E5BEE124273126004F74FF /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEDB24273126004F74FF /* SearchInteractor.swift */; };
-		84E5BEE224273126004F74FF /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E5BEDC24273126004F74FF /* SearchViewController.xib */; };
 		84E5BEEA24273141004F74FF /* MorePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEE424273141004F74FF /* MorePresenter.swift */; };
 		84E5BEEB24273141004F74FF /* MoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEE524273141004F74FF /* MoreRouter.swift */; };
 		84E5BEEC24273141004F74FF /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEE624273141004F74FF /* MoreViewController.swift */; };
@@ -37,6 +31,29 @@
 		84E5BEEF24273141004F74FF /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E5BEE924273141004F74FF /* MoreViewController.xib */; };
 		84E5BEF424275D76004F74FF /* TrendingTbvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEF224275D76004F74FF /* TrendingTbvCell.swift */; };
 		84E5BEF524275D76004F74FF /* TrendingTbvCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E5BEF324275D76004F74FF /* TrendingTbvCell.xib */; };
+		84FF006224299AE000463A88 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF006124299AE000463A88 /* NetworkRequest.swift */; };
+		84FF006624299BB400463A88 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF006524299BB400463A88 /* EndpointType.swift */; };
+		84FF006924299D7E00463A88 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF006824299D7E00463A88 /* Provider.swift */; };
+		84FF006D24299E9300463A88 /* YoutubeEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF006C24299E9300463A88 /* YoutubeEndpoint.swift */; };
+		84FF00702429A11400463A88 /* Snippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF006F2429A11400463A88 /* Snippet.swift */; };
+		84FF00772429A46000463A88 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF00712429A46000463A88 /* SearchPresenter.swift */; };
+		84FF00782429A46000463A88 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF00722429A46000463A88 /* SearchRouter.swift */; };
+		84FF00792429A46000463A88 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF00732429A46000463A88 /* SearchViewController.swift */; };
+		84FF007A2429A46000463A88 /* SearchProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF00742429A46000463A88 /* SearchProtocols.swift */; };
+		84FF007B2429A46000463A88 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF00752429A46000463A88 /* SearchInteractor.swift */; };
+		84FF007C2429A46000463A88 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF00762429A46000463A88 /* SearchViewController.xib */; };
+		84FF007E2429DEBA00463A88 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF007D2429DEBA00463A88 /* BaseResponse.swift */; };
+		84FF00842429E46600463A88 /* TrendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF00822429E46600463A88 /* TrendingView.swift */; };
+		84FF00852429E46600463A88 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF00832429E46600463A88 /* TrendingView.xib */; };
+		84FF00872429F15100463A88 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF00862429F15100463A88 /* BaseTableViewCell.swift */; };
+		84FF009B2429F7A300463A88 /* PlaylistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF00952429F7A300463A88 /* PlaylistPresenter.swift */; };
+		84FF009C2429F7A300463A88 /* PlaylistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF00962429F7A300463A88 /* PlaylistRouter.swift */; };
+		84FF009D2429F7A300463A88 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF00972429F7A300463A88 /* PlaylistViewController.swift */; };
+		84FF009E2429F7A300463A88 /* PlaylistProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF00982429F7A300463A88 /* PlaylistProtocols.swift */; };
+		84FF009F2429F7A300463A88 /* PlaylistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF00992429F7A300463A88 /* PlaylistInteractor.swift */; };
+		84FF00A02429F7A300463A88 /* PlaylistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF009A2429F7A300463A88 /* PlaylistViewController.xib */; };
+		84FF00A3242A147500463A88 /* PlayMusicBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF00A2242A147500463A88 /* PlayMusicBar.swift */; };
+		84FF00A5242A148200463A88 /* PlayMusicBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF00A4242A148200463A88 /* PlayMusicBar.xib */; };
 		8AF3136248A5D025630D6D67 /* Pods_MusicApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A54C8607A6B9C8FE42BFC5D /* Pods_MusicApp.framework */; };
 		DB42B575242716AF00CF1458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB42B574242716AF00CF1458 /* AppDelegate.swift */; };
 		DB42B57E242716B100CF1458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB42B57D242716B100CF1458 /* Assets.xcassets */; };
@@ -85,12 +102,6 @@
 		84E5BECC24272E77004F74FF /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		84E5BECD24272E77004F74FF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		84E5BED4242730A0004F74FF /* MainTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbar.swift; sourceTree = "<group>"; };
-		84E5BED724273126004F74FF /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
-		84E5BED824273126004F74FF /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
-		84E5BED924273126004F74FF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		84E5BEDA24273126004F74FF /* SearchProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProtocols.swift; sourceTree = "<group>"; };
-		84E5BEDB24273126004F74FF /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
-		84E5BEDC24273126004F74FF /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		84E5BEE424273141004F74FF /* MorePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorePresenter.swift; sourceTree = "<group>"; };
 		84E5BEE524273141004F74FF /* MoreRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreRouter.swift; sourceTree = "<group>"; };
 		84E5BEE624273141004F74FF /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +110,29 @@
 		84E5BEE924273141004F74FF /* MoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
 		84E5BEF224275D76004F74FF /* TrendingTbvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingTbvCell.swift; sourceTree = "<group>"; };
 		84E5BEF324275D76004F74FF /* TrendingTbvCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendingTbvCell.xib; sourceTree = "<group>"; };
+		84FF006124299AE000463A88 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		84FF006524299BB400463A88 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
+		84FF006824299D7E00463A88 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		84FF006C24299E9300463A88 /* YoutubeEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeEndpoint.swift; sourceTree = "<group>"; };
+		84FF006F2429A11400463A88 /* Snippet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snippet.swift; sourceTree = "<group>"; };
+		84FF00712429A46000463A88 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		84FF00722429A46000463A88 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		84FF00732429A46000463A88 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		84FF00742429A46000463A88 /* SearchProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProtocols.swift; sourceTree = "<group>"; };
+		84FF00752429A46000463A88 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		84FF00762429A46000463A88 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		84FF007D2429DEBA00463A88 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		84FF00822429E46600463A88 /* TrendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingView.swift; sourceTree = "<group>"; };
+		84FF00832429E46600463A88 /* TrendingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendingView.xib; sourceTree = "<group>"; };
+		84FF00862429F15100463A88 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		84FF00952429F7A300463A88 /* PlaylistPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistPresenter.swift; sourceTree = "<group>"; };
+		84FF00962429F7A300463A88 /* PlaylistRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistRouter.swift; sourceTree = "<group>"; };
+		84FF00972429F7A300463A88 /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
+		84FF00982429F7A300463A88 /* PlaylistProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistProtocols.swift; sourceTree = "<group>"; };
+		84FF00992429F7A300463A88 /* PlaylistInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistInteractor.swift; sourceTree = "<group>"; };
+		84FF009A2429F7A300463A88 /* PlaylistViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistViewController.xib; sourceTree = "<group>"; };
+		84FF00A2242A147500463A88 /* PlayMusicBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMusicBar.swift; sourceTree = "<group>"; };
+		84FF00A4242A148200463A88 /* PlayMusicBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayMusicBar.xib; sourceTree = "<group>"; };
 		916F204B5AC1EC9390B74695 /* Pods_MusicAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6E754AFB16081ED0E1D96E /* Pods_MusicApp_MusicAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicApp_MusicAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4333235D8BC4AFE48A5D099 /* Pods-MusicApp-MusicAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicApp-MusicAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MusicApp-MusicAppUITests/Pods-MusicApp-MusicAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +190,7 @@
 		84E5BEA5242725B8004F74FF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				84FF00A1242A12F500463A88 /* CustomView */,
 				84E5BEB324272677004F74FF /* Base */,
 				84E5BEB02427261D004F74FF /* Helper */,
 				84E5BEAD242725D7004F74FF /* Constants */,
@@ -198,6 +233,7 @@
 				84E5BEB624272693004F74FF /* BaseViewController.swift */,
 				84E5BEB424272693004F74FF /* BaseTableViewController.swift */,
 				84E5BED4242730A0004F74FF /* MainTabbar.swift */,
+				84FF00862429F15100463A88 /* BaseTableViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -205,6 +241,7 @@
 		84E5BEBA24272A40004F74FF /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				84FF00942429F73F00463A88 /* Playlist */,
 				84E5BEE32427312B004F74FF /* More */,
 				84E5BED624273110004F74FF /* Search */,
 				84E5BEC724272E66004F74FF /* Home */,
@@ -229,12 +266,12 @@
 			isa = PBXGroup;
 			children = (
 				84E5BEF024275D46004F74FF /* Cell */,
-				84E5BED724273126004F74FF /* SearchPresenter.swift */,
-				84E5BED824273126004F74FF /* SearchRouter.swift */,
-				84E5BED924273126004F74FF /* SearchViewController.swift */,
-				84E5BEDA24273126004F74FF /* SearchProtocols.swift */,
-				84E5BEDB24273126004F74FF /* SearchInteractor.swift */,
-				84E5BEDC24273126004F74FF /* SearchViewController.xib */,
+				84FF00712429A46000463A88 /* SearchPresenter.swift */,
+				84FF00722429A46000463A88 /* SearchRouter.swift */,
+				84FF00742429A46000463A88 /* SearchProtocols.swift */,
+				84FF00752429A46000463A88 /* SearchInteractor.swift */,
+				84FF00732429A46000463A88 /* SearchViewController.swift */,
+				84FF00762429A46000463A88 /* SearchViewController.xib */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -255,6 +292,7 @@
 		84E5BEF024275D46004F74FF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				84FF007F2429E3A600463A88 /* TrendingView */,
 				84E5BEF124275D50004F74FF /* TrendingCell */,
 			);
 			path = Cell;
@@ -267,6 +305,89 @@
 				84E5BEF324275D76004F74FF /* TrendingTbvCell.xib */,
 			);
 			path = TrendingCell;
+			sourceTree = "<group>";
+		};
+		84FF005F2429992F00463A88 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				84FF006724299D6C00463A88 /* ApiServices */,
+				84FF006324299B6E00463A88 /* Endpoint */,
+				84FF006024299AC400463A88 /* Network */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		84FF006024299AC400463A88 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				84FF006124299AE000463A88 /* NetworkRequest.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		84FF006324299B6E00463A88 /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				84FF006424299BA700463A88 /* Base */,
+				84FF006C24299E9300463A88 /* YoutubeEndpoint.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		84FF006424299BA700463A88 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				84FF006524299BB400463A88 /* EndpointType.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		84FF006724299D6C00463A88 /* ApiServices */ = {
+			isa = PBXGroup;
+			children = (
+				84FF006824299D7E00463A88 /* Provider.swift */,
+			);
+			path = ApiServices;
+			sourceTree = "<group>";
+		};
+		84FF006E2429A06700463A88 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84FF006F2429A11400463A88 /* Snippet.swift */,
+				84FF007D2429DEBA00463A88 /* BaseResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84FF007F2429E3A600463A88 /* TrendingView */ = {
+			isa = PBXGroup;
+			children = (
+				84FF00822429E46600463A88 /* TrendingView.swift */,
+				84FF00832429E46600463A88 /* TrendingView.xib */,
+			);
+			path = TrendingView;
+			sourceTree = "<group>";
+		};
+		84FF00942429F73F00463A88 /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				84FF00952429F7A300463A88 /* PlaylistPresenter.swift */,
+				84FF00962429F7A300463A88 /* PlaylistRouter.swift */,
+				84FF00972429F7A300463A88 /* PlaylistViewController.swift */,
+				84FF00982429F7A300463A88 /* PlaylistProtocols.swift */,
+				84FF00992429F7A300463A88 /* PlaylistInteractor.swift */,
+				84FF009A2429F7A300463A88 /* PlaylistViewController.xib */,
+			);
+			path = Playlist;
+			sourceTree = "<group>";
+		};
+		84FF00A1242A12F500463A88 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				84FF00A2242A147500463A88 /* PlayMusicBar.swift */,
+				84FF00A4242A148200463A88 /* PlayMusicBar.xib */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		8B3C457E304FDD0498D85C28 /* Pods */ = {
@@ -308,6 +429,8 @@
 			isa = PBXGroup;
 			children = (
 				DB42B574242716AF00CF1458 /* AppDelegate.swift */,
+				84FF006E2429A06700463A88 /* Model */,
+				84FF005F2429992F00463A88 /* Services */,
 				84E5BEA5242725B8004F74FF /* Components */,
 				84E5BEBA24272A40004F74FF /* Module */,
 				DB42B57D242716B100CF1458 /* Assets.xcassets */,
@@ -445,10 +568,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E5BEEF24273141004F74FF /* MoreViewController.xib in Resources */,
+				84FF00A5242A148200463A88 /* PlayMusicBar.xib in Resources */,
 				DB42B581242716B100CF1458 /* LaunchScreen.storyboard in Resources */,
+				84FF007C2429A46000463A88 /* SearchViewController.xib in Resources */,
 				DB42B57E242716B100CF1458 /* Assets.xcassets in Resources */,
+				84FF00A02429F7A300463A88 /* PlaylistViewController.xib in Resources */,
 				84E5BEF524275D76004F74FF /* TrendingTbvCell.xib in Resources */,
-				84E5BEE224273126004F74FF /* SearchViewController.xib in Resources */,
+				84FF00852429E46600463A88 /* TrendingView.xib in Resources */,
 				84E5BED324272E77004F74FF /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,6 +703,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FF006624299BB400463A88 /* EndpointType.swift in Sources */,
 				84E5BEB724272693004F74FF /* BaseTableViewController.swift in Sources */,
 				84E5BEB924272693004F74FF /* BaseViewController.swift in Sources */,
 				84E5BEEA24273141004F74FF /* MorePresenter.swift in Sources */,
@@ -584,25 +711,38 @@
 				84E5BECE24272E77004F74FF /* HomePresenter.swift in Sources */,
 				84E5BEAF242725D7004F74FF /* AppConstant.swift in Sources */,
 				84E5BEED24273141004F74FF /* MoreProtocols.swift in Sources */,
-				84E5BEE024273126004F74FF /* SearchProtocols.swift in Sources */,
 				84E5BEEB24273141004F74FF /* MoreRouter.swift in Sources */,
+				84FF009E2429F7A300463A88 /* PlaylistProtocols.swift in Sources */,
 				84E5BEB224272632004F74FF /* UseDefaultHelper.swift in Sources */,
 				84E5BED124272E77004F74FF /* HomeProtocols.swift in Sources */,
-				84E5BEDE24273126004F74FF /* SearchRouter.swift in Sources */,
 				84E5BEB824272693004F74FF /* BaseViewXib.swift in Sources */,
+				84FF00872429F15100463A88 /* BaseTableViewCell.swift in Sources */,
 				84E5BEAA242725D0004F74FF /* UIView+Extension.swift in Sources */,
 				84E5BED5242730A0004F74FF /* MainTabbar.swift in Sources */,
+				84FF009B2429F7A300463A88 /* PlaylistPresenter.swift in Sources */,
+				84FF00A3242A147500463A88 /* PlayMusicBar.swift in Sources */,
 				84E5BEF424275D76004F74FF /* TrendingTbvCell.swift in Sources */,
 				84E5BEAB242725D0004F74FF /* String+Extension.swift in Sources */,
-				84E5BEDF24273126004F74FF /* SearchViewController.swift in Sources */,
 				84E5BEEC24273141004F74FF /* MoreViewController.swift in Sources */,
-				84E5BEE124273126004F74FF /* SearchInteractor.swift in Sources */,
+				84FF006D24299E9300463A88 /* YoutubeEndpoint.swift in Sources */,
+				84FF006924299D7E00463A88 /* Provider.swift in Sources */,
 				84E5BEAC242725D0004F74FF /* UITableView+Extension.swift in Sources */,
+				84FF00772429A46000463A88 /* SearchPresenter.swift in Sources */,
+				84FF007A2429A46000463A88 /* SearchProtocols.swift in Sources */,
 				84E5BECF24272E77004F74FF /* HomeRouter.swift in Sources */,
+				84FF007E2429DEBA00463A88 /* BaseResponse.swift in Sources */,
+				84FF00842429E46600463A88 /* TrendingView.swift in Sources */,
 				84E5BED024272E77004F74FF /* HomeViewController.swift in Sources */,
-				84E5BEDD24273126004F74FF /* SearchPresenter.swift in Sources */,
+				84FF009D2429F7A300463A88 /* PlaylistViewController.swift in Sources */,
+				84FF00702429A11400463A88 /* Snippet.swift in Sources */,
+				84FF00782429A46000463A88 /* SearchRouter.swift in Sources */,
 				84E5BED224272E77004F74FF /* HomeInteractor.swift in Sources */,
+				84FF009F2429F7A300463A88 /* PlaylistInteractor.swift in Sources */,
+				84FF007B2429A46000463A88 /* SearchInteractor.swift in Sources */,
+				84FF006224299AE000463A88 /* NetworkRequest.swift in Sources */,
 				84E5BEEE24273141004F74FF /* MoreInteractor.swift in Sources */,
+				84FF009C2429F7A300463A88 /* PlaylistRouter.swift in Sources */,
+				84FF00792429A46000463A88 /* SearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

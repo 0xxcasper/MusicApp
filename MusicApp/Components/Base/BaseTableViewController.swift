@@ -31,12 +31,11 @@ class BaseTableViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addPullToRefresh()
+        //addPullToRefresh()
         
         myTableView.dataSource = self
         myTableView.delegate = self
         myTableView.showsVerticalScrollIndicator = false
-
     }
     
     // MARK: - Fetch data from API
@@ -119,17 +118,17 @@ extension BaseTableViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == listItem.count - 1 && canLoadMore {
             self.showLoadingIcon = false
-            let spiner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.white)
-            spiner.startAnimating()
-            spiner.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 44)
-            tableView.tableFooterView = spiner
-            tableView.tableFooterView?.isHidden = false
+//            let spiner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.white)
+//            spiner.startAnimating()
+//            spiner.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 44)
+//            tableView.tableFooterView = spiner
+//            tableView.tableFooterView?.isHidden = false
             // -----
             print("* loadmore *")
             fetchData()
         } else {
-            tableView.tableFooterView = nil
-            tableView.tableFooterView?.isHidden = true
+//            tableView.tableFooterView = nil
+//            tableView.tableFooterView?.isHidden = true
         }
     }
     

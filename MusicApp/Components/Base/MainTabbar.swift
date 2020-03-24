@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 class MainTabbar: UITabBarController {
-        
+    
+    let playBar = PlayMusicBar()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -19,30 +20,29 @@ class MainTabbar: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.setHidesBackButton(true, animated: true)
+        setUpView()
         setUpAppearance()
         setUpViewController()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
+        playBar.frame = CGRect(x: 0, y: tabBar.frame.origin.y - 48, width: self.view.bounds.width, height: 48)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    func setUpView() {
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        self.view.addSubview(playBar)
     }
     
     func setUpAppearance() {
         
         UINavigationBar.appearance().largeTitleTextAttributes =
             [NSAttributedString.Key.foregroundColor:UIColor.white]
-        
-//        UITabBar.appearance().clipsToBounds = true
-//        UITabBar.appearance().layer.borderWidth = 0
-//        tabBar.unselectedItemTintColor = AppColor.color_unselect_tabar
-//        tabBar.tintColor = AppColor.color_select_tabar
-//        tabBar.barTintColor = .black
+        tabBar.unselectedItemTintColor = .lightGray
+        tabBar.tintColor = .white
+        tabBar.setGradient(startColor: UIColor(displayP3Red: 83/255, green: 54/255, blue: 239/255, alpha: 1),
+                           secondColor: UIColor(displayP3Red: 83/255, green: 113/255, blue: 108/255, alpha: 1))
         tabBar.isTranslucent = true
     }
     
@@ -74,6 +74,7 @@ class BaseNavigationController : UINavigationController, UIGestureRecognizerDele
         self.navigationBar.isTranslucent = true
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationBar.shadowImage = UIImage()
+        self.navigationBar.tintColor = .white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
 
     }
