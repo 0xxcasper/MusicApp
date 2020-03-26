@@ -22,4 +22,16 @@ class SearchPresenter: SearchPresenterProtocol, SearchInteractorOutputProtocol {
         self.router = router
     }
 
+    func startSearchWith(keyword: String, maxResult: Int, pageToken: String) {
+        interactor?.requestSearchWith(keyword: keyword, maxResult: maxResult, pageToken: pageToken)
+    }
+    
+    func onResponseSearchSuccess(response: SearchResponse) {
+        view?.responseSearchSuccess(response: response)
+    }
+    
+    func onResponseSearchFail(error: String) {
+        view?.responseSearchFail(error: error)
+    }
+    
 }

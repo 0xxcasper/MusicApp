@@ -14,15 +14,33 @@ class SearchViewController: BaseViewController {
     
     @IBOutlet weak var tbView: UITableView!
     
-    private lazy var search = { () -> UISearchController in
+    var presenter: SearchPresenterProtocol?
+    
+    private lazy var searchVC = { () -> UISearchController in
         let search = UISearchController(searchResultsController: nil)
         search.searchBar.placeholder = "Search music"
+        search.searchBar.set(textColor: .white)
+        search.searchBar.setTextField(color: UIColor(displayP3Red: 102/255, green: 90/255, blue: 240/255, alpha: 1))
+        search.searchBar.setPlaceholder(textColor: .lightText)
+        search.searchBar.setSearchImage(color: .lightText)
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.delegate = self
         return search
     }()
     
-	var presenter: SearchPresenterProtocol?
+    private var isSearch = false {
+        didSet {
+            tbView.reloadData()
+        }
+    }
+    private var nextPageToken = ""
+    private var results: [ItemSearch] = []
+    private var searchText = ""
+    private var timer: Timer?
+    private var canLoadMore = false
     
-    var albums = ["Classical Music", "K-POP", "Chilren's Music", "Nursery Rhymes"]
+    private let trending = "Trending in Viet Nam"
+    private var albums = ["Classical Music", "K-POP", "Chilren's Music", "Nursery Rhymes"]
     
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,45 +49,70 @@ class SearchViewController: BaseViewController {
     }
     
     private func setUpViews() {
-        self.navigationItem.searchController = search
+        self.navigationController?.hidesBarsOnSwipe = true
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.navigationItem.searchController = self.searchVC
     }
     
     private func setUpTbView() {
         tbView.registerXibFile(TrendingView.self)
         tbView.registerXibFile(AlbumView.self)
+        tbView.registerXibFile(SearchCell.self)
         tbView.separatorStyle = .none
         tbView.dataSource = self
         tbView.delegate = self
-        tbView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+        tbView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 45, right: 0)
+    }
+    
+    @objc func performSearch() {
+        self.results = []
+        self.presenter?.startSearchWith(keyword: searchText, maxResult: 25, pageToken: "")
     }
 }
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate, TrendingViewDelegate, AlbumViewDelegate
 {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return !isSearch ? 2 : 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : albums.count
+        return isSearch ? results.count : (section == 0 ? 1 : albums.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueTableCell(TrendingView.self)
-            cell.lblTitle.text = "Trending in Viet Nam"
-            cell.delegate = self
-            return cell
+        if !isSearch {
+            if indexPath.section == 0 {
+                let cell = tableView.dequeueTableCell(TrendingView.self)
+                cell.lblTitle.text = trending
+                cell.delegate = self
+                return cell
+            } else {
+                let cell = tableView.dequeueTableCell(AlbumView.self)
+                cell.delegate = self
+                cell.keyword = albums[indexPath.row]
+                return cell
+            }
         } else {
-            let cell = tableView.dequeueTableCell(AlbumView.self)
-            cell.delegate = self
-            cell.keyword = albums[indexPath.row]
+            let cell = tableView.dequeueTableCell(SearchCell.self)
+            let item = results[indexPath.row]
+            if let snippet = item.snippet, let thumbnails = snippet.thumbnails {
+                cell.img.loadImageFromInternet(link: thumbnails.defaults!.url!)
+                cell.lblTitle.text = snippet.title
+                cell.lblChanel.text = snippet.channelTitle
+            }
             return cell
         }
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == results.count - 1  {
+            self.presenter?.startSearchWith(keyword: searchText, maxResult: 25, pageToken: nextPageToken)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 415 : 290
+        return isSearch ? 70 : (indexPath.section == 0 ? 415 : 290)
     }
     
     func onPressViewSeeAll(keyword: String) {
@@ -78,12 +121,49 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate, Tren
     }
     
     func onPressViewSeeAll() {
-        let playlistVC = PlaylistRouter.createModule(type: .trending, keyword: "Trending in Viet Nam")
+        let playlistVC = PlaylistRouter.createModule(type: .trending, keyword: trending)
         self.push(controller: playlistVC)
     }
 }
 
 extension SearchViewController: SearchViewProtocol
 {
+    func responseSearchSuccess(response: SearchResponse) {
+        if let items = response.items {
+            results.append(contentsOf: items)
+        }
+        if let token = response.nextPageToken {
+            nextPageToken = token
+        }
+        tbView.reloadData()
+    }
     
+    func responseSearchFail(error: String) {
+        
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate
+{
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        isSearch = true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if !searchText.isEmpty {
+            self.searchText = searchText
+            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(performSearch), userInfo: nil, repeats: false)
+        } else {
+            results = []
+            tbView.reloadData()
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearch = false
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        isSearch = false
+    }
 }

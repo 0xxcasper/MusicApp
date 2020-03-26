@@ -29,8 +29,8 @@ class AlbumView: BaseTableViewCell {
     
     var keyword: String! = "" {
         didSet {
-            self.lblTitle.text = keyword
-            if items.count <= 0 {
+            if let items = self.items, items.count <= 0 {
+                self.lblTitle.text = keyword
                 Provider.shared.callApiGetListVideo(pageToken: "", maxResult: 6, keyword: keyword, success: { (BaseResponse) in
                     self.items = BaseResponse.items
                 }) { (error) in
@@ -71,7 +71,7 @@ extension AlbumView: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: AppConstant.SREEEN_WIDTH - 130, height: 70)
+        return CGSize(width: AppConstant.SREEEN_WIDTH - 100, height: 70)
     }
     
 }

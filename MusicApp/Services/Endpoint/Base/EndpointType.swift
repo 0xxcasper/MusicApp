@@ -12,8 +12,6 @@ import Alamofire
 
 typealias JSONDictionary = [String: Any]
 
-let key = "AIzaSyDT6DczdeKqckkp8qxDXNxo02Uw1jL4Je4"
-
 protocol EndPointType {
     var path: String { get }
     var httpMethod: HTTPMethod { get }

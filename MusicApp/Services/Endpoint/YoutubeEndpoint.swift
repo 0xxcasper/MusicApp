@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 enum YouTubeEndPoint {
+    case getVideoWith(id: String)
     case getListTrendingMusic(pageToken: String, maxResult: Int)
     case getListMusicWith(pageToken: String, maxResult: Int, keyword: String)
 }
@@ -18,7 +19,7 @@ extension YouTubeEndPoint: EndPointType
 {
     var path: String {
         switch self {
-        case .getListTrendingMusic:
+        case .getListTrendingMusic, .getVideoWith:
            return "videos"
         case .getListMusicWith:
             return "search"
@@ -27,7 +28,7 @@ extension YouTubeEndPoint: EndPointType
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .getListTrendingMusic, .getListMusicWith:
+        case .getListTrendingMusic, .getListMusicWith, .getVideoWith:
             return .get
         }
     }
@@ -37,18 +38,23 @@ extension YouTubeEndPoint: EndPointType
         case .getListTrendingMusic(let pageToken, let maxResult):
             return ["part": "snippet",
                     "chart": "mostPopular",
-                    "regionCode": "VN",
+                    "regionCode": region_code,
                     "maxResults": maxResult,
-                    "key": key,
+                    "key": api_key,
                     "videoCategoryId": 10,
                     "pageToken": pageToken]
         case .getListMusicWith(let pageToken, let maxResult, let keyword):
             return ["part": "snippet",
                     "maxResults": maxResult,
-                    "regionCode": "VN",
+                    "regionCode": region_code,
                     "pageToken": pageToken,
                     "q": keyword,
-                    "key": key]
+                    "key": api_key]
+        case .getVideoWith(let id):
+        return ["part": "snippet",
+                "maxResults": 1,
+                "key": api_key,
+                "id": id]
         }
     }
     

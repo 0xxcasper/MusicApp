@@ -15,6 +15,7 @@ class BaseTableViewController: BaseViewController {
     
     @IBOutlet weak var myTableView: UITableView!
     
+    var totalResult = 50
     var listItem: [Any] = [] {
         didSet {
             SVProgressHUD.dismiss()
@@ -36,7 +37,7 @@ class BaseTableViewController: BaseViewController {
         myTableView.dataSource = self
         myTableView.delegate = self
         myTableView.showsVerticalScrollIndicator = false
-        myTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+        myTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 45, right: 0)
     }
     
     // MARK: - Fetch data from API
@@ -98,6 +99,10 @@ class BaseTableViewController: BaseViewController {
         /** Do something
             ...
         */
+    }
+    
+    func numberOfRowsInSection(row: Int) -> Int {
+        return row
     }
     
     func setHeightForRow() -> CGFloat {

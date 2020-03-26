@@ -27,12 +27,12 @@ class MainTabbar: UITabBarController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        playBar.frame = CGRect(x: 0, y: tabBar.frame.origin.y - 48, width: self.view.bounds.width, height: 48)
+        //playBar.frame = CGRect(x: 0, y: tabBar.frame.origin.y - 48, width: self.view.bounds.width, height: 48)
     }
     
     func setUpView() {
         self.navigationItem.setHidesBackButton(true, animated: true)
-        self.view.addSubview(playBar)
+        //self.view.addSubview(playBar)
     }
     
     func setUpAppearance() {

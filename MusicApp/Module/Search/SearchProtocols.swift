@@ -19,12 +19,17 @@ protocol SearchPresenterProtocol: class {
 
     var interactor: SearchInteractorInputProtocol? { get set }
     
+    func startSearchWith(keyword: String, maxResult: Int, pageToken: String)
+    
 }
 
 //MARK: Interactor -
 protocol SearchInteractorOutputProtocol: class {
 
     /* Interactor -> Presenter */
+    
+    func onResponseSearchSuccess(response: SearchResponse)
+    func onResponseSearchFail(error: String)
     
 }
 
@@ -33,7 +38,7 @@ protocol SearchInteractorInputProtocol: class {
     var presenter: SearchInteractorOutputProtocol?  { get set }
 
     /* Presenter -> Interactor */
-    
+    func requestSearchWith(keyword: String, maxResult: Int, pageToken: String)
 }
 
 //MARK: View -
@@ -42,5 +47,6 @@ protocol SearchViewProtocol: class {
     var presenter: SearchPresenterProtocol?  { get set }
 
     /* Presenter -> ViewController */
-   
+   func responseSearchSuccess(response: SearchResponse)
+   func responseSearchFail(error: String)
 }

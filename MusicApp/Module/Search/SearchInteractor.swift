@@ -14,5 +14,13 @@ class SearchInteractor: SearchInteractorInputProtocol {
 
     weak var presenter: SearchInteractorOutputProtocol?
     
+    func requestSearchWith(keyword: String, maxResult: Int, pageToken: String) {
+        Provider.shared.callApiGetListVideo(pageToken: pageToken, maxResult: maxResult, keyword: keyword, success: { (SearchResponse) in
+            self.presenter?.onResponseSearchSuccess(response: SearchResponse)
+        }) { (error) in
+            self.presenter?.onResponseSearchFail(error: error)
+        }
+    }
+    
 }
 

@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+let api_key = "AIzaSyDT6DczdeKqckkp8qxDXNxo02Uw1jL4Je4"//"AIzaSyBw6nKP38wy-GtLEMPxKRfSGLrCWcf88gk"
+let region_code = "VN"
+
 struct AppConstant {
     
     static let SCREEN_SIZE: CGRect = UIScreen.main.bounds
@@ -20,6 +23,5 @@ struct AppConstant {
     static let NAVI_BAR_HEIGHT = CGFloat(44)
     
     static let HEIGTH_TABBAR: CGFloat = 30 + STATUS_BAR_BOTTOM
-    
-    static let API_KEY = "AIzaSyBw6nKP38wy-GtLEMPxKRfSGLrCWcf88gk"
 }
+

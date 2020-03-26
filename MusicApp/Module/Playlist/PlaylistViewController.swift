@@ -21,7 +21,7 @@ class PlaylistViewController: BaseTableViewController {
     var type: PlaylistViewControllerType = .normal
     var keyword: String = ""
     
-    private var totalResult = 50
+    private var nextPageToken = ""
     
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ class PlaylistViewController: BaseTableViewController {
         super.fetchData()
         if listItem.count < totalResult {
             let maxResult = listItem.count + 50 > totalResult ? totalResult - listItem.count : 50
-            self.presenter?.startGetListMusic(pageToken: "", maxResult: maxResult, type: type, keyword: keyword)
+            self.presenter?.startGetListMusic(pageToken: nextPageToken, maxResult: maxResult, type: type, keyword: keyword)
         }
     }
     
@@ -68,19 +68,25 @@ extension PlaylistViewController: PlaylistViewProtocol
         if let pageInfo = response.pageInfo {
             self.totalResult = pageInfo.totalResults! > 100 ? 99 : pageInfo.totalResults!
         }
-        self.didFetchData(data: response.items!)
+        if let nextPageToken = response.nextPageToken {
+            self.nextPageToken = nextPageToken
+        }
+        guard let items = response.items else { return }
+        self.didFetchData(data: items)
     }
     
     func responseGetListMusicSuccess(response: SearchResponse) {
         if let pageInfo = response.pageInfo {
             self.totalResult = pageInfo.totalResults! > 100 ? 99 : pageInfo.totalResults!
         }
-        self.didFetchData(data: response.items!)
+        if let nextPageToken = response.nextPageToken {
+            self.nextPageToken = nextPageToken
+        }
+        guard let items = response.items else { return }
+        self.didFetchData(data: items)
     }
     
     func responseGetListMusicFail(error: String) {
         
     }
-    
-    
 }
