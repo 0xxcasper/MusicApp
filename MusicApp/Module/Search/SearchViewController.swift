@@ -22,6 +22,8 @@ class SearchViewController: BaseViewController {
     
 	var presenter: SearchPresenterProtocol?
     
+    var albums = ["Classical Music", "K-POP", "Chilren's Music", "Nursery Rhymes"]
+    
 	override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
@@ -34,38 +36,49 @@ class SearchViewController: BaseViewController {
     
     private func setUpTbView() {
         tbView.registerXibFile(TrendingView.self)
+        tbView.registerXibFile(AlbumView.self)
         tbView.separatorStyle = .none
         tbView.dataSource = self
         tbView.delegate = self
+        tbView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
     }
 }
 
-extension SearchViewController: UITableViewDataSource, UITableViewDelegate, TrendingViewDelegate
+extension SearchViewController: UITableViewDataSource, UITableViewDelegate, TrendingViewDelegate, AlbumViewDelegate
 {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : 0
+        return section == 0 ? 1 : albums.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueTableCell(TrendingView.self)
+            cell.lblTitle.text = "Trending in Viet Nam"
             cell.delegate = self
             return cell
         } else {
-            return UITableViewCell()
+            let cell = tableView.dequeueTableCell(AlbumView.self)
+            cell.delegate = self
+            cell.keyword = albums[indexPath.row]
+            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 415 : 300
+        return indexPath.section == 0 ? 415 : 290
+    }
+    
+    func onPressViewSeeAll(keyword: String) {
+        let playlistVC = PlaylistRouter.createModule(type: .normal, keyword: keyword)
+        self.push(controller: playlistVC)
     }
     
     func onPressViewSeeAll() {
-        let playlistVC = PlaylistRouter.createModule(type: .trending)
+        let playlistVC = PlaylistRouter.createModule(type: .trending, keyword: "Trending in Viet Nam")
         self.push(controller: playlistVC)
     }
 }

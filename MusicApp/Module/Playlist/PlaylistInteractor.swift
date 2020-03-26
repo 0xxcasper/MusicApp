@@ -14,11 +14,19 @@ class PlaylistInteractor: PlaylistInteractorInputProtocol {
 
     weak var presenter: PlaylistInteractorOutputProtocol?
     
-    func requestGetListTrendingMusic(pageToken: String, maxResult: Int) {
-        Provider.shared.callApiTrendingVideo(pageToken: pageToken, maxResult: maxResult, success: { (BaseResponse) in
-            self.presenter?.onResponseGetListTrendingMusicSuccess(response: BaseResponse)
-        }) { (error) in
-            self.presenter?.onResponseGetListTrendingMusicFail(error: error)
+    func requestGetListMusic(pageToken: String, maxResult: Int, type: PlaylistViewControllerType, keyword: String) {
+        if type == .trending {
+            Provider.shared.callApiTrendingVideo(pageToken: pageToken, maxResult: maxResult, success: { (BaseResponse) in
+                self.presenter?.onResponseGetListTrendingMusicSuccess(response: BaseResponse)
+            }) { (error) in
+                self.presenter?.onResponseGetListMusicFail(error: error)
+            }
+        } else {
+            Provider.shared.callApiGetListVideo(pageToken: pageToken, maxResult: maxResult, keyword: keyword, success: { (BaseResponse) in
+                self.presenter?.onResponseGetListMusicSuccess(response: BaseResponse)
+            }) { (error) in
+                self.presenter?.onResponseGetListMusicFail(error: error)
+            }
         }
     }
 }

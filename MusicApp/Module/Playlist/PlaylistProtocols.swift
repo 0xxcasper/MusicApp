@@ -19,15 +19,17 @@ protocol PlaylistPresenterProtocol: class {
 
     var interactor: PlaylistInteractorInputProtocol? { get set }
     
-    func startGetListTrendingMusic(pageToken: String, maxResult: Int)
+    func startGetListMusic(pageToken: String, maxResult: Int, type: PlaylistViewControllerType, keyword: String)
 }
 
 //MARK: Interactor -
 protocol PlaylistInteractorOutputProtocol: class {
 
     /* Interactor -> Presenter */
-    func onResponseGetListTrendingMusicSuccess(response: BaseResponse)
-    func onResponseGetListTrendingMusicFail(error: String)
+    func onResponseGetListMusicSuccess(response: SearchResponse)
+    func onResponseGetListMusicFail(error: String)
+    
+    func onResponseGetListTrendingMusicSuccess(response: VideosResponse)
 }
 
 protocol PlaylistInteractorInputProtocol: class {
@@ -35,7 +37,7 @@ protocol PlaylistInteractorInputProtocol: class {
     var presenter: PlaylistInteractorOutputProtocol?  { get set }
 
     /* Presenter -> Interactor */
-    func requestGetListTrendingMusic(pageToken: String, maxResult: Int)
+    func requestGetListMusic(pageToken: String, maxResult: Int, type: PlaylistViewControllerType, keyword: String)
 }
 
 //MARK: View -
@@ -44,6 +46,8 @@ protocol PlaylistViewProtocol: class {
     var presenter: PlaylistPresenterProtocol?  { get set }
 
     /* Presenter -> ViewController */
-    func responseGetListTrendingMusicSuccess(response: BaseResponse)
-    func responseGetListTrendingMusicFail(error: String)
+    func responseGetListMusicSuccess(response: SearchResponse)
+    func responseGetListMusicFail(error: String)
+    
+    func responseGetListTrendingMusicSuccess(response: VideosResponse)
 }

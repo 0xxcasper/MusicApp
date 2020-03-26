@@ -23,8 +23,6 @@ class PlayMusicBar: BaseViewXib {
     }
     
     @IBAction func onPressPlayVideo(_ sender: UIButton) {
-        guard let url = URL(string: "https://www.youtube.com/watch?v=Md9RRt2r3TU") else { return }
-        let bombSoundEffect = AVPlayer(url: url)
-        bombSoundEffect.play()
+        
     }
 }

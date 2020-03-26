@@ -36,6 +36,7 @@ class BaseTableViewController: BaseViewController {
         myTableView.dataSource = self
         myTableView.delegate = self
         myTableView.showsVerticalScrollIndicator = false
+        myTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
     }
     
     // MARK: - Fetch data from API

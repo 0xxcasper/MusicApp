@@ -12,7 +12,7 @@ import Alamofire
 
 typealias JSONDictionary = [String: Any]
 
-let key = "AIzaSyBw6nKP38wy-GtLEMPxKRfSGLrCWcf88gk"
+let key = "AIzaSyDT6DczdeKqckkp8qxDXNxo02Uw1jL4Je4"
 
 protocol EndPointType {
     var path: String { get }

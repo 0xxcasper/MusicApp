@@ -22,16 +22,20 @@ class PlaylistPresenter: PlaylistPresenterProtocol, PlaylistInteractorOutputProt
         self.router = router
     }
     
-    func startGetListTrendingMusic(pageToken: String, maxResult: Int) {
-        interactor?.requestGetListTrendingMusic(pageToken: pageToken, maxResult: maxResult)
+    func startGetListMusic(pageToken: String, maxResult: Int, type: PlaylistViewControllerType, keyword: String) {
+        interactor?.requestGetListMusic(pageToken: pageToken, maxResult: maxResult, type: type, keyword: keyword)
     }
     
-    func onResponseGetListTrendingMusicSuccess(response: BaseResponse) {
+    func onResponseGetListMusicSuccess(response: SearchResponse) {
+        view?.responseGetListMusicSuccess(response: response)
+    }
+    
+    func onResponseGetListMusicFail(error: String) {
+        view?.responseGetListMusicFail(error: error)
+    }
+    
+    func onResponseGetListTrendingMusicSuccess(response: VideosResponse) {
         view?.responseGetListTrendingMusicSuccess(response: response)
-    }
-    
-    func onResponseGetListTrendingMusicFail(error: String) {
-        view?.responseGetListTrendingMusicFail(error: error)
     }
 
 }

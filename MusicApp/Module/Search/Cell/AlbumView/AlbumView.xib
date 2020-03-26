@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="354" id="KGk-i7-Jjw" customClass="AlbumView" customModule="MusicApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="354"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="354"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="K-POP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytP-0G-2AZ">
+                        <rect key="frame" x="16" y="8" width="52" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="JWb-ct-WPC">
+                        <rect key="frame" x="16" y="37" width="288" height="301"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IRx-Gh-4t4">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWN-rn-gO5">
+                        <rect key="frame" x="16" y="0.0" width="288" height="37"/>
+                        <connections>
+                            <action selector="onPressViewAll:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dve-rF-gA6"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="cWN-rn-gO5" secondAttribute="trailing" constant="16" id="1ZW-OK-C83"/>
+                    <constraint firstItem="ytP-0G-2AZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="8O8-72-u86"/>
+                    <constraint firstItem="cWN-rn-gO5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Ek8-iD-Ud8"/>
+                    <constraint firstAttribute="bottom" secondItem="JWb-ct-WPC" secondAttribute="bottom" constant="16" id="Ht1-9z-D5T"/>
+                    <constraint firstItem="JWb-ct-WPC" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="IQ2-Pj-ZRB"/>
+                    <constraint firstItem="ytP-0G-2AZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="efL-ef-tk4"/>
+                    <constraint firstItem="JWb-ct-WPC" firstAttribute="top" secondItem="ytP-0G-2AZ" secondAttribute="bottom" constant="8" id="gbA-hP-Pqt"/>
+                    <constraint firstItem="JWb-ct-WPC" firstAttribute="leading" secondItem="ytP-0G-2AZ" secondAttribute="leading" id="pni-xz-wAq"/>
+                    <constraint firstItem="cWN-rn-gO5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vMF-Ng-36M"/>
+                    <constraint firstItem="JWb-ct-WPC" firstAttribute="top" secondItem="cWN-rn-gO5" secondAttribute="bottom" id="ydV-dz-j6Y"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="collectionView" destination="JWb-ct-WPC" id="Qv3-6X-I9Q"/>
+                <outlet property="lblTitle" destination="ytP-0G-2AZ" id="dbp-w2-sZh"/>
+            </connections>
+            <point key="canvasLocation" x="-104.34782608695653" y="168.08035714285714"/>
+        </tableViewCell>
+    </objects>
+</document>

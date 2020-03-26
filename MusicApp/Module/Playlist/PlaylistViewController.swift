@@ -19,6 +19,9 @@ class PlaylistViewController: BaseTableViewController {
     
 	var presenter: PlaylistPresenterProtocol?
     var type: PlaylistViewControllerType = .normal
+    var keyword: String = ""
+    
+    private var totalResult = 50
     
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +30,7 @@ class PlaylistViewController: BaseTableViewController {
     }
     
     private func setUpViews() {
-        self.title = "Trending in Viet Nam"
+        self.title = keyword
         myTableView.registerXibFile(TrendingTbvCell.self)
         myTableView.separatorStyle = .none
         myTableView.dataSource = self
@@ -40,14 +43,16 @@ class PlaylistViewController: BaseTableViewController {
     
     override func fetchData() {
         super.fetchData()
-        if type == .trending && listItem.count < 50 {
-            self.presenter?.startGetListTrendingMusic(pageToken: "", maxResult: 50)
+        if listItem.count < totalResult {
+            let maxResult = listItem.count + 50 > totalResult ? totalResult - listItem.count : 50
+            self.presenter?.startGetListMusic(pageToken: "", maxResult: maxResult, type: type, keyword: keyword)
         }
     }
     
     override func cellForRowAt(item: Any, for indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
         let cell = tableView.dequeueTableCell(TrendingTbvCell.self)
-        if let snippet = (item as! Item).snippet, let thumbnails = snippet.thumbnails {
+        if let snippet = self.type == .trending ? (item as! Item).snippet : (item as! ItemSearch).snippet,
+            let thumbnails = snippet.thumbnails {
             cell.img.loadImageFromInternet(link: thumbnails.defaults!.url!)
             cell.lblTitle.text = snippet.title
             cell.lblChanel.text = snippet.channelTitle
@@ -55,16 +60,25 @@ class PlaylistViewController: BaseTableViewController {
         }
         return cell
     }
-
 }
 
 extension PlaylistViewController: PlaylistViewProtocol
 {
-    func responseGetListTrendingMusicSuccess(response: BaseResponse) {
+    func responseGetListTrendingMusicSuccess(response: VideosResponse) {
+        if let pageInfo = response.pageInfo {
+            self.totalResult = pageInfo.totalResults! > 100 ? 99 : pageInfo.totalResults!
+        }
         self.didFetchData(data: response.items!)
     }
     
-    func responseGetListTrendingMusicFail(error: String) {
+    func responseGetListMusicSuccess(response: SearchResponse) {
+        if let pageInfo = response.pageInfo {
+            self.totalResult = pageInfo.totalResults! > 100 ? 99 : pageInfo.totalResults!
+        }
+        self.didFetchData(data: response.items!)
+    }
+    
+    func responseGetListMusicFail(error: String) {
         
     }
     
