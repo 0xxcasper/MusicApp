@@ -18,6 +18,8 @@ enum PlaylistViewControllerType {
 class PlaylistViewController: BaseTableViewController {
     
 	var presenter: PlaylistPresenterProtocol?
+    let headerView = HeaderView()
+    
     var type: PlaylistViewControllerType = .normal
     var keyword: String = ""
     
@@ -35,6 +37,7 @@ class PlaylistViewController: BaseTableViewController {
         myTableView.separatorStyle = .none
         myTableView.dataSource = self
         myTableView.delegate = self
+        myTableView.tableHeaderView = headerView
     }
     
     override func setHeightForRow() -> CGFloat {

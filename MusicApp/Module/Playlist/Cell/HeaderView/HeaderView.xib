@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderView" customModule="MusicApp" customModuleProvider="target">
+            <connections>
+                <outlet property="btnPlay" destination="URm-Gf-VZX" id="HWU-7f-aLZ"/>
+                <outlet property="img" destination="OBY-cr-Ads" id="XVP-OG-M4c"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="265"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_trending" translatesAutoresizingMaskIntoConstraints="NO" id="OBY-cr-Ads">
+                    <rect key="frame" x="137" y="16" width="140" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="6SZ-Em-Gce"/>
+                        <constraint firstAttribute="width" constant="140" id="eRt-cB-Njg"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Z0-L0-SI7">
+                    <rect key="frame" x="177" y="148" width="60" height="23"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URm-Gf-VZX">
+                    <rect key="frame" x="107" y="208.5" width="200" height="44"/>
+                    <color key="backgroundColor" red="1" green="0.29884230682054791" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="qt0-dQ-KiF"/>
+                        <constraint firstAttribute="width" constant="200" id="sgC-oK-IAf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Play">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="onPressPlay:" destination="-1" eventType="touchUpInside" id="Xx4-bF-mmF"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 tracks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOf-vZ-1pf">
+                    <rect key="frame" x="182.5" y="179" width="49.5" height="13.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="URm-Gf-VZX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="6n1-y7-52f"/>
+                <constraint firstItem="OBY-cr-Ads" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="AM5-9c-W7F"/>
+                <constraint firstItem="8Z0-L0-SI7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="GDp-tG-cyk"/>
+                <constraint firstItem="OBY-cr-Ads" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="K4q-on-ITG"/>
+                <constraint firstItem="8Z0-L0-SI7" firstAttribute="top" secondItem="OBY-cr-Ads" secondAttribute="bottom" constant="12" id="Pu5-Vu-TJa"/>
+                <constraint firstItem="IOf-vZ-1pf" firstAttribute="top" secondItem="8Z0-L0-SI7" secondAttribute="bottom" constant="8" id="YEB-Ds-Pgl"/>
+                <constraint firstItem="URm-Gf-VZX" firstAttribute="top" secondItem="IOf-vZ-1pf" secondAttribute="bottom" constant="16" id="YnM-2Q-NQx"/>
+                <constraint firstItem="IOf-vZ-1pf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bc1-lx-c78"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-81.159420289855078" y="66.964285714285708"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bg_trending" width="190" height="301"/>
+    </resources>
+</document>

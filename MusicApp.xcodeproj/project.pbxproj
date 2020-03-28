@@ -39,6 +39,8 @@
 		84E788C4242C89EC00D7817D /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E788C3242C89EC00D7817D /* SearchResponse.swift */; };
 		84E788C8242CA3D100D7817D /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E788C6242CA3D100D7817D /* SearchCell.swift */; };
 		84E788C9242CA3D100D7817D /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E788C7242CA3D100D7817D /* SearchCell.xib */; };
+		84E788CD242D8FFA00D7817D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E788CC242D8FFA00D7817D /* HeaderView.swift */; };
+		84E788CF242D900700D7817D /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E788CE242D900700D7817D /* HeaderView.xib */; };
 		84FF006224299AE000463A88 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF006124299AE000463A88 /* NetworkRequest.swift */; };
 		84FF006624299BB400463A88 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF006524299BB400463A88 /* EndpointType.swift */; };
 		84FF006924299D7E00463A88 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF006824299D7E00463A88 /* Provider.swift */; };
@@ -125,6 +127,8 @@
 		84E788C3242C89EC00D7817D /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		84E788C6242CA3D100D7817D /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		84E788C7242CA3D100D7817D /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
+		84E788CC242D8FFA00D7817D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		84E788CE242D900700D7817D /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		84FF006124299AE000463A88 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		84FF006524299BB400463A88 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
 		84FF006824299D7E00463A88 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
@@ -350,6 +354,23 @@
 			path = SearchCell;
 			sourceTree = "<group>";
 		};
+		84E788CA242D8F9300D7817D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				84E788CB242D8FA800D7817D /* HeaderView */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		84E788CB242D8FA800D7817D /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				84E788CC242D8FFA00D7817D /* HeaderView.swift */,
+				84E788CE242D900700D7817D /* HeaderView.xib */,
+			);
+			path = HeaderView;
+			sourceTree = "<group>";
+		};
 		84FF005F2429992F00463A88 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +437,7 @@
 		84FF00942429F73F00463A88 /* Playlist */ = {
 			isa = PBXGroup;
 			children = (
+				84E788CA242D8F9300D7817D /* Cell */,
 				84FF00952429F7A300463A88 /* PlaylistPresenter.swift */,
 				84FF00962429F7A300463A88 /* PlaylistRouter.swift */,
 				84FF00972429F7A300463A88 /* PlaylistViewController.swift */,
@@ -612,6 +634,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E788CF242D900700D7817D /* HeaderView.xib in Resources */,
 				84E788C0242C6CAA00D7817D /* AlbumCell.xib in Resources */,
 				84E788BB242C584100D7817D /* AlbumView.xib in Resources */,
 				84E5BEEF24273141004F74FF /* MoreViewController.xib in Resources */,
@@ -761,6 +784,7 @@
 				84E5BECE24272E77004F74FF /* HomePresenter.swift in Sources */,
 				84E5BEAF242725D7004F74FF /* AppConstant.swift in Sources */,
 				84E5BEED24273141004F74FF /* MoreProtocols.swift in Sources */,
+				84E788CD242D8FFA00D7817D /* HeaderView.swift in Sources */,
 				84E5BEEB24273141004F74FF /* MoreRouter.swift in Sources */,
 				84FF009E2429F7A300463A88 /* PlaylistProtocols.swift in Sources */,
 				84E5BEB224272632004F74FF /* UseDefaultHelper.swift in Sources */,
