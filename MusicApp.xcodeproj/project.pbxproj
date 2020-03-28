@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		11C796008D00F2DF96D4B817 /* Pods_MusicAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916F204B5AC1EC9390B74695 /* Pods_MusicAppTests.framework */; };
-		84E5BEAA242725D0004F74FF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEA7242725D0004F74FF /* UIView+Extension.swift */; };
-		84E5BEAB242725D0004F74FF /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEA8242725D0004F74FF /* String+Extension.swift */; };
-		84E5BEAC242725D0004F74FF /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEA9242725D0004F74FF /* UITableView+Extension.swift */; };
+		843D4672242F97EF007BE44A /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4671242F97EF007BE44A /* UIView+Extensions.swift */; };
+		843D4674242F981D007BE44A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4673242F981D007BE44A /* String+Extensions.swift */; };
+		843D4676242F983C007BE44A /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4675242F983C007BE44A /* UITableView+Extensions.swift */; };
 		84E5BEAF242725D7004F74FF /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEAE242725D7004F74FF /* AppConstant.swift */; };
 		84E5BEB224272632004F74FF /* UseDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEB124272632004F74FF /* UseDefaultHelper.swift */; };
 		84E5BEB724272693004F74FF /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEB424272693004F74FF /* BaseTableViewController.swift */; };
@@ -96,9 +96,9 @@
 		3EB03189C44DC2D04E47E90C /* Pods-MusicAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicAppTests.release.xcconfig"; path = "Target Support Files/Pods-MusicAppTests/Pods-MusicAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		52485B2F3F1EF012B7B76B2B /* Pods-MusicApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicApp.debug.xcconfig"; path = "Target Support Files/Pods-MusicApp/Pods-MusicApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7F8A355B7383DD147371BAAB /* Pods-MusicApp-MusicAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicApp-MusicAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-MusicApp-MusicAppUITests/Pods-MusicApp-MusicAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		84E5BEA7242725D0004F74FF /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		84E5BEA8242725D0004F74FF /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		84E5BEA9242725D0004F74FF /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		843D4671242F97EF007BE44A /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		843D4673242F981D007BE44A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		843D4675242F983C007BE44A /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		84E5BEAE242725D7004F74FF /* AppConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 		84E5BEB124272632004F74FF /* UseDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseDefaultHelper.swift; sourceTree = "<group>"; };
 		84E5BEB424272693004F74FF /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
@@ -205,27 +205,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		843D4670242F97D7007BE44A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				843D4671242F97EF007BE44A /* UIView+Extensions.swift */,
+				843D4673242F981D007BE44A /* String+Extensions.swift */,
+				843D4675242F983C007BE44A /* UITableView+Extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		84E5BEA5242725B8004F74FF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				843D4670242F97D7007BE44A /* Extension */,
 				84FF00A1242A12F500463A88 /* CustomView */,
 				84E5BEB324272677004F74FF /* Base */,
 				84E5BEB02427261D004F74FF /* Helper */,
 				84E5BEAD242725D7004F74FF /* Constants */,
-				84E5BEA6242725D0004F74FF /* Extensions */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		84E5BEA6242725D0004F74FF /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				84E5BEA7242725D0004F74FF /* UIView+Extension.swift */,
-				84E5BEA8242725D0004F74FF /* String+Extension.swift */,
-				84E5BEA9242725D0004F74FF /* UITableView+Extension.swift */,
-			);
-			name = Extensions;
-			path = ../../../../Documents/BrowserApp/BrowserApp/Components/Extensions;
 			sourceTree = "<group>";
 		};
 		84E5BEAD242725D7004F74FF /* Constants */ = {
@@ -777,6 +776,7 @@
 				84FF006624299BB400463A88 /* EndpointType.swift in Sources */,
 				84E788C8242CA3D100D7817D /* SearchCell.swift in Sources */,
 				84E788C2242C89DD00D7817D /* VideosResponse.swift in Sources */,
+				843D4676242F983C007BE44A /* UITableView+Extensions.swift in Sources */,
 				84E5BEB724272693004F74FF /* BaseTableViewController.swift in Sources */,
 				84E5BEB924272693004F74FF /* BaseViewController.swift in Sources */,
 				84E5BEEA24273141004F74FF /* MorePresenter.swift in Sources */,
@@ -791,25 +791,24 @@
 				84E5BED124272E77004F74FF /* HomeProtocols.swift in Sources */,
 				84E5BEB824272693004F74FF /* BaseViewXib.swift in Sources */,
 				84FF00872429F15100463A88 /* BaseTableViewCell.swift in Sources */,
-				84E5BEAA242725D0004F74FF /* UIView+Extension.swift in Sources */,
 				84E5BED5242730A0004F74FF /* MainTabbar.swift in Sources */,
 				84FF009B2429F7A300463A88 /* PlaylistPresenter.swift in Sources */,
 				84E788BF242C6CAA00D7817D /* AlbumCell.swift in Sources */,
 				84FF00A3242A147500463A88 /* PlayMusicBar.swift in Sources */,
 				84E5BEF424275D76004F74FF /* TrendingTbvCell.swift in Sources */,
-				84E5BEAB242725D0004F74FF /* String+Extension.swift in Sources */,
 				84E5BEEC24273141004F74FF /* MoreViewController.swift in Sources */,
 				84E788BA242C584100D7817D /* AlbumView.swift in Sources */,
 				84FF006D24299E9300463A88 /* YoutubeEndpoint.swift in Sources */,
 				84FF006924299D7E00463A88 /* Provider.swift in Sources */,
-				84E5BEAC242725D0004F74FF /* UITableView+Extension.swift in Sources */,
 				84FF00772429A46000463A88 /* SearchPresenter.swift in Sources */,
 				84E788C4242C89EC00D7817D /* SearchResponse.swift in Sources */,
 				84FF007A2429A46000463A88 /* SearchProtocols.swift in Sources */,
+				843D4674242F981D007BE44A /* String+Extensions.swift in Sources */,
 				84E5BECF24272E77004F74FF /* HomeRouter.swift in Sources */,
 				84FF00842429E46600463A88 /* TrendingView.swift in Sources */,
 				84E5BED024272E77004F74FF /* HomeViewController.swift in Sources */,
 				84FF009D2429F7A300463A88 /* PlaylistViewController.swift in Sources */,
+				843D4672242F97EF007BE44A /* UIView+Extensions.swift in Sources */,
 				84FF00702429A11400463A88 /* Snippet.swift in Sources */,
 				84FF00782429A46000463A88 /* SearchRouter.swift in Sources */,
 				84E5BED224272E77004F74FF /* HomeInteractor.swift in Sources */,
