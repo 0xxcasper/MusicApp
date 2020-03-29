@@ -10,12 +10,75 @@
 
 import UIKit
 
-class MoreViewController: UIViewController, MoreViewProtocol {
+struct MoreEntity {
+    var title: String! = ""
+    var value: String! = ""
+}
 
+class MoreViewController: BaseViewController, MoreViewProtocol {
+    
+    @IBOutlet weak var tbView: UITableView!
+    
 	var presenter: MorePresenterProtocol?
-
+    
+    private var moreData: [MoreEntity] = []
+        
 	override func viewDidLoad() {
         super.viewDidLoad()
+        getData()
+        setUpView()
+    }
+    
+    override func didChangeLanguage() {
+        setTitle(title: LocalizableKey.more.localizeLanguage)
+        getData()
+        tbView.reloadData()
+    }
+    
+    override func didChangeRegion() {
+        getData()
+        tbView.reloadData()
+    }
+    
+    private func setUpView() {
+        tbView.registerXibFile(MoreCell.self)
+        tbView.dataSource = self
+        tbView.delegate = self
+        tbView.separatorStyle = .none
+    }
+    
+    private func getData() {
+        moreData = [MoreEntity(title: LocalizableKey.languae.localizeLanguage, value: LanguageHelper.currentLanguageStr()),
+                    MoreEntity(title: LocalizableKey.country.localizeLanguage, value: JsonHelper.getRegionName()),
+                    MoreEntity(title: LocalizableKey.musicPlayer.localizeLanguage, value: "Skyline")]
+    }
+}
+
+extension MoreViewController: UITableViewDataSource, UITableViewDelegate
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return moreData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeue(MoreCell.self, for: indexPath)
+        cell.lblTitle.text = moreData[indexPath.row].title
+        cell.lblSubtitle.text = moreData[indexPath.row].value
+        return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            let settingVc = SettingViewController()
+            self.push(controller: settingVc)
+        case 1:
+            let settingVc = SettingViewController()
+            settingVc.type = .country
+            self.push(controller: settingVc)
+        default:
+            print("")
+        }
+    }
+    
 }

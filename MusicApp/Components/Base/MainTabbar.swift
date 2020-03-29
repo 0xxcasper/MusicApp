@@ -49,17 +49,17 @@ class MainTabbar: UITabBarController {
     func setUpViewController() {
         
         let homeVC = HomeRouter.createModule()
-        homeVC.title = "Home"
+        homeVC.title = LocalizableKey.playList.localizeLanguage
         let homeNC = BaseNavigationController(rootViewController: homeVC)
         homeNC.navigationBar.prefersLargeTitles = true
         
         let searchVC = SearchRouter.createModule()
-        searchVC.title = "Search"
+        searchVC.title = LocalizableKey.search.localizeLanguage
         let searchNC = BaseNavigationController(rootViewController: searchVC)
         searchNC.navigationBar.prefersLargeTitles = true
 
         let moreVC = MoreRouter.createModule()
-        moreVC.title = "More"
+        moreVC.title = LocalizableKey.more.localizeLanguage
         let moreNC = BaseNavigationController(rootViewController: moreVC)
         moreNC.navigationBar.prefersLargeTitles = true
         

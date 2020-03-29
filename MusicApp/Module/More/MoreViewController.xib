@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoreViewController" customModule="MusicApp" customModuleProvider="target">
             <connections>
+                <outlet property="tbView" destination="PvG-JF-d1k" id="xVa-IV-rpX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,7 +17,19 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PvG-JF-d1k">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="PvG-JF-d1k" secondAttribute="bottom" id="1PW-yB-bKJ"/>
+                <constraint firstItem="PvG-JF-d1k" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2tD-Gf-P3X"/>
+                <constraint firstItem="PvG-JF-d1k" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gJf-iP-by3"/>
+                <constraint firstAttribute="trailing" secondItem="PvG-JF-d1k" secondAttribute="trailing" id="k7A-eu-mtM"/>
+            </constraints>
             <point key="canvasLocation" x="138" y="154"/>
         </view>
     </objects>

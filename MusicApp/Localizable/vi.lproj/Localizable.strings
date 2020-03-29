@@ -5,3 +5,20 @@
   Created by admin on 29/03/2020.
   Copyright © 2020 SangNX. All rights reserved.
 */
+
+"Search" = "Tìm kiếm";
+"Playlist" = "Playlists";
+"More" = "Thêm";
+
+"SearchMusic" = "Tìm kiếm âm nhạc";
+"Cancel" = "Huỷ";
+
+"Trending" = "Thịnh hành tại ";
+"SeeAll" = "Xem tất cả";
+
+"Language" = "Ngôn ngữ";
+"Country" = "Quốc gia bạn đang sinh sống";
+"MusicPlayer" = "Đổi màu trình chơi nhạc";
+
+"ChangeLanguage" = "Đổi ngôn ngữ";
+"ChangeRegion" = "Đổi quốc gia bạn đang sinh sống";

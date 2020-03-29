@@ -84,6 +84,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="btnSeeAll" destination="6yO-2s-EVG" id="bw2-MJ-CY1"/>
                 <outlet property="lblTitle" destination="NfP-Kj-9D5" id="xQn-01-Yrd"/>
                 <outlet property="tbView" destination="Plh-Z4-V2c" id="s6q-Zs-5cp"/>
             </connections>

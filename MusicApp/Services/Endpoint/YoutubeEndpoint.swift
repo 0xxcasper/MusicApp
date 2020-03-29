@@ -38,7 +38,7 @@ extension YouTubeEndPoint: EndPointType
         case .getListTrendingMusic(let pageToken, let maxResult):
             return ["part": "snippet",
                     "chart": "mostPopular",
-                    "regionCode": region_code,
+                    "regionCode": UserDefaultHelper.shared.regionCode ?? "VN",
                     "maxResults": maxResult,
                     "key": api_key,
                     "videoCategoryId": 10,
@@ -46,7 +46,7 @@ extension YouTubeEndPoint: EndPointType
         case .getListMusicWith(let pageToken, let maxResult, let keyword):
             return ["part": "snippet",
                     "maxResults": maxResult,
-                    "regionCode": region_code,
+                    "regionCode": UserDefaultHelper.shared.regionCode ?? "VN",
                     "pageToken": pageToken,
                     "q": keyword,
                     "key": api_key]

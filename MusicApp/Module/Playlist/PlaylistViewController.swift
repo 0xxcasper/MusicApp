@@ -27,8 +27,13 @@ class PlaylistViewController: BaseTableViewController {
     
 	override func viewDidLoad() {
         super.viewDidLoad()
+        setTitle(title: LocalizableKey.playList.localizeLanguage)
         setUpViews()
         fetchData()
+    }
+    
+    override func didChangeLanguage() {
+        setTitle(title: LocalizableKey.search.localizeLanguage)
     }
     
     private func setUpViews() {
@@ -37,7 +42,6 @@ class PlaylistViewController: BaseTableViewController {
         myTableView.separatorStyle = .none
         myTableView.dataSource = self
         myTableView.delegate = self
-//        myTableView.tableHeaderView = headerView
     }
     
     override func setHeightForRow() -> CGFloat {

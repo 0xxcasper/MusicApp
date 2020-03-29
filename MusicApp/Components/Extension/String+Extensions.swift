@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+
+extension Notification.Name {
+     static let ChangeLanguage = Notification.Name(rawValue: "ChangeLanguage")
+     static let ChangeRegion = Notification.Name(rawValue: "ChangeRegion")
+}
+
 extension String {
     
     func verifyUrl() -> Bool {
@@ -32,15 +38,10 @@ extension String {
         }
         return false
     }
-}
-
-extension Notification.Name {
     
-    static let beginDownload = Notification.Name(
-       rawValue: "beginDownload")
-    
-    static let isUrlFile = Notification.Name(
-    rawValue: "isUrlFile")
+    var localizeLanguage: String {
+        return NSLocalizedString(self, comment: "")
+    }
 }
 
 extension UIApplication {

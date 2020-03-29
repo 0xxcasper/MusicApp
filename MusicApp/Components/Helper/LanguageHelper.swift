@@ -13,8 +13,6 @@ let APPLE_LANGUAGE_KEY = "AppLanguages"
 enum LanguageType: String {
     case vietnam = "vi"
     case english = "en"
-    case japan = "ja"
-    case malaysia = "ms"
 }
 
 class LanguageHelper {
@@ -41,6 +39,15 @@ class LanguageHelper {
         let langArray = userdef.object(forKey: APPLE_LANGUAGE_KEY) as! NSArray
         let current = langArray.firstObject as! String
         return current
+    }
+    
+    class func currentLanguageStr() -> String {
+        switch currentAppleLanguage() {
+        case LanguageType.vietnam.rawValue:
+            return "Tiếng Việt"
+        default:
+            return "English"
+        }
     }
     
     // set @lang to be the first in Applelanguages list

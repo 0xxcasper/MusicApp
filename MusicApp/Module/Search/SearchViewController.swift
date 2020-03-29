@@ -18,7 +18,7 @@ class SearchViewController: BaseViewController {
     
     private lazy var searchVC = { () -> UISearchController in
         let search = UISearchController(searchResultsController: nil)
-        search.searchBar.placeholder = "Search music"
+        search.searchBar.placeholder = LocalizableKey.searchMusic.localizeLanguage
         search.searchBar.set(textColor: .white)
         search.searchBar.setTextField(color: UIColor(displayP3Red: 102/255, green: 90/255, blue: 240/255, alpha: 1))
         search.searchBar.setPlaceholder(textColor: .lightText)
@@ -39,11 +39,11 @@ class SearchViewController: BaseViewController {
     private var timer: Timer?
     private var canLoadMore = false
     
-    private let trending = "Trending in Viet Nam"
     private var albums = ["Classical Music", "K-POP", "Chilren's Music", "Nursery Rhymes"]
     
 	override func viewDidLoad() {
         super.viewDidLoad()
+        setTitle(title: LocalizableKey.search.localizeLanguage)
         setUpViews()
         setUpTbView()
     }
@@ -68,6 +68,11 @@ class SearchViewController: BaseViewController {
         self.results = []
         self.presenter?.startSearchWith(keyword: searchText, maxResult: 25, pageToken: "")
     }
+    
+    override func didChangeLanguage() {
+        searchVC.searchBar.placeholder = LocalizableKey.searchMusic.localizeLanguage
+        setTitle(title: LocalizableKey.search.localizeLanguage)
+    }
 }
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate, TrendingViewDelegate, AlbumViewDelegate
@@ -84,7 +89,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate, Tren
         if !isSearch {
             if indexPath.section == 0 {
                 let cell = tableView.dequeueTableCell(TrendingView.self)
-                cell.lblTitle.text = trending
                 cell.delegate = self
                 return cell
             } else {
@@ -121,7 +125,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate, Tren
     }
     
     func onPressViewSeeAll() {
-        let playlistVC = PlaylistRouter.createModule(type: .trending, keyword: trending)
+        let playlistVC = PlaylistRouter.createModule(type: .trending, keyword: LocalizableKey.trending.localizeLanguage + JsonHelper.getRegionName())
         self.push(controller: playlistVC)
     }
 }

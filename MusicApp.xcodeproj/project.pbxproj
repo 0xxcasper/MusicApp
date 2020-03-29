@@ -19,6 +19,17 @@
 		848212B524305A5E0077AC45 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848212AF24305A5E0077AC45 /* HomeViewController.xib */; };
 		848212B724305BB20077AC45 /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848212B624305BB20077AC45 /* LanguageHelper.swift */; };
 		848212B924305BE60077AC45 /* Bundle+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848212B824305BE60077AC45 /* Bundle+Extention.swift */; };
+		848212BD24305D390077AC45 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 848212BF24305D390077AC45 /* Localizable.strings */; };
+		848212C224305D7A0077AC45 /* LocalizableKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848212C124305D7A0077AC45 /* LocalizableKey.swift */; };
+		848212C52430825F0077AC45 /* Region.json in Resources */ = {isa = PBXBuildFile; fileRef = 848212C42430825F0077AC45 /* Region.json */; };
+		848212CA2430849D0077AC45 /* MoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848212C82430849D0077AC45 /* MoreCell.swift */; };
+		848212CB2430849D0077AC45 /* MoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848212C92430849D0077AC45 /* MoreCell.xib */; };
+		848212CF24308A5A0077AC45 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848212CD24308A5A0077AC45 /* SettingViewController.swift */; };
+		848212D024308A5A0077AC45 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848212CE24308A5A0077AC45 /* SettingViewController.xib */; };
+		848212D224308AF30077AC45 /* Language.json in Resources */ = {isa = PBXBuildFile; fileRef = 848212D124308AF30077AC45 /* Language.json */; };
+		848212D9243094A80077AC45 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848212D7243094A80077AC45 /* SettingCell.swift */; };
+		848212DA243094A80077AC45 /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848212D8243094A80077AC45 /* SettingCell.xib */; };
+		848212DC2430A3110077AC45 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848212DB2430A3110077AC45 /* JsonHelper.swift */; };
 		84E5BEAF242725D7004F74FF /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEAE242725D7004F74FF /* AppConstant.swift */; };
 		84E5BEB224272632004F74FF /* UseDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEB124272632004F74FF /* UseDefaultHelper.swift */; };
 		84E5BEB724272693004F74FF /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEB424272693004F74FF /* BaseTableViewController.swift */; };
@@ -109,6 +120,18 @@
 		848212AF24305A5E0077AC45 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		848212B624305BB20077AC45 /* LanguageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
 		848212B824305BE60077AC45 /* Bundle+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extention.swift"; sourceTree = "<group>"; };
+		848212BE24305D390077AC45 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		848212C024305D5B0077AC45 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		848212C124305D7A0077AC45 /* LocalizableKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableKey.swift; sourceTree = "<group>"; };
+		848212C42430825F0077AC45 /* Region.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Region.json; sourceTree = "<group>"; };
+		848212C82430849D0077AC45 /* MoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCell.swift; sourceTree = "<group>"; };
+		848212C92430849D0077AC45 /* MoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreCell.xib; sourceTree = "<group>"; };
+		848212CD24308A5A0077AC45 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		848212CE24308A5A0077AC45 /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		848212D124308AF30077AC45 /* Language.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Language.json; sourceTree = "<group>"; };
+		848212D7243094A80077AC45 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		848212D8243094A80077AC45 /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
+		848212DB2430A3110077AC45 /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
 		84E5BEAE242725D7004F74FF /* AppConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 		84E5BEB124272632004F74FF /* UseDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseDefaultHelper.swift; sourceTree = "<group>"; };
 		84E5BEB424272693004F74FF /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
@@ -220,9 +243,72 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		848212BA24305CF80077AC45 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				848212BF24305D390077AC45 /* Localizable.strings */,
+				848212C124305D7A0077AC45 /* LocalizableKey.swift */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
+		848212C3243082400077AC45 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				848212C42430825F0077AC45 /* Region.json */,
+				848212D124308AF30077AC45 /* Language.json */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		848212C62430847F0077AC45 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				848212C7243084850077AC45 /* MoreCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		848212C7243084850077AC45 /* MoreCell */ = {
+			isa = PBXGroup;
+			children = (
+				848212C82430849D0077AC45 /* MoreCell.swift */,
+				848212C92430849D0077AC45 /* MoreCell.xib */,
+			);
+			path = MoreCell;
+			sourceTree = "<group>";
+		};
+		848212CC24308A270077AC45 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				848212D52430948D0077AC45 /* Cell */,
+				848212CD24308A5A0077AC45 /* SettingViewController.swift */,
+				848212CE24308A5A0077AC45 /* SettingViewController.xib */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		848212D52430948D0077AC45 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				848212D6243094910077AC45 /* SettingCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		848212D6243094910077AC45 /* SettingCell */ = {
+			isa = PBXGroup;
+			children = (
+				848212D7243094A80077AC45 /* SettingCell.swift */,
+				848212D8243094A80077AC45 /* SettingCell.xib */,
+			);
+			path = SettingCell;
+			sourceTree = "<group>";
+		};
 		84E5BEA5242725B8004F74FF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				848212C3243082400077AC45 /* json */,
 				843D4670242F97D7007BE44A /* Extension */,
 				84FF00A1242A12F500463A88 /* CustomView */,
 				84E5BEB324272677004F74FF /* Base */,
@@ -245,6 +331,7 @@
 			children = (
 				84E5BEB124272632004F74FF /* UseDefaultHelper.swift */,
 				848212B624305BB20077AC45 /* LanguageHelper.swift */,
+				848212DB2430A3110077AC45 /* JsonHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -264,6 +351,7 @@
 		84E5BEBA24272A40004F74FF /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				848212CC24308A270077AC45 /* Setting */,
 				84FF00942429F73F00463A88 /* Playlist */,
 				84E5BEE32427312B004F74FF /* More */,
 				84E5BED624273110004F74FF /* Search */,
@@ -302,6 +390,7 @@
 		84E5BEE32427312B004F74FF /* More */ = {
 			isa = PBXGroup;
 			children = (
+				848212C62430847F0077AC45 /* Cell */,
 				84E5BEE424273141004F74FF /* MorePresenter.swift */,
 				84E5BEE524273141004F74FF /* MoreRouter.swift */,
 				84E5BEE624273141004F74FF /* MoreViewController.swift */,
@@ -505,6 +594,7 @@
 				84FF005F2429992F00463A88 /* Services */,
 				84E5BEA5242725B8004F74FF /* Components */,
 				84E5BEBA24272A40004F74FF /* Module */,
+				848212BA24305CF80077AC45 /* Localizable */,
 				DB42B57D242716B100CF1458 /* Assets.xcassets */,
 				DB42B57F242716B100CF1458 /* LaunchScreen.storyboard */,
 				DB42B582242716B100CF1458 /* Info.plist */,
@@ -621,6 +711,7 @@
 			knownRegions = (
 				en,
 				Base,
+				vi,
 			);
 			mainGroup = DB42B568242716AF00CF1458;
 			productRefGroup = DB42B572242716AF00CF1458 /* Products */;
@@ -639,14 +730,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				848212CB2430849D0077AC45 /* MoreCell.xib in Resources */,
 				84E788CF242D900700D7817D /* HeaderView.xib in Resources */,
 				84E788C0242C6CAA00D7817D /* AlbumCell.xib in Resources */,
+				848212D224308AF30077AC45 /* Language.json in Resources */,
+				848212D024308A5A0077AC45 /* SettingViewController.xib in Resources */,
 				848212B524305A5E0077AC45 /* HomeViewController.xib in Resources */,
+				848212BD24305D390077AC45 /* Localizable.strings in Resources */,
+				848212C52430825F0077AC45 /* Region.json in Resources */,
 				84E788BB242C584100D7817D /* AlbumView.xib in Resources */,
 				84E5BEEF24273141004F74FF /* MoreViewController.xib in Resources */,
 				84FF00A5242A148200463A88 /* PlayMusicBar.xib in Resources */,
 				DB42B581242716B100CF1458 /* LaunchScreen.storyboard in Resources */,
 				84FF007C2429A46000463A88 /* SearchViewController.xib in Resources */,
+				848212DA243094A80077AC45 /* SettingCell.xib in Resources */,
 				DB42B57E242716B100CF1458 /* Assets.xcassets in Resources */,
 				84FF00A02429F7A300463A88 /* PlaylistViewController.xib in Resources */,
 				84E5BEF524275D76004F74FF /* TrendingTbvCell.xib in Resources */,
@@ -779,6 +876,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				848212CA2430849D0077AC45 /* MoreCell.swift in Sources */,
 				84FF006624299BB400463A88 /* EndpointType.swift in Sources */,
 				84E788C8242CA3D100D7817D /* SearchCell.swift in Sources */,
 				84E788C2242C89DD00D7817D /* VideosResponse.swift in Sources */,
@@ -795,6 +893,7 @@
 				84E5BEEB24273141004F74FF /* MoreRouter.swift in Sources */,
 				84FF009E2429F7A300463A88 /* PlaylistProtocols.swift in Sources */,
 				84E5BEB224272632004F74FF /* UseDefaultHelper.swift in Sources */,
+				848212D9243094A80077AC45 /* SettingCell.swift in Sources */,
 				84E5BEB824272693004F74FF /* BaseViewXib.swift in Sources */,
 				84FF00872429F15100463A88 /* BaseTableViewCell.swift in Sources */,
 				84E5BED5242730A0004F74FF /* MainTabbar.swift in Sources */,
@@ -805,6 +904,8 @@
 				84E5BEF424275D76004F74FF /* TrendingTbvCell.swift in Sources */,
 				84E5BEEC24273141004F74FF /* MoreViewController.swift in Sources */,
 				84E788BA242C584100D7817D /* AlbumView.swift in Sources */,
+				848212C224305D7A0077AC45 /* LocalizableKey.swift in Sources */,
+				848212DC2430A3110077AC45 /* JsonHelper.swift in Sources */,
 				84FF006D24299E9300463A88 /* YoutubeEndpoint.swift in Sources */,
 				84FF006924299D7E00463A88 /* Provider.swift in Sources */,
 				84FF00772429A46000463A88 /* SearchPresenter.swift in Sources */,
@@ -812,6 +913,7 @@
 				84FF007A2429A46000463A88 /* SearchProtocols.swift in Sources */,
 				848212B024305A5E0077AC45 /* HomePresenter.swift in Sources */,
 				843D4674242F981D007BE44A /* String+Extensions.swift in Sources */,
+				848212CF24308A5A0077AC45 /* SettingViewController.swift in Sources */,
 				84FF00842429E46600463A88 /* TrendingView.swift in Sources */,
 				848212B724305BB20077AC45 /* LanguageHelper.swift in Sources */,
 				848212B424305A5E0077AC45 /* HomeInteractor.swift in Sources */,
@@ -861,6 +963,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		848212BF24305D390077AC45 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				848212BE24305D390077AC45 /* en */,
+				848212C024305D5B0077AC45 /* vi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		DB42B57F242716B100CF1458 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -876,6 +987,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -936,6 +1048,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

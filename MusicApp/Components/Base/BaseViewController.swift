@@ -16,12 +16,42 @@ enum NavigationStyle {
 
 class BaseViewController: UIViewController {
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .ChangeLanguage, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .ChangeRegion, object: nil)
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addNotification()
+    }
+    
+    private func addNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeLanguage(notification:)), name: .ChangeLanguage, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeRegion(notification:)), name: .ChangeRegion, object: nil)
+    }
+    
+    @objc func didChangeLanguage(notification: Notification) {
+        self.didChangeLanguage()
+    }
+    
+    @objc func didChangeRegion(notification: Notification) {
+        self.didChangeRegion()
+    }
+    
+    @objc func pullToRefreshData() {
+        
+    }
+    
+    func didChangeLanguage() {
+        
+    }
+    
+    func didChangeRegion() {
         
     }
     
@@ -30,9 +60,6 @@ class BaseViewController: UIViewController {
         navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController.navigationBar.shadowImage = UIImage()
         navigationController.navigationBar.isTranslucent = false
-//        navigationController.view.backgroundColor = backgroundColor
-//        navigationController.navigationBar.backgroundColor = backgroundColor
-//        navigationController.navigationBar.barTintColor = backgroundColor
         navigationController.navigationBar.isHidden = false
         navigationItem.setHidesBackButton(true, animated: true)
     }
@@ -72,9 +99,6 @@ extension BaseViewController {
     }
     
     func setTitle(title: String) {
-        showNavigation()
-//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: titleColor, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)]
-//        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: titleColor]
         self.navigationItem.title = title
     }
     

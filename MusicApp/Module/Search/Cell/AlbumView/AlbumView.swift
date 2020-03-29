@@ -29,14 +29,7 @@ class AlbumView: BaseTableViewCell {
     
     var keyword: String! = "" {
         didSet {
-            if let items = self.items, items.count <= 0 {
-                self.lblTitle.text = keyword
-                Provider.shared.callApiGetListVideo(pageToken: "", maxResult: 6, keyword: keyword, success: { (BaseResponse) in
-                    self.items = BaseResponse.items
-                }) { (error) in
-                    print(error)
-                }
-            }
+            self.callGetListVideo()
         }
     }
     
@@ -46,6 +39,21 @@ class AlbumView: BaseTableViewCell {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
+    }
+    
+    override func didChangeRegion() {
+        callGetListVideo()
+    }
+    
+    private func callGetListVideo() {
+        if let items = self.items, items.count <= 0 {
+            self.lblTitle.text = keyword
+            Provider.shared.callApiGetListVideo(pageToken: "", maxResult: 6, keyword: keyword, success: { (BaseResponse) in
+                self.items = BaseResponse.items
+            }) { (error) in
+                print(error)
+            }
+        }
     }
     
     @IBAction func onPressViewAll(_ sender: UIButton) {

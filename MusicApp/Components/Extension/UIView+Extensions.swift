@@ -306,6 +306,18 @@ extension UISearchBar {
             imageView.tintColor = color
             imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         }
+    
+        func setTitleCancel(title: String) {
+        
+            var cancelButton: UIButton
+            for subView in self.subviews {
+                if subView.isKind(of: UIButton.self) {
+                    cancelButton = subView as! UIButton
+                    cancelButton.setTitle(title, for: .normal)
+                }
+            }
+            self.autocorrectionType = .no
+        }
     }
 
     private extension UITextField {

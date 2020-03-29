@@ -17,6 +17,7 @@ class TrendingView: BaseTableViewCell, UITableViewDataSource, UITableViewDelegat
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var tbView: UITableView!
     
+    @IBOutlet weak var btnSeeAll: UIButton!
     weak var delegate: TrendingViewDelegate!
     var items: [Item]! = [] {
         didSet {
@@ -26,8 +27,12 @@ class TrendingView: BaseTableViewCell, UITableViewDataSource, UITableViewDelegat
         }
     }
     
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        setTitle()
         setUpViews()
         getData()
     }
@@ -39,6 +44,20 @@ class TrendingView: BaseTableViewCell, UITableViewDataSource, UITableViewDelegat
         tbView.delegate = self
         tbView.rowHeight = 64
         tbView.isScrollEnabled = false
+    }
+    
+    private func setTitle() {
+        lblTitle.text = LocalizableKey.trending.localizeLanguage + JsonHelper.getRegionName()
+        btnSeeAll.setTitle(LocalizableKey.seeAll.localizeLanguage, for: .normal)
+    }
+    
+    override func didChangeLanguage() {
+        setTitle()
+    }
+    
+    override func didChangeRegion() {
+        setTitle()
+        getData()
     }
     
     private func getData() {

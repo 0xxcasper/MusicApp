@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-let api_key = "AIzaSyBw6nKP38wy-GtLEMPxKRfSGLrCWcf88gk" //"AIzaSyDT6DczdeKqckkp8qxDXNxo02Uw1jL4Je4"
-let region_code = "VN"
+let api_key =  "AIzaSyDT6DczdeKqckkp8qxDXNxo02Uw1jL4Je4"//"AIzaSyBw6nKP38wy-GtLEMPxKRfSGLrCWcf88gk"
 
 struct AppConstant {
     

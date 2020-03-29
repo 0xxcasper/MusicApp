@@ -8,8 +8,10 @@
 
 import UIKit
 
-class SettingCell: UITableViewCell {
-
+class SettingCell: BaseTableViewCell {
+    @IBOutlet weak var imgCheck: UIImageView!
+    @IBOutlet weak var lblTitle: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

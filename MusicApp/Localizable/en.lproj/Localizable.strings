@@ -5,3 +5,20 @@
   Created by admin on 29/03/2020.
   Copyright © 2020 SangNX. All rights reserved.
 */
+
+"Playlist" = "Playlists";
+"Search" = "Search";
+"More" = "More";
+
+"SearchMusic" = "Search Music";
+"Cancel" = "Cancel";
+
+"Trending" = "Trending in ";
+"SeeAll" = "See all";
+
+"Language" = "Language";
+"Country" = "Country you're living";
+"MusicPlayer" = "Music player color";
+
+"ChangeLanguage" = "Change Language";
+"ChangeRegion" = "Change country you're living";
