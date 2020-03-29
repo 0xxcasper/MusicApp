@@ -109,6 +109,18 @@ class BaseTableViewController: BaseViewController {
         let height: CGFloat = UITableView.automaticDimension
         return height
     }
+    
+    func tableViews(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        /** Do something
+            ...
+        */
+        return UIView()
+    }
+    
+    func setHeightForHeaderInSection() -> CGFloat {
+        let height: CGFloat = UITableView.automaticDimension
+        return height
+    }
 }
 
 // MARK: - Table view delegate
@@ -152,5 +164,13 @@ extension BaseTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return cellForRowAt(item: listItem[indexPath.row], for: indexPath, tableView: tableView)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableViews(tableView, viewForHeaderInSection: section)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return setHeightForHeaderInSection()
     }
 }

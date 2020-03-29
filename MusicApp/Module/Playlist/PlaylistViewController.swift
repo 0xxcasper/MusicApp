@@ -37,11 +37,15 @@ class PlaylistViewController: BaseTableViewController {
         myTableView.separatorStyle = .none
         myTableView.dataSource = self
         myTableView.delegate = self
-        myTableView.tableHeaderView = headerView
+//        myTableView.tableHeaderView = headerView
     }
     
     override func setHeightForRow() -> CGFloat {
         return 65
+    }
+    
+    override func setHeightForHeaderInSection() -> CGFloat {
+        return 270
     }
     
     override func fetchData() {
@@ -62,6 +66,10 @@ class PlaylistViewController: BaseTableViewController {
             cell.lblRow.text = "#\(indexPath.row + 1)"
         }
         return cell
+    }
+    
+    override func tableViews(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return headerView
     }
 }
 

@@ -11,17 +11,19 @@
 		843D4672242F97EF007BE44A /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4671242F97EF007BE44A /* UIView+Extensions.swift */; };
 		843D4674242F981D007BE44A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4673242F981D007BE44A /* String+Extensions.swift */; };
 		843D4676242F983C007BE44A /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4675242F983C007BE44A /* UITableView+Extensions.swift */; };
+		848212B024305A5E0077AC45 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848212AA24305A5E0077AC45 /* HomePresenter.swift */; };
+		848212B124305A5E0077AC45 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848212AB24305A5E0077AC45 /* HomeRouter.swift */; };
+		848212B224305A5E0077AC45 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848212AC24305A5E0077AC45 /* HomeViewController.swift */; };
+		848212B324305A5E0077AC45 /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848212AD24305A5E0077AC45 /* HomeProtocols.swift */; };
+		848212B424305A5E0077AC45 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848212AE24305A5E0077AC45 /* HomeInteractor.swift */; };
+		848212B524305A5E0077AC45 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848212AF24305A5E0077AC45 /* HomeViewController.xib */; };
+		848212B724305BB20077AC45 /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848212B624305BB20077AC45 /* LanguageHelper.swift */; };
+		848212B924305BE60077AC45 /* Bundle+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848212B824305BE60077AC45 /* Bundle+Extention.swift */; };
 		84E5BEAF242725D7004F74FF /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEAE242725D7004F74FF /* AppConstant.swift */; };
 		84E5BEB224272632004F74FF /* UseDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEB124272632004F74FF /* UseDefaultHelper.swift */; };
 		84E5BEB724272693004F74FF /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEB424272693004F74FF /* BaseTableViewController.swift */; };
 		84E5BEB824272693004F74FF /* BaseViewXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEB524272693004F74FF /* BaseViewXib.swift */; };
 		84E5BEB924272693004F74FF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEB624272693004F74FF /* BaseViewController.swift */; };
-		84E5BECE24272E77004F74FF /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEC824272E77004F74FF /* HomePresenter.swift */; };
-		84E5BECF24272E77004F74FF /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEC924272E77004F74FF /* HomeRouter.swift */; };
-		84E5BED024272E77004F74FF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BECA24272E77004F74FF /* HomeViewController.swift */; };
-		84E5BED124272E77004F74FF /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BECB24272E77004F74FF /* HomeProtocols.swift */; };
-		84E5BED224272E77004F74FF /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BECC24272E77004F74FF /* HomeInteractor.swift */; };
-		84E5BED324272E77004F74FF /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E5BECD24272E77004F74FF /* HomeViewController.xib */; };
 		84E5BED5242730A0004F74FF /* MainTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BED4242730A0004F74FF /* MainTabbar.swift */; };
 		84E5BEEA24273141004F74FF /* MorePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEE424273141004F74FF /* MorePresenter.swift */; };
 		84E5BEEB24273141004F74FF /* MoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E5BEE524273141004F74FF /* MoreRouter.swift */; };
@@ -99,17 +101,19 @@
 		843D4671242F97EF007BE44A /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		843D4673242F981D007BE44A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		843D4675242F983C007BE44A /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		848212AA24305A5E0077AC45 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		848212AB24305A5E0077AC45 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		848212AC24305A5E0077AC45 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		848212AD24305A5E0077AC45 /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
+		848212AE24305A5E0077AC45 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		848212AF24305A5E0077AC45 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		848212B624305BB20077AC45 /* LanguageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
+		848212B824305BE60077AC45 /* Bundle+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extention.swift"; sourceTree = "<group>"; };
 		84E5BEAE242725D7004F74FF /* AppConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 		84E5BEB124272632004F74FF /* UseDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseDefaultHelper.swift; sourceTree = "<group>"; };
 		84E5BEB424272693004F74FF /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		84E5BEB524272693004F74FF /* BaseViewXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewXib.swift; sourceTree = "<group>"; };
 		84E5BEB624272693004F74FF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		84E5BEC824272E77004F74FF /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
-		84E5BEC924272E77004F74FF /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
-		84E5BECA24272E77004F74FF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		84E5BECB24272E77004F74FF /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
-		84E5BECC24272E77004F74FF /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
-		84E5BECD24272E77004F74FF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		84E5BED4242730A0004F74FF /* MainTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbar.swift; sourceTree = "<group>"; };
 		84E5BEE424273141004F74FF /* MorePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorePresenter.swift; sourceTree = "<group>"; };
 		84E5BEE524273141004F74FF /* MoreRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreRouter.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 				843D4671242F97EF007BE44A /* UIView+Extensions.swift */,
 				843D4673242F981D007BE44A /* String+Extensions.swift */,
 				843D4675242F983C007BE44A /* UITableView+Extensions.swift */,
+				848212B824305BE60077AC45 /* Bundle+Extention.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				84E5BEB124272632004F74FF /* UseDefaultHelper.swift */,
+				848212B624305BB20077AC45 /* LanguageHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -269,12 +275,12 @@
 		84E5BEC724272E66004F74FF /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				84E5BEC824272E77004F74FF /* HomePresenter.swift */,
-				84E5BEC924272E77004F74FF /* HomeRouter.swift */,
-				84E5BECA24272E77004F74FF /* HomeViewController.swift */,
-				84E5BECB24272E77004F74FF /* HomeProtocols.swift */,
-				84E5BECC24272E77004F74FF /* HomeInteractor.swift */,
-				84E5BECD24272E77004F74FF /* HomeViewController.xib */,
+				848212AA24305A5E0077AC45 /* HomePresenter.swift */,
+				848212AB24305A5E0077AC45 /* HomeRouter.swift */,
+				848212AC24305A5E0077AC45 /* HomeViewController.swift */,
+				848212AD24305A5E0077AC45 /* HomeProtocols.swift */,
+				848212AE24305A5E0077AC45 /* HomeInteractor.swift */,
+				848212AF24305A5E0077AC45 /* HomeViewController.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -635,6 +641,7 @@
 			files = (
 				84E788CF242D900700D7817D /* HeaderView.xib in Resources */,
 				84E788C0242C6CAA00D7817D /* AlbumCell.xib in Resources */,
+				848212B524305A5E0077AC45 /* HomeViewController.xib in Resources */,
 				84E788BB242C584100D7817D /* AlbumView.xib in Resources */,
 				84E5BEEF24273141004F74FF /* MoreViewController.xib in Resources */,
 				84FF00A5242A148200463A88 /* PlayMusicBar.xib in Resources */,
@@ -645,7 +652,6 @@
 				84E5BEF524275D76004F74FF /* TrendingTbvCell.xib in Resources */,
 				84E788C9242CA3D100D7817D /* SearchCell.xib in Resources */,
 				84FF00852429E46600463A88 /* TrendingView.xib in Resources */,
-				84E5BED324272E77004F74FF /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,23 +783,24 @@
 				84E788C8242CA3D100D7817D /* SearchCell.swift in Sources */,
 				84E788C2242C89DD00D7817D /* VideosResponse.swift in Sources */,
 				843D4676242F983C007BE44A /* UITableView+Extensions.swift in Sources */,
+				848212B324305A5E0077AC45 /* HomeProtocols.swift in Sources */,
+				848212B924305BE60077AC45 /* Bundle+Extention.swift in Sources */,
 				84E5BEB724272693004F74FF /* BaseTableViewController.swift in Sources */,
 				84E5BEB924272693004F74FF /* BaseViewController.swift in Sources */,
 				84E5BEEA24273141004F74FF /* MorePresenter.swift in Sources */,
 				DB42B575242716AF00CF1458 /* AppDelegate.swift in Sources */,
-				84E5BECE24272E77004F74FF /* HomePresenter.swift in Sources */,
 				84E5BEAF242725D7004F74FF /* AppConstant.swift in Sources */,
 				84E5BEED24273141004F74FF /* MoreProtocols.swift in Sources */,
 				84E788CD242D8FFA00D7817D /* HeaderView.swift in Sources */,
 				84E5BEEB24273141004F74FF /* MoreRouter.swift in Sources */,
 				84FF009E2429F7A300463A88 /* PlaylistProtocols.swift in Sources */,
 				84E5BEB224272632004F74FF /* UseDefaultHelper.swift in Sources */,
-				84E5BED124272E77004F74FF /* HomeProtocols.swift in Sources */,
 				84E5BEB824272693004F74FF /* BaseViewXib.swift in Sources */,
 				84FF00872429F15100463A88 /* BaseTableViewCell.swift in Sources */,
 				84E5BED5242730A0004F74FF /* MainTabbar.swift in Sources */,
 				84FF009B2429F7A300463A88 /* PlaylistPresenter.swift in Sources */,
 				84E788BF242C6CAA00D7817D /* AlbumCell.swift in Sources */,
+				848212B224305A5E0077AC45 /* HomeViewController.swift in Sources */,
 				84FF00A3242A147500463A88 /* PlayMusicBar.swift in Sources */,
 				84E5BEF424275D76004F74FF /* TrendingTbvCell.swift in Sources */,
 				84E5BEEC24273141004F74FF /* MoreViewController.swift in Sources */,
@@ -803,17 +810,18 @@
 				84FF00772429A46000463A88 /* SearchPresenter.swift in Sources */,
 				84E788C4242C89EC00D7817D /* SearchResponse.swift in Sources */,
 				84FF007A2429A46000463A88 /* SearchProtocols.swift in Sources */,
+				848212B024305A5E0077AC45 /* HomePresenter.swift in Sources */,
 				843D4674242F981D007BE44A /* String+Extensions.swift in Sources */,
-				84E5BECF24272E77004F74FF /* HomeRouter.swift in Sources */,
 				84FF00842429E46600463A88 /* TrendingView.swift in Sources */,
-				84E5BED024272E77004F74FF /* HomeViewController.swift in Sources */,
+				848212B724305BB20077AC45 /* LanguageHelper.swift in Sources */,
+				848212B424305A5E0077AC45 /* HomeInteractor.swift in Sources */,
 				84FF009D2429F7A300463A88 /* PlaylistViewController.swift in Sources */,
 				843D4672242F97EF007BE44A /* UIView+Extensions.swift in Sources */,
 				84FF00702429A11400463A88 /* Snippet.swift in Sources */,
 				84FF00782429A46000463A88 /* SearchRouter.swift in Sources */,
-				84E5BED224272E77004F74FF /* HomeInteractor.swift in Sources */,
 				84FF009F2429F7A300463A88 /* PlaylistInteractor.swift in Sources */,
 				84FF007B2429A46000463A88 /* SearchInteractor.swift in Sources */,
+				848212B124305A5E0077AC45 /* HomeRouter.swift in Sources */,
 				84FF006224299AE000463A88 /* NetworkRequest.swift in Sources */,
 				84E5BEEE24273141004F74FF /* MoreInteractor.swift in Sources */,
 				84FF009C2429F7A300463A88 /* PlaylistRouter.swift in Sources */,

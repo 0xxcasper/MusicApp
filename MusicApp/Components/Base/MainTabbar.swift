@@ -51,6 +51,7 @@ class MainTabbar: UITabBarController {
         let homeVC = HomeRouter.createModule()
         homeVC.title = "Home"
         let homeNC = BaseNavigationController(rootViewController: homeVC)
+        homeNC.navigationBar.prefersLargeTitles = true
         
         let searchVC = SearchRouter.createModule()
         searchVC.title = "Search"
@@ -60,6 +61,7 @@ class MainTabbar: UITabBarController {
         let moreVC = MoreRouter.createModule()
         moreVC.title = "More"
         let moreNC = BaseNavigationController(rootViewController: moreVC)
+        moreNC.navigationBar.prefersLargeTitles = true
         
         viewControllers = [ homeNC, searchNC, moreNC ]
     }
