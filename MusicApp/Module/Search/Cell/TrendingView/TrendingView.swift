@@ -11,7 +11,9 @@ import SDWebImage
 
 protocol TrendingViewDelegate: class {
     func onPressViewSeeAll()
+    func didSelectedCell(item: Any)
 }
+
 class TrendingView: BaseTableViewCell, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var lblTitle: UILabel!
@@ -82,6 +84,10 @@ class TrendingView: BaseTableViewCell, UITableViewDataSource, UITableViewDelegat
             cell.lblRow.text = "#\(indexPath.row + 1)"
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate.didSelectedCell(item: items[indexPath.row])
     }
     
     

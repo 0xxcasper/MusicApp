@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import youtube_ios_player_helper
 
 enum NavigationStyle {
     case left
@@ -119,6 +120,12 @@ extension BaseViewController {
         self.dismiss(animated: animated, completion: nil)
     }
     
+    func loadVideo(videoView: YTPlayerView, item: Item?) {
+        let playvarsDic = ["playsinline": 1, "origin" : "http://www.youtube.com"] as [String : Any]
+        if let utubeModel = item, let videoId = utubeModel.id {
+            videoView.load(withVideoId: videoId, playerVars: playvarsDic)
+        }
+    }
 }
 
 extension BaseViewController {

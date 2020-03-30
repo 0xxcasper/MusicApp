@@ -77,6 +77,12 @@ class SearchViewController: BaseViewController {
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate, TrendingViewDelegate, AlbumViewDelegate
 {
+    func didSelectedCell(item: Any) {
+        let vc = PlayMusicViewController()
+        vc.item = (item as! Item)
+        self.present(controller: vc)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return !isSearch ? 2 : 1
     }
