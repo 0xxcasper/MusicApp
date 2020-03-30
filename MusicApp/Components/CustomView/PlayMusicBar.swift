@@ -18,9 +18,11 @@ class PlayMusicBar: BaseViewXib {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var btnNext: UIButton!
+    @IBOutlet weak var progressView: UIProgressView!
     
-    let videoPlayer = YouTubePlayerView()
-    
+    private let videoPlayer = YouTubePlayerView()
+    private var timer: Timer?
+
     var type: PlaylistType = .normal
     
     var items: [Any] = []
@@ -63,6 +65,7 @@ class PlayMusicBar: BaseViewXib {
                 btnControl.setTitle("Pause", for: .normal)
                 btnNext.setTitle("Next", for: .normal)
                 videoPlayer.play()
+                timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(progressVideo), userInfo: nil, repeats: true)
             }
         }
     }
@@ -71,6 +74,12 @@ class PlayMusicBar: BaseViewXib {
         videoPlayer.delegate = self
         contentView.setGradient(startColor: UIColor(displayP3Red: 133/255, green: 24/255, blue: 229/255, alpha: 1),
                                 secondColor: UIColor(displayP3Red: 93/255, green: 153/255, blue: 238/255, alpha: 1))
+    }
+    
+    @objc func progressVideo() {
+        let currentTime = Float(videoPlayer.getCurrentTime() ?? "0.0")
+        let duration = Float(videoPlayer.getDuration() ?? "0.0")
+        progressView.setProgress((currentTime ?? 0)/(duration ?? 1), animated: false)
     }
     
     private func nextVideo() {

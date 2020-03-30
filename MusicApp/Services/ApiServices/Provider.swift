@@ -47,16 +47,16 @@ class Provider {
     
     func callApiGetListVideo(pageToken: String, maxResult: Int = 5, keyword: String, success: @escaping (_ response: SearchResponse) -> Void, failure: @escaping (_ message: String) -> Void) {
         let endPoint: YouTubeEndPoint = .getListMusicWith(pageToken: pageToken, maxResult: maxResult, keyword: keyword)
-        self.request.requestData(endPoint: endPoint, success: { (data) in
-            do {
-                let jsonDecoder = JSONDecoder()
-                let baseResponse = try jsonDecoder.decode(SearchResponse.self, from: data)
-                success(baseResponse)
-            } catch _ as NSError {
-                failure("Can't parse JSON")
-            }
-        }) { (Error) in
-            failure("An error occurred, please try again")
-        }
+//        self.request.requestData(endPoint: endPoint, success: { (data) in
+//            do {
+//                let jsonDecoder = JSONDecoder()
+//                let baseResponse = try jsonDecoder.decode(SearchResponse.self, from: data)
+//                success(baseResponse)
+//            } catch _ as NSError {
+//                failure("Can't parse JSON")
+//            }
+//        }) { (Error) in
+//            failure("An error occurred, please try again")
+//        }
     }
 }
