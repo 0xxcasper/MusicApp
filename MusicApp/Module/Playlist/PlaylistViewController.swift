@@ -82,6 +82,13 @@ class PlaylistViewController: BaseTableViewController {
         }
         return headerView
     }
+    
+    override func didSelectRowAt(selectedItem: Any, indexPath: IndexPath) {
+        let data = ["items": self.listItem,
+                    "currentIndex": indexPath.row,
+                    "type": self.type] as [String : Any]
+        NotificationCenter.default.post(name: .OpenPlayBar, object: nil, userInfo: data)
+    }
 }
 
 extension PlaylistViewController: PlaylistViewProtocol

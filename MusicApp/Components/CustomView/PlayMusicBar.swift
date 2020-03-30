@@ -46,9 +46,9 @@ class PlayMusicBar: BaseViewXib {
         }
     }
     
-    var isPlay = true {
+    var isPause = true {
         didSet {
-            if isPlay {
+            if isPause {
                 btnControl.setTitle("Play", for: .normal)
                 btnNext.setTitle("X", for: .normal)
                 videoPlayer.pause()
@@ -67,7 +67,7 @@ class PlayMusicBar: BaseViewXib {
     }
     
     @IBAction func onPressPlayVideo(_ sender: UIButton) {
-        isPlay = !isPlay
+        isPause = !isPause
     }
     
     @IBAction func onPressNextVideo(_ sender: UIButton) {
@@ -84,6 +84,17 @@ extension PlayMusicBar: YouTubePlayerDelegate
     func playerReady(_ videoPlayer: YouTubePlayerView) {
         indicator.isHidden = true
         btnControl.isHidden = false
-        isPlay = !isPlay
+        isPause = false
+    }
+    
+    func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
+        if playerState == .Ended {
+            currentIndex = currentIndex + 1
+        }
+        if playerState == .Unstarted {
+            print("Can't Play video")
+            isPause = true
+            currentIndex = currentIndex + 1
+        }
     }
 }
