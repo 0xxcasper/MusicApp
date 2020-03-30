@@ -17,9 +17,13 @@ class MainTabbar: UITabBarController {
         return .lightContent
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .OpenPlayBar, object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didOpenPlayBar(notification:)), name: .OpenPlayBar, object: nil)
         setUpView()
         setUpAppearance()
         setUpViewController()
@@ -27,12 +31,21 @@ class MainTabbar: UITabBarController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        //playBar.frame = CGRect(x: 0, y: tabBar.frame.origin.y - 48, width: self.view.bounds.width, height: 48)
+        playBar.frame = CGRect(x: -AppConstant.SREEEN_WIDTH, y: tabBar.frame.origin.y - 48, width: AppConstant.SREEEN_WIDTH, height: 48)
+    }
+    
+    @objc func didOpenPlayBar(notification: Notification) {
+        if let data = notification.userInfo as? [String: Any] {
+            playBar.items = data["items"] as! [Any]
+            playBar.type = data["type"] as! PlaylistType
+            playBar.currentIndex = data["currentIndex"] as! Int
+            playBar.animateLeftToRight()
+        }
     }
     
     func setUpView() {
         self.navigationItem.setHidesBackButton(true, animated: true)
-        //self.view.addSubview(playBar)
+        self.view.addSubview(playBar)
     }
     
     func setUpAppearance() {

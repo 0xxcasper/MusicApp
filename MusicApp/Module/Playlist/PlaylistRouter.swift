@@ -14,7 +14,7 @@ class PlaylistRouter: PlaylistWireframeProtocol {
 
     weak var viewController: UIViewController?
 
-    static func createModule(type: PlaylistViewControllerType, keyword: String) -> UIViewController {
+    static func createModule(type: PlaylistType, keyword: String) -> UIViewController {
         // Change to get view from storyboard if not using progammatic UI
         let view = PlaylistViewController(nibName: nil, bundle: nil)
         let interactor = PlaylistInteractor()

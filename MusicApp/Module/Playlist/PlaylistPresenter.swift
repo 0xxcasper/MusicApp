@@ -22,7 +22,7 @@ class PlaylistPresenter: PlaylistPresenterProtocol, PlaylistInteractorOutputProt
         self.router = router
     }
     
-    func startGetListMusic(pageToken: String, maxResult: Int, type: PlaylistViewControllerType, keyword: String) {
+    func startGetListMusic(pageToken: String, maxResult: Int, type: PlaylistType, keyword: String) {
         interactor?.requestGetListMusic(pageToken: pageToken, maxResult: maxResult, type: type, keyword: keyword)
     }
     

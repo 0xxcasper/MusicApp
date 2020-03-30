@@ -14,7 +14,7 @@ class PlaylistInteractor: PlaylistInteractorInputProtocol {
 
     weak var presenter: PlaylistInteractorOutputProtocol?
     
-    func requestGetListMusic(pageToken: String, maxResult: Int, type: PlaylistViewControllerType, keyword: String) {
+    func requestGetListMusic(pageToken: String, maxResult: Int, type: PlaylistType, keyword: String) {
         if type == .trending {
             Provider.shared.callApiTrendingVideo(pageToken: pageToken, maxResult: maxResult, success: { (BaseResponse) in
                 self.presenter?.onResponseGetListTrendingMusicSuccess(response: BaseResponse)

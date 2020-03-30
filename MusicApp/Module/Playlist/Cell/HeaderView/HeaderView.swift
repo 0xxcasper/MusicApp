@@ -12,6 +12,7 @@ class HeaderView: BaseViewXib {
 
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var lblTracks: UILabel!
     
     override func setUpViews() {
         img.layer.cornerRadius = 5

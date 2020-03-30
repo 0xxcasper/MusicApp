@@ -27,8 +27,6 @@ class TrendingView: BaseTableViewCell, UITableViewDataSource, UITableViewDelegat
         }
     }
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -84,6 +82,12 @@ class TrendingView: BaseTableViewCell, UITableViewDataSource, UITableViewDelegat
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = ["items": self.items ?? [],
+                    "currentIndex": indexPath.row,
+                    "type": PlaylistType.trending] as [String : Any]
+        NotificationCenter.default.post(name: .OpenPlayBar, object: nil, userInfo: data)
+    }
     
     @IBAction func onPressViewSeeAll(_ sender: UIButton) {
         delegate.onPressViewSeeAll()

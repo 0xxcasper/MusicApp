@@ -41,10 +41,6 @@ class AlbumView: BaseTableViewCell {
         collectionView.showsHorizontalScrollIndicator = false
     }
     
-    override func didChangeRegion() {
-        callGetListVideo()
-    }
-    
     private func callGetListVideo() {
         if let items = self.items, items.count <= 0 {
             self.lblTitle.text = keyword

@@ -4,23 +4,27 @@ PODS:
     - SDWebImage/Core (= 5.4.1)
   - SDWebImage/Core (5.4.1)
   - SVProgressHUD (2.2.5)
+  - YouTubePlayer (0.4.0)
 
 DEPENDENCIES:
   - Alamofire (= 4.8.2)
   - SDWebImage (~> 5.0)
   - SVProgressHUD
+  - YouTubePlayer
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - SDWebImage
     - SVProgressHUD
+    - YouTubePlayer
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   SDWebImage: 29c340dbdcef342bb13125553f4e19ce056b07a7
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: 9f62b8b69c24726c19351a165754ad22259b274f
+PODFILE CHECKSUM: ac8d3924fee4bb89bb7fc992dd8aa7f974776244
 
 COCOAPODS: 1.8.4

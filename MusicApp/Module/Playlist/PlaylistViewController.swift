@@ -10,7 +10,7 @@
 
 import UIKit
 
-enum PlaylistViewControllerType {
+enum PlaylistType {
     case trending
     case normal
 }
@@ -20,7 +20,7 @@ class PlaylistViewController: BaseTableViewController {
 	var presenter: PlaylistPresenterProtocol?
     let headerView = HeaderView()
     
-    var type: PlaylistViewControllerType = .normal
+    var type: PlaylistType = .normal
     var keyword: String = ""
     
     private var nextPageToken = ""
@@ -73,6 +73,13 @@ class PlaylistViewController: BaseTableViewController {
     }
     
     override func tableViews(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let item = self.listItem.first, let snippet = self.type == .trending ? (item as! Item).snippet : (item as! ItemSearch).snippet,
+            let thumbnails = snippet.thumbnails {
+            headerView.img.loadImageFromInternet(link: thumbnails.defaults!.url!)
+            if self.type == .trending {
+                headerView.lblTracks.text = "\(self.totalResult) tracks"
+            }
+        }
         return headerView
     }
 }
