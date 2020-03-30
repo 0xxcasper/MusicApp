@@ -34,6 +34,13 @@ class PlayMusicBar: BaseViewXib {
                     self.lblTitle.text = video.snippet!.title
                     self.img.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "")
                 }
+            } else {
+                if items.count > 0, let itemVideos: [ItemSearch] = items as? [ItemSearch] {
+                    let video = itemVideos[currentIndex]
+                    self.currentId = video.id!.videoId ?? ""
+                    self.lblTitle.text = video.snippet!.title
+                    self.img.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "")
+                }
             }
         }
     }
@@ -66,13 +73,21 @@ class PlayMusicBar: BaseViewXib {
                                 secondColor: UIColor(displayP3Red: 93/255, green: 153/255, blue: 238/255, alpha: 1))
     }
     
+    private func nextVideo() {
+        if currentIndex + 1 < items.count {
+            currentIndex = currentIndex + 1
+        } else {
+            currentIndex = 0
+        }
+    }
+    
     @IBAction func onPressPlayVideo(_ sender: UIButton) {
         isPause = !isPause
     }
     
     @IBAction func onPressNextVideo(_ sender: UIButton) {
         if sender.titleLabel?.text == "Next" {
-            currentIndex = currentIndex + 1
+            nextVideo()
         } else {
             self.animateHideLeftToRight()
         }
@@ -89,12 +104,12 @@ extension PlayMusicBar: YouTubePlayerDelegate
     
     func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
         if playerState == .Ended {
-            currentIndex = currentIndex + 1
+            nextVideo()
         }
         if playerState == .Unstarted {
             print("Can't Play video")
             isPause = true
-            currentIndex = currentIndex + 1
+            nextVideo()
         }
     }
 }

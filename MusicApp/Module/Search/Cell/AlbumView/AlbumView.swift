@@ -78,4 +78,11 @@ extension AlbumView: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         return CGSize(width: AppConstant.SREEEN_WIDTH - 100, height: 70)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = ["items": self.items ?? [],
+                    "currentIndex": indexPath.row,
+                    "type": PlaylistType.normal] as [String : Any]
+        NotificationCenter.default.post(name: .OpenPlayBar, object: nil, userInfo: data)
+    }
+    
 }

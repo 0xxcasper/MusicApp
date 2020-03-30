@@ -15,7 +15,7 @@ enum PlaylistType {
     case normal
 }
 
-class PlaylistViewController: BaseTableViewController {
+class PlaylistViewController: BaseTableViewController, HeaderViewDelegate {
     
 	var presenter: PlaylistPresenterProtocol?
     let headerView = HeaderView()
@@ -73,6 +73,7 @@ class PlaylistViewController: BaseTableViewController {
     }
     
     override func tableViews(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        headerView.delegate = self
         if let item = self.listItem.first, let snippet = self.type == .trending ? (item as! Item).snippet : (item as! ItemSearch).snippet,
             let thumbnails = snippet.thumbnails {
             headerView.img.loadImageFromInternet(link: thumbnails.defaults!.url!)
@@ -86,6 +87,13 @@ class PlaylistViewController: BaseTableViewController {
     override func didSelectRowAt(selectedItem: Any, indexPath: IndexPath) {
         let data = ["items": self.listItem,
                     "currentIndex": indexPath.row,
+                    "type": self.type] as [String : Any]
+        NotificationCenter.default.post(name: .OpenPlayBar, object: nil, userInfo: data)
+    }
+    
+    func onPressPlay() {
+        let data = ["items": self.listItem,
+                    "currentIndex": 0,
                     "type": self.type] as [String : Any]
         NotificationCenter.default.post(name: .OpenPlayBar, object: nil, userInfo: data)
     }
