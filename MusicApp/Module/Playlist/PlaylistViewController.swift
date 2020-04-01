@@ -12,7 +12,7 @@ import UIKit
 
 enum PlaylistType {
     case trending
-    case normal
+    case search
 }
 
 class PlaylistViewController: BaseTableViewController, HeaderViewDelegate {
@@ -20,7 +20,7 @@ class PlaylistViewController: BaseTableViewController, HeaderViewDelegate {
 	var presenter: PlaylistPresenterProtocol?
     let headerView = HeaderView()
     
-    var type: PlaylistType = .normal
+    var type: PlaylistType = .search
     var keyword: String = ""
     
     private var nextPageToken = ""

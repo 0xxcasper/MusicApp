@@ -277,11 +277,12 @@ extension UIView {
     }
     
     func animateHideLeftToRight() {
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.3, animations: {
             self.frame.origin.x = -AppConstant.SREEEN_WIDTH
+        }) { (Bool) in
+            self.removeFromSuperview()
         }
     }
-    
 }
 
 

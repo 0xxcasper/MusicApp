@@ -9,7 +9,7 @@ target 'MusicApp' do
   pod 'SVProgressHUD'
   pod 'Alamofire', '4.8.2'
   pod 'SDWebImage', '~> 5.0'
-  pod 'YouTubePlayer'
+  pod 'youtube-ios-player-helper', '~> 0.1.4'
 
   target 'MusicAppTests' do
     inherit! :search_paths

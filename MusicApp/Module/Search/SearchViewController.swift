@@ -39,7 +39,7 @@ class SearchViewController: BaseViewController {
     private var timer: Timer?
     private var canLoadMore = false
     
-    private var albums = ["Classical Music", "K-POP", "Chilren's Music", "Nursery Rhymes"]
+    private var albums = ["Classical Music", "Nursery Rhymes","K-POP", "Chilren's Music"]
     
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,6 +109,13 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate, Tren
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = ["items": self.results,
+                    "currentIndex": indexPath.row,
+                    "type": PlaylistType.search] as [String : Any]
+        NotificationCenter.default.post(name: .OpenPlayBar, object: nil, userInfo: data)
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == results.count - 1  {
             self.presenter?.startSearchWith(keyword: searchText, maxResult: 25, pageToken: nextPageToken)
@@ -120,7 +127,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate, Tren
     }
     
     func onPressViewSeeAll(keyword: String) {
-        let playlistVC = PlaylistRouter.createModule(type: .normal, keyword: keyword)
+        let playlistVC = PlaylistRouter.createModule(type: .search, keyword: keyword)
         self.push(controller: playlistVC)
     }
     

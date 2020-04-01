@@ -11,7 +11,7 @@ import UIKit
 
 class MainTabbar: UITabBarController {
     
-    let playBar = PlayMusicBar()
+    var playBar = PlayMusicBar(frame: CGRect(x: -AppConstant.SREEEN_WIDTH, y: 0, width: AppConstant.SREEEN_WIDTH, height: 48))
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -29,12 +29,22 @@ class MainTabbar: UITabBarController {
         setUpViewController()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        playBar.frame = CGRect(x: -AppConstant.SREEEN_WIDTH, y: tabBar.frame.origin.y - 48, width: AppConstant.SREEEN_WIDTH, height: 48)
+    func setUpView() {
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        
     }
     
     @objc func didOpenPlayBar(notification: Notification) {
+        if self.playBar.frame.origin.x < 0 {
+            self.playBar.frame.origin.y = tabBar.frame.origin.y - 48
+            if var topController = UIApplication.shared.delegate?.window??.rootViewController {
+                while let presentedViewController = topController.presentedViewController {
+                    topController = presentedViewController
+                }
+                topController.view.addSubview(playBar)
+            }
+        }
+        
         if let data = notification.userInfo as? [String: Any] {
             playBar.items = data["items"] as! [Any]
             playBar.type = data["type"] as! PlaylistType
@@ -43,13 +53,7 @@ class MainTabbar: UITabBarController {
         }
     }
     
-    func setUpView() {
-        self.navigationItem.setHidesBackButton(true, animated: true)
-        self.view.addSubview(playBar)
-    }
-    
     func setUpAppearance() {
-        
         UINavigationBar.appearance().largeTitleTextAttributes =
             [NSAttributedString.Key.foregroundColor:UIColor.white]
         tabBar.unselectedItemTintColor = .lightGray

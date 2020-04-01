@@ -305,6 +305,15 @@
 			path = SettingCell;
 			sourceTree = "<group>";
 		};
+		84A618EF2432E83B002DF921 /* PlayMuicsBar */ = {
+			isa = PBXGroup;
+			children = (
+				84FF00A2242A147500463A88 /* PlayMusicBar.swift */,
+				84FF00A4242A148200463A88 /* PlayMusicBar.xib */,
+			);
+			path = PlayMuicsBar;
+			sourceTree = "<group>";
+		};
 		84E5BEA5242725B8004F74FF /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -545,8 +554,7 @@
 		84FF00A1242A12F500463A88 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				84FF00A2242A147500463A88 /* PlayMusicBar.swift */,
-				84FF00A4242A148200463A88 /* PlayMusicBar.xib */,
+				84A618EF2432E83B002DF921 /* PlayMuicsBar */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";

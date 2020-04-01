@@ -46,7 +46,7 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>YouTubePlayer.xcscheme</key>
+		<key>youtube-ios-player-helper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

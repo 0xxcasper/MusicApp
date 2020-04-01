@@ -43,9 +43,9 @@ class AlbumView: BaseTableViewCell {
     
     private func callGetListVideo() {
         if let items = self.items, items.count <= 0 {
-            self.lblTitle.text = keyword
             Provider.shared.callApiGetListVideo(pageToken: "", maxResult: 6, keyword: keyword, success: { (BaseResponse) in
                 self.items = BaseResponse.items
+                self.lblTitle.text = self.keyword
             }) { (error) in
                 print(error)
             }
@@ -53,7 +53,7 @@ class AlbumView: BaseTableViewCell {
     }
     
     @IBAction func onPressViewAll(_ sender: UIButton) {
-        delegate.onPressViewSeeAll(keyword: keyword)
+        delegate.onPressViewSeeAll(keyword: self.lblTitle.text ?? "")
     }
 }
 
@@ -81,7 +81,7 @@ extension AlbumView: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = ["items": self.items ?? [],
                     "currentIndex": indexPath.row,
-                    "type": PlaylistType.normal] as [String : Any]
+                    "type": PlaylistType.search] as [String : Any]
         NotificationCenter.default.post(name: .OpenPlayBar, object: nil, userInfo: data)
     }
     
