@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="btnPlay" destination="URm-Gf-VZX" id="HWU-7f-aLZ"/>
                 <outlet property="img" destination="OBY-cr-Ads" id="XVP-OG-M4c"/>
+                <outlet property="lblTracks" destination="IOf-vZ-1pf" id="Bcj-a4-1fI"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -46,8 +47,8 @@
                         <action selector="onPressPlay:" destination="-1" eventType="touchUpInside" id="Xx4-bF-mmF"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 tracks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOf-vZ-1pf">
-                    <rect key="frame" x="182.5" y="179" width="49.5" height="13.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99 tracks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOf-vZ-1pf">
+                    <rect key="frame" x="182" y="179" width="50" height="13.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>

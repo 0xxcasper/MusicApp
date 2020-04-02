@@ -270,6 +270,19 @@ extension UIView {
          CATransaction.commit()
     }
     
+    func animateLeftToRight() {
+        UIView.animate(withDuration: 0.3) {
+            self.frame.origin.x = 0
+        }
+    }
+    
+    func animateHideLeftToRight() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.frame.origin.x = -AppConstant.SREEEN_WIDTH
+        }) { (Bool) in
+            self.removeFromSuperview()
+        }
+    }
 }
 
 

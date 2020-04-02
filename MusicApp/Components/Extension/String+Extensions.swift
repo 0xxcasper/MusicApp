@@ -13,6 +13,7 @@ import UIKit
 extension Notification.Name {
      static let ChangeLanguage = Notification.Name(rawValue: "ChangeLanguage")
      static let ChangeRegion = Notification.Name(rawValue: "ChangeRegion")
+     static let OpenPlayBar = Notification.Name(rawValue: "OpenPlayBar")
 }
 
 extension String {

@@ -19,7 +19,7 @@ protocol PlaylistPresenterProtocol: class {
 
     var interactor: PlaylistInteractorInputProtocol? { get set }
     
-    func startGetListMusic(pageToken: String, maxResult: Int, type: PlaylistViewControllerType, keyword: String)
+    func startGetListMusic(pageToken: String, maxResult: Int, type: PlaylistType, keyword: String)
 }
 
 //MARK: Interactor -
@@ -37,7 +37,7 @@ protocol PlaylistInteractorInputProtocol: class {
     var presenter: PlaylistInteractorOutputProtocol?  { get set }
 
     /* Presenter -> Interactor */
-    func requestGetListMusic(pageToken: String, maxResult: Int, type: PlaylistViewControllerType, keyword: String)
+    func requestGetListMusic(pageToken: String, maxResult: Int, type: PlaylistType, keyword: String)
 }
 
 //MARK: View -

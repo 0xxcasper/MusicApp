@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol HeaderViewDelegate: class {
+    func onPressPlay()
+}
+
 class HeaderView: BaseViewXib {
 
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var lblTracks: UILabel!
+    
+    weak var delegate: HeaderViewDelegate!
     
     override func setUpViews() {
         img.layer.cornerRadius = 5
@@ -22,7 +29,7 @@ class HeaderView: BaseViewXib {
     }
     
     @IBAction func onPressPlay(_ sender: UIButton) {
-        
+        delegate.onPressPlay()
     }
     
 }

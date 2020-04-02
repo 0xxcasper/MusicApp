@@ -1,4 +1,4 @@
-framework module Pods_MusicApp_MusicAppUITests {
+module Pods_MusicApp_MusicAppUITests {
   umbrella header "Pods-MusicApp-MusicAppUITests-umbrella.h"
 
   export *

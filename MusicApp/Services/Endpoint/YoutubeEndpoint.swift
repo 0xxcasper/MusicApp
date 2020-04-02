@@ -48,7 +48,11 @@ extension YouTubeEndPoint: EndPointType
                     "maxResults": maxResult,
                     "regionCode": UserDefaultHelper.shared.regionCode ?? "VN",
                     "pageToken": pageToken,
+                    "type": "video",
+                    "eventType": "completed",
                     "q": keyword,
+                    "videoCategoryId": 10,
+                    "videoDuration": "medium",
                     "key": api_key]
         case .getVideoWith(let id):
         return ["part": "snippet",

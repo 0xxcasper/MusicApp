@@ -32,6 +32,7 @@ class SettingViewController: BaseViewController {
         tbView.dataSource = self
         tbView.delegate = self
         tbView.separatorStyle = .none
+        tbView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 45, right: 0)
     }
     
     override func didChangeLanguage() {
