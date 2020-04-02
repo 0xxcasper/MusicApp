@@ -102,7 +102,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate, Tren
             let cell = tableView.dequeueTableCell(SearchCell.self)
             let item = results[indexPath.row]
             if let snippet = item.snippet, let thumbnails = snippet.thumbnails {
-                cell.img.loadImageFromInternet(link: thumbnails.defaults!.url!)
+                cell.img.loadImageFromInternet(link: thumbnails.defaults!.url!, completion: nil)
                 cell.lblTitle.text = snippet.title
                 cell.lblChanel.text = snippet.channelTitle
             }

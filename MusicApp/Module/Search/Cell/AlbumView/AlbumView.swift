@@ -67,7 +67,7 @@ extension AlbumView: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! AlbumCell
         let item = items[indexPath.row]
         if let snippet = item.snippet, let thumbnails = snippet.thumbnails {
-            cell.img.loadImageFromInternet(link: thumbnails.defaults!.url!)
+            cell.img.loadImageFromInternet(link: thumbnails.defaults!.url!, completion: nil)
             cell.lblTitle.text = snippet.title
             cell.lblChanel.text = snippet.channelTitle
         }

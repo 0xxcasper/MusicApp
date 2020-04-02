@@ -74,7 +74,7 @@ class TrendingView: BaseTableViewCell, UITableViewDataSource, UITableViewDelegat
         let cell = tableView.dequeueTableCell(TrendingTbvCell.self)
         let item = items[indexPath.row]
         if let snippet = item.snippet, let thumbnails = snippet.thumbnails {
-            cell.img.loadImageFromInternet(link: thumbnails.defaults!.url!)
+            cell.img.loadImageFromInternet(link: thumbnails.defaults!.url!, completion: nil)
             cell.lblTitle.text = snippet.title
             cell.lblChanel.text = snippet.channelTitle
             cell.lblRow.text = "#\(indexPath.row + 1)"

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MediaPlayer
 import youtube_ios_player_helper
 
 class PlayMusicBar: BaseViewXib {
@@ -42,7 +43,7 @@ class PlayMusicBar: BaseViewXib {
                     self.lblTitle.text = video.snippet!.title
                     self.lblMusicName.text = video.snippet!.title
                     self.lblChanelName.text = video.snippet!.channelTitle
-                    self.img.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "")
+                    self.img.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "", completion: nil)
                 }
             } else {
                 if items.count > 0, let itemVideos: [ItemSearch] = items as? [ItemSearch] {
@@ -51,7 +52,7 @@ class PlayMusicBar: BaseViewXib {
                     self.lblTitle.text = video.snippet!.title
                     self.lblMusicName.text = video.snippet!.title
                     self.lblChanelName.text = video.snippet!.channelTitle
-                    self.img.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "")
+                    self.img.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "", completion: nil)
                 }
             }
         }
@@ -71,6 +72,7 @@ class PlayMusicBar: BaseViewXib {
     
     var isPause = true {
         didSet {
+//            self.updateNowPlaying()
             if isPause {
                 self.btnControl.setImage(#imageLiteral(resourceName: "play_small"), for: .normal)
                 self.btnNext.setImage(#imageLiteral(resourceName: "cancel"), for: .normal)
@@ -81,6 +83,7 @@ class PlayMusicBar: BaseViewXib {
                 self.btnNext.setImage(#imageLiteral(resourceName: "next_small"), for: .normal)
                 self.btnControlVideo.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
                 self.videoPlayer.playVideo()
+                if let timer = self.timer {timer.invalidate() }
                 self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(progressVideo), userInfo: nil, repeats: true)
             }
         }
@@ -91,6 +94,8 @@ class PlayMusicBar: BaseViewXib {
         contentViewPlay.alpha = 0
         contentViewHeader.alpha = 0
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeGradientColor(notification:)), name: .ChangeGradientColor, object: nil)
+        setupRemoteTransportControls()
+        setupNotifications()
     }
     
     deinit {
@@ -112,6 +117,7 @@ class PlayMusicBar: BaseViewXib {
             contentView.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
         }
     }
+    
     func setGradientContentViewPlay() {
         if let gradientColor = UserDefaultHelper.shared.gradientColor {
             guard let sublayers = contentView.layer.sublayers else {
@@ -121,6 +127,128 @@ class PlayMusicBar: BaseViewXib {
             sublayers[0].removeFromSuperlayer()
             contentViewPlay.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
         }
+    }
+    
+    func setupNotifications() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(handleInterruption),
+                                       name: AVAudioSession.interruptionNotification,
+                                       object: nil)
+        notificationCenter.addObserver(self,
+                                        selector: #selector(handleRouteChange),
+                                        name: AVAudioSession.routeChangeNotification,
+                                        object: nil)
+    }
+
+    @objc func handleInterruption(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+            let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
+                return
+        }
+
+        if type == .began {
+            print("Interruption began")
+            self.isPause = false
+        }
+        else if type == .ended {
+            if let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt {
+                let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
+                if options.contains(.shouldResume) {
+                    // Interruption Ended - playback should resume
+                    print("Interruption Ended - playback should resume")
+                    self.isPause = false
+                } else {
+                    
+                }
+            }
+        }
+    }
+    
+
+    @objc func handleRouteChange(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
+            let reason = AVAudioSession.RouteChangeReason(rawValue:reasonValue) else {
+                return
+        }
+        switch reason {
+        case .newDeviceAvailable:
+            let session = AVAudioSession.sharedInstance()
+            for output in session.currentRoute.outputs where output.portType == AVAudioSession.Port.lineOut {
+                print("headphones connected")
+                DispatchQueue.main.sync {
+                    self.isPause = false
+                }
+                break
+            }
+        case .oldDeviceUnavailable:
+            if let previousRoute =
+                userInfo[AVAudioSessionRouteChangePreviousRouteKey] as? AVAudioSessionRouteDescription {
+                for output in previousRoute.outputs where output.portType == AVAudioSession.Port.lineOut {
+                    print("headphones disconnected")
+                    DispatchQueue.main.sync {
+                        self.isPause = false
+                    }
+                    break
+                }
+            }
+        default: ()
+        }
+    }
+
+        
+    func setupRemoteTransportControls() {
+        // Get the shared MPRemoteCommandCenter
+        let commandCenter = MPRemoteCommandCenter.shared()
+        
+        // Add handler for Play Command
+        commandCenter.playCommand.addTarget { [unowned self] event in
+            print("Play command - is playing")
+            if self.videoPlayer.playerState() != .playing {
+                self.isPause = false
+                return .success
+            }
+            return .commandFailed
+        }
+
+        // Add handler for Pause Command
+        commandCenter.pauseCommand.addTarget { [unowned self] event in
+            print("Pause command - is playing")
+            if self.videoPlayer.playerState() == .playing {
+                self.isPause = true
+                return .success
+            }
+            return .commandFailed
+        }
+        
+        commandCenter.nextTrackCommand.addTarget { [unowned self] event in
+            self.nextVideo()
+            return .success
+        }
+        
+        commandCenter.previousTrackCommand.addTarget { [unowned self] event in
+            self.prevVideo()
+            return .success
+        }
+    }
+
+    func updateNowPlaying() {
+        // Define Now Playing Info
+        var nowPlayingInfo = [String : Any]()
+        if let image = self.img.image {
+            nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: image.size) { size in
+                return image
+            }
+        }
+        
+        nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = self.videoPlayer.currentTime
+        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = self.videoPlayer.duration
+        nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = self.videoPlayer.playbackRate()
+        
+        // Set the metadata
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
     
     override func layoutSubviews() {

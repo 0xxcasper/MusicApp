@@ -287,12 +287,16 @@ extension UIView {
 
 
 extension UIImageView{
-    func loadImageFromInternet(link: String){
+    func loadImageFromInternet(link: String, completion: ((_ success:Bool) -> Void)?) {
         guard let url = URL(string: link) else {
             return
         }
         self.sd_imageTransition = SDWebImageTransition.flipFromLeft
-        self.sd_setImage(with: url, completed: nil)
+        self.sd_setImage(with: url) { (UIImage, Error, SDImageCacheType, URL) in
+            if completion != nil {
+                completion!(true)
+            }
+        }
     }
 }
 

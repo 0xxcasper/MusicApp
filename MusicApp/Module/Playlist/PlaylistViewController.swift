@@ -64,7 +64,7 @@ class PlaylistViewController: BaseTableViewController, HeaderViewDelegate {
         let cell = tableView.dequeueTableCell(TrendingTbvCell.self)
         if let snippet = self.type == .trending ? (item as! Item).snippet : (item as! ItemSearch).snippet,
             let thumbnails = snippet.thumbnails {
-            cell.img.loadImageFromInternet(link: thumbnails.defaults!.url!)
+            cell.img.loadImageFromInternet(link: thumbnails.defaults!.url!, completion: nil)
             cell.lblTitle.text = snippet.title
             cell.lblChanel.text = snippet.channelTitle
             cell.lblRow.text = "#\(indexPath.row + 1)"
@@ -76,7 +76,7 @@ class PlaylistViewController: BaseTableViewController, HeaderViewDelegate {
         headerView.delegate = self
         if let item = self.listItem.first, let snippet = self.type == .trending ? (item as! Item).snippet : (item as! ItemSearch).snippet,
             let thumbnails = snippet.thumbnails {
-            headerView.img.loadImageFromInternet(link: thumbnails.defaults!.url!)
+            headerView.img.loadImageFromInternet(link: thumbnails.defaults!.url!, completion: nil)
             if self.type == .trending {
                 headerView.lblTracks.text = "\(self.totalResult) tracks"
             }
