@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 private enum UserDefaultHelperKey: String {
     case regionCode = "regionCode"
+    case gradientColor = "gradientColor"
 }
 
 class UserDefaultHelper {
@@ -25,15 +27,34 @@ class UserDefaultHelper {
             save(value: regionCode, key: .regionCode)
         }
     }
+    
+    var gradientColor: [UIColor]! {
+        get {
+            let value = get(key: .gradientColor) as? [UIColor] ?? AppConstant.colors[0]
+            return value
+        }
+        set(gradientColor) {
+            save(value: gradientColor, key: .gradientColor)
+        }
+    }
 }
 
 extension UserDefaultHelper {
     private func save(value: Any?, key: UserDefaultHelperKey) {
-        userDefaultManager.set(value, forKey: key.rawValue)
-        userDefaultManager.synchronize()
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: value as Any, requiringSecureCoding: false)
+            userDefaultManager.set(data, forKey: key.rawValue)
+            userDefaultManager.synchronize()
+        } catch {
+            print("Error")
+        }
     }
 
     private func get(key: UserDefaultHelperKey) -> Any? {
-        return userDefaultManager.object(forKey: key.rawValue)
+        if let data = userDefaultManager.data(forKey: key.rawValue) {
+            return try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)
+        } else {
+            return nil
+        }
     }
 }

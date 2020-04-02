@@ -51,7 +51,7 @@
                                     </constraints>
                                 </activityIndicatorView>
                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMS-x3-p8Y">
-                                    <rect key="frame" x="162" y="8" width="90" height="64"/>
+                                    <rect key="frame" x="162" y="-24" width="90" height="128"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="90" id="7iv-TE-upU"/>
                                     </constraints>
@@ -63,7 +63,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KR8-b4-1fh">
-                                    <rect key="frame" x="95" y="24" width="32" height="32"/>
+                                    <rect key="frame" x="63" y="8" width="64" height="64"/>
                                     <state key="normal" image="prev">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
@@ -72,7 +72,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzm-2q-8ID">
-                                    <rect key="frame" x="287" y="24" width="32" height="32"/>
+                                    <rect key="frame" x="287" y="8" width="64" height="64"/>
                                     <state key="normal" image="next">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>

@@ -76,6 +76,10 @@ extension MoreViewController: UITableViewDataSource, UITableViewDelegate
             let settingVc = SettingViewController()
             settingVc.type = .country
             self.push(controller: settingVc)
+        case 2:
+            let backGroundVC = BackGroundViewController()
+            backGroundVC.modalPresentationStyle = .fullScreen
+            self.present(controller: backGroundVC, animated: true)
         default:
             print("")
         }

@@ -11,6 +11,7 @@ import UIKit
 enum SettingType {
     case language
     case country
+    case colors
 }
 
 class SettingViewController: BaseViewController {

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25A0B3822435BDC90077608C /* BackGroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A0B3802435BDC90077608C /* BackGroundViewController.swift */; };
+		25A0B3832435BDC90077608C /* BackGroundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A0B3812435BDC90077608C /* BackGroundViewController.xib */; };
+		25A0B3872435BFAF0077608C /* GradientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A0B3852435BFAF0077608C /* GradientCell.swift */; };
+		25A0B3882435BFAF0077608C /* GradientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A0B3862435BFAF0077608C /* GradientCell.xib */; };
+		25A0B38A2435C1AA0077608C /* UICollectionView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A0B3892435C1AA0077608C /* UICollectionView + Extension.swift */; };
 		2DB35C26C2EABB360A7C7D2D /* libPods-MusicApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A215B88DA2FFD872BB7F629D /* libPods-MusicApp.a */; };
 		506C5773FDE69134E70EEDA5 /* libPods-MusicApp-MusicAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23CF922CD47A1DF78B949E22 /* libPods-MusicApp-MusicAppUITests.a */; };
 		843D4672242F97EF007BE44A /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4671242F97EF007BE44A /* UIView+Extensions.swift */; };
@@ -105,6 +110,11 @@
 /* Begin PBXFileReference section */
 		16029BDE20AE4C80BCFDFCB1 /* libPods-MusicAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MusicAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23CF922CD47A1DF78B949E22 /* libPods-MusicApp-MusicAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MusicApp-MusicAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		25A0B3802435BDC90077608C /* BackGroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundViewController.swift; sourceTree = "<group>"; };
+		25A0B3812435BDC90077608C /* BackGroundViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackGroundViewController.xib; sourceTree = "<group>"; };
+		25A0B3852435BFAF0077608C /* GradientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientCell.swift; sourceTree = "<group>"; };
+		25A0B3862435BFAF0077608C /* GradientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradientCell.xib; sourceTree = "<group>"; };
+		25A0B3892435C1AA0077608C /* UICollectionView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + Extension.swift"; sourceTree = "<group>"; };
 		2A754C4A087DFA220FE797CB /* Pods-MusicApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicApp.release.xcconfig"; path = "Target Support Files/Pods-MusicApp/Pods-MusicApp.release.xcconfig"; sourceTree = "<group>"; };
 		3003398453C74BCE5B9C7C99 /* Pods-MusicAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MusicAppTests/Pods-MusicAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3EB03189C44DC2D04E47E90C /* Pods-MusicAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicAppTests.release.xcconfig"; path = "Target Support Files/Pods-MusicAppTests/Pods-MusicAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -232,6 +242,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		25A0B37B2435B7BC0077608C /* BackGround */ = {
+			isa = PBXGroup;
+			children = (
+				25A0B3842435BF950077608C /* Cell */,
+				25A0B3802435BDC90077608C /* BackGroundViewController.swift */,
+				25A0B3812435BDC90077608C /* BackGroundViewController.xib */,
+			);
+			path = BackGround;
+			sourceTree = "<group>";
+		};
+		25A0B3842435BF950077608C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				25A0B3852435BFAF0077608C /* GradientCell.swift */,
+				25A0B3862435BFAF0077608C /* GradientCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		843D4670242F97D7007BE44A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +268,7 @@
 				843D4673242F981D007BE44A /* String+Extensions.swift */,
 				843D4675242F983C007BE44A /* UITableView+Extensions.swift */,
 				848212B824305BE60077AC45 /* Bundle+Extention.swift */,
+				25A0B3892435C1AA0077608C /* UICollectionView + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -360,6 +390,7 @@
 		84E5BEBA24272A40004F74FF /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				25A0B37B2435B7BC0077608C /* BackGround */,
 				848212CC24308A270077AC45 /* Setting */,
 				84FF00942429F73F00463A88 /* Playlist */,
 				84E5BEE32427312B004F74FF /* More */,
@@ -742,6 +773,7 @@
 				84E788CF242D900700D7817D /* HeaderView.xib in Resources */,
 				84E788C0242C6CAA00D7817D /* AlbumCell.xib in Resources */,
 				848212D224308AF30077AC45 /* Language.json in Resources */,
+				25A0B3882435BFAF0077608C /* GradientCell.xib in Resources */,
 				848212D024308A5A0077AC45 /* SettingViewController.xib in Resources */,
 				848212B524305A5E0077AC45 /* HomeViewController.xib in Resources */,
 				848212BD24305D390077AC45 /* Localizable.strings in Resources */,
@@ -753,6 +785,7 @@
 				84FF007C2429A46000463A88 /* SearchViewController.xib in Resources */,
 				848212DA243094A80077AC45 /* SettingCell.xib in Resources */,
 				DB42B57E242716B100CF1458 /* Assets.xcassets in Resources */,
+				25A0B3832435BDC90077608C /* BackGroundViewController.xib in Resources */,
 				84FF00A02429F7A300463A88 /* PlaylistViewController.xib in Resources */,
 				84E5BEF524275D76004F74FF /* TrendingTbvCell.xib in Resources */,
 				84E788C9242CA3D100D7817D /* SearchCell.xib in Resources */,
@@ -891,9 +924,11 @@
 				843D4676242F983C007BE44A /* UITableView+Extensions.swift in Sources */,
 				848212B324305A5E0077AC45 /* HomeProtocols.swift in Sources */,
 				848212B924305BE60077AC45 /* Bundle+Extention.swift in Sources */,
+				25A0B3872435BFAF0077608C /* GradientCell.swift in Sources */,
 				84E5BEB724272693004F74FF /* BaseTableViewController.swift in Sources */,
 				84E5BEB924272693004F74FF /* BaseViewController.swift in Sources */,
 				84E5BEEA24273141004F74FF /* MorePresenter.swift in Sources */,
+				25A0B3822435BDC90077608C /* BackGroundViewController.swift in Sources */,
 				DB42B575242716AF00CF1458 /* AppDelegate.swift in Sources */,
 				84E5BEAF242725D7004F74FF /* AppConstant.swift in Sources */,
 				84E5BEED24273141004F74FF /* MoreProtocols.swift in Sources */,
@@ -912,6 +947,7 @@
 				84E5BEF424275D76004F74FF /* TrendingTbvCell.swift in Sources */,
 				84E5BEEC24273141004F74FF /* MoreViewController.swift in Sources */,
 				84E788BA242C584100D7817D /* AlbumView.swift in Sources */,
+				25A0B38A2435C1AA0077608C /* UICollectionView + Extension.swift in Sources */,
 				848212C224305D7A0077AC45 /* LocalizableKey.swift in Sources */,
 				848212DC2430A3110077AC45 /* JsonHelper.swift in Sources */,
 				84FF006D24299E9300463A88 /* YoutubeEndpoint.swift in Sources */,
@@ -1113,7 +1149,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DGFP28D4W6;
+				DEVELOPMENT_TEAM = SRSNPE33B8;
 				INFOPLIST_FILE = MusicApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1134,7 +1170,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DGFP28D4W6;
+				DEVELOPMENT_TEAM = SRSNPE33B8;
 				INFOPLIST_FILE = MusicApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1156,6 +1192,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SRSNPE33B8;
 				INFOPLIST_FILE = MusicAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1178,6 +1215,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SRSNPE33B8;
 				INFOPLIST_FILE = MusicAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1199,6 +1237,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SRSNPE33B8;
 				INFOPLIST_FILE = MusicAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1219,6 +1258,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SRSNPE33B8;
 				INFOPLIST_FILE = MusicAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

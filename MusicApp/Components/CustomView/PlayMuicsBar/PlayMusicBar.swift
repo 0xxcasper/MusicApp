@@ -86,18 +86,49 @@ class PlayMusicBar: BaseViewXib {
         }
     }
     
-    override func setUpViews() {
+    override func firstInit() {
         videoPlayer.delegate = self
         contentViewPlay.alpha = 0
         contentViewHeader.alpha = 0
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeGradientColor(notification:)), name: .ChangeGradientColor, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .ChangeGradientColor, object: nil)
+    }
+    
+    @objc func didChangeGradientColor(notification: Notification) {
+        self.setGradientContentView()
+        self.setGradientContentViewPlay()
+    }
+    
+    func setGradientContentView() {
+        if let gradientColor = UserDefaultHelper.shared.gradientColor {
+            guard let sublayers = contentView.layer.sublayers else {
+                contentView.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
+                return
+            }
+            sublayers[0].removeFromSuperlayer()
+            contentView.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
+        }
+    }
+    func setGradientContentViewPlay() {
+        if let gradientColor = UserDefaultHelper.shared.gradientColor {
+            guard let sublayers = contentView.layer.sublayers else {
+                contentViewPlay.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
+                return
+            }
+            sublayers[0].removeFromSuperlayer()
+            contentViewPlay.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
+        }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.setGradient(startColor: UIColor(displayP3Red: 133/255, green: 24/255, blue: 229/255, alpha: 1),
-                                secondColor: UIColor(displayP3Red: 93/255, green: 153/255, blue: 238/255, alpha: 1))
-        contentViewPlay.setGradient(startColor: UIColor(displayP3Red: 133/255, green: 24/255, blue: 229/255, alpha: 1),
-                                    secondColor: UIColor(displayP3Red: 93/255, green: 153/255, blue: 238/255, alpha: 1))
+        if let gradientColor = UserDefaultHelper.shared.gradientColor {
+            contentView.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
+            contentViewPlay.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
+        }
     }
     
     @objc func progressVideo() {
@@ -182,7 +213,7 @@ extension PlayMusicBar: YTPlayerViewDelegate
            self.largeIndicator.isHidden = true
            self.btnControl.isHidden = false
            self.btnControlVideo.isHidden = false
-            self.videoPlayer.isHidden = false
+           self.videoPlayer.isHidden = false
         }
     }
     

@@ -58,8 +58,8 @@ class MainTabbar: UITabBarController {
             [NSAttributedString.Key.foregroundColor:UIColor.white]
         tabBar.unselectedItemTintColor = .lightGray
         tabBar.tintColor = .white
-        tabBar.setGradient(startColor: UIColor(displayP3Red: 83/255, green: 54/255, blue: 239/255, alpha: 1),
-                           secondColor: UIColor(displayP3Red: 83/255, green: 113/255, blue: 108/255, alpha: 1))
+        tabBar.setGradient(startColor: UIColor(displayP3Red: 27/255, green: 8/255, blue: 62/255, alpha: 1),
+                           secondColor: UIColor(displayP3Red: 27/255, green: 8/255, blue: 62/255, alpha: 1))
         tabBar.isTranslucent = true
     }
     

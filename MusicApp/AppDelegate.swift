@@ -25,10 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setUpAppLanguage()
         setUpRegionCode()
-        
         window?.rootViewController = MainTabbar()
-        window?.setGradient(startColor: UIColor(displayP3Red: 133/255, green: 24/255, blue: 229/255, alpha: 1),
-                            secondColor: UIColor(displayP3Red: 93/255, green: 153/255, blue: 238/255, alpha: 1))
+        window?.setGradient(startColor: UIColor(displayP3Red: 100/255, green: 50/255, blue: 194/255, alpha: 1),
+                            secondColor: UIColor(displayP3Red: 62/255, green: 17/255, blue: 145/255, alpha: 1))
         
         return true
     }

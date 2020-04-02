@@ -20,7 +20,7 @@ class HeaderView: BaseViewXib {
     
     weak var delegate: HeaderViewDelegate!
     
-    override func setUpViews() {
+    override func firstInit() {
         img.layer.cornerRadius = 5
         img.clipsToBounds = true
         
