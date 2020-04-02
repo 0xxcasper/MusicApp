@@ -64,7 +64,7 @@ class PlayMusicBar: BaseViewXib {
             self.largeIndicator.isHidden = false
             self.btnControl.isHidden = true
             self.btnControlVideo.isHidden = true
-            let playvarsDic = ["controls": 0, "fs": 0, "playsinline": 1] as [String : Any]
+            let playvarsDic = ["controls": 0, "modestbranding": 0, "rel": 0,"showinfo": 0, "fs": 0, "playsinline": 1] as [String : Any]
             self.videoPlayer.load(withVideoId: currentId, playerVars: playvarsDic)
         }
     }
@@ -133,7 +133,7 @@ class PlayMusicBar: BaseViewXib {
     
     
     @IBAction func onPressBack(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             self.contentViewPlay.alpha = 0
             self.contentViewHeader.alpha = 0
             self.contentView.alpha = 1
@@ -143,7 +143,7 @@ class PlayMusicBar: BaseViewXib {
     
     @IBAction func onPressPlayBar(_ sender: UIButton) {
         self.prevY = self.frame.origin.y
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             self.contentViewPlay.alpha = 1
             self.contentViewHeader.alpha = 1
             self.contentView.alpha = 0
@@ -176,11 +176,14 @@ extension PlayMusicBar: YTPlayerViewDelegate
 {
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         self.isPause = false
-        self.indicator.isHidden = true
-        self.largeIndicator.isHidden = true
-        self.btnControl.isHidden = false
-        self.btnControlVideo.isHidden = false
-        self.videoPlayer.isHidden = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+           self.indicator.isHidden = true
+           self.largeIndicator.isHidden = true
+           self.btnControl.isHidden = false
+           self.btnControlVideo.isHidden = false
+            self.videoPlayer.isHidden = false
+        }
     }
     
     func playerView(_ playerView: YTPlayerView, receivedError error: YTPlayerError) {

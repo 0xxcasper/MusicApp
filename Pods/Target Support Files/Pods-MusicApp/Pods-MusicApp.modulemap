@@ -1,4 +1,4 @@
-framework module Pods_MusicApp {
+module Pods_MusicApp {
   umbrella header "Pods-MusicApp-umbrella.h"
 
   export *

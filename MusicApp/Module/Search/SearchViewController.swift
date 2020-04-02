@@ -39,7 +39,7 @@ class SearchViewController: BaseViewController {
     private var timer: Timer?
     private var canLoadMore = false
     
-    private var albums = ["Classical Music", "Nursery Rhymes","K-POP", "Chilren's Music"]
+    private var albums = ["Classical Music", "Nursery Rhymes","K-POP"]
     
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +59,7 @@ class SearchViewController: BaseViewController {
         tbView.registerXibFile(AlbumView.self)
         tbView.registerXibFile(SearchCell.self)
         tbView.separatorStyle = .none
+        tbView.showsHorizontalScrollIndicator = false
         tbView.dataSource = self
         tbView.delegate = self
         tbView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 45, right: 0)

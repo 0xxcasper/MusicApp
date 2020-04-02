@@ -3,13 +3,14 @@
 
 target 'MusicApp' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+  use_modular_headers!
 
   # Pods for MusicApp
   pod 'SVProgressHUD'
   pod 'Alamofire', '4.8.2'
   pod 'SDWebImage', '~> 5.0'
   pod 'youtube-ios-player-helper', '~> 0.1.4'
+  
 
   target 'MusicAppTests' do
     inherit! :search_paths
