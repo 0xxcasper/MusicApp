@@ -62,6 +62,8 @@ class SearchViewController: BaseViewController {
         tbView.showsHorizontalScrollIndicator = false
         tbView.dataSource = self
         tbView.delegate = self
+        tbView.contentInsetAdjustmentBehavior = .always
+
         tbView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 45, right: 0)
     }
     

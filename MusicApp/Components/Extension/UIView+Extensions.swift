@@ -240,8 +240,8 @@ extension UIView {
 extension UIView {
     func setGradient(startColor: UIColor = .white, secondColor:UIColor = .black) {
         let gradient = CAGradientLayer()
-        gradient.colors = [startColor.cgColor,
-                           secondColor.cgColor]
+        gradient.name = "gradient"
+        gradient.colors = [startColor.cgColor, secondColor.cgColor]
         gradient.locations = [0.0, 1.0]
         gradient.frame = self.bounds
         self.layer.insertSublayer(gradient, at: 0)

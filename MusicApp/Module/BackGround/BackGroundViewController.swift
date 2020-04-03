@@ -46,6 +46,7 @@ class BackGroundViewController: BaseViewController {
     @IBAction func pressApply(_ sender: Any) {
         UserDefaultHelper.shared.gradientColor = color
         NotificationCenter.default.post(name: .ChangeGradientColor, object: color)
+        self.dismiss()
     }
 }
 

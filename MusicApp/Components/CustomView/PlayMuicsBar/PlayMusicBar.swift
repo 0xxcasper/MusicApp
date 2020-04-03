@@ -27,9 +27,11 @@ class PlayMusicBar: BaseViewXib {
     @IBOutlet weak var btnControlVideo: UIButton!
     @IBOutlet weak var largeIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var containPlayView: UIView!
     private var timer: Timer?
     private var prevY: CGFloat = 0
-    
+    var reproductor = AVAudioPlayer()
+
     var type: PlaylistType = .search
     
     var items: [Any] = []
@@ -104,27 +106,30 @@ class PlayMusicBar: BaseViewXib {
     
     @objc func didChangeGradientColor(notification: Notification) {
         self.setGradientContentView()
-        self.setGradientContentViewPlay()
     }
     
     func setGradientContentView() {
         if let gradientColor = UserDefaultHelper.shared.gradientColor {
-            guard let sublayers = contentView.layer.sublayers else {
-                contentView.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
-                return
+        if(contentView.layer.sublayers != nil && contentView.layer.sublayers!.count > 0 ) {
+            for sublayer in contentView.layer.sublayers! {
+                if sublayer.name == "gradient" {
+                    sublayer.removeFromSuperlayer()
+                }
             }
-            sublayers[0].removeFromSuperlayer()
+        }
             contentView.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
         }
     }
     
     func setGradientContentViewPlay() {
         if let gradientColor = UserDefaultHelper.shared.gradientColor {
-            guard let sublayers = contentView.layer.sublayers else {
-                contentViewPlay.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
-                return
+            if(self.contentViewPlay.layer.sublayers != nil && self.contentViewPlay.layer.sublayers!.count > 0 ) {
+                for sublayer in self.contentViewPlay.layer.sublayers! {
+                    if sublayer.name == "gradient" {
+                        sublayer.removeFromSuperlayer()
+                    }
+                }
             }
-            sublayers[0].removeFromSuperlayer()
             contentViewPlay.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
         }
     }
@@ -257,6 +262,9 @@ class PlayMusicBar: BaseViewXib {
             contentView.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
             contentViewPlay.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
         }
+        
+        let volumeControl = MPVolumeView(frame: CGRect(x: (AppConstant.SREEEN_WIDTH - 250) / 2, y: containPlayView.frame.origin.y + containPlayView.bounds.height + 60 , width: 250, height: 120))
+        self.addSubview(volumeControl);
     }
     
     @objc func progressVideo() {
@@ -307,7 +315,9 @@ class PlayMusicBar: BaseViewXib {
             self.contentViewHeader.alpha = 1
             self.contentView.alpha = 0
             self.frame = CGRect(x: 0, y: 0, width: AppConstant.SREEEN_WIDTH, height: AppConstant.SCREEN_HEIGHT)
-        })
+        }) { (_) in
+            self.setGradientContentViewPlay()
+        }
     }
     
     @IBAction func onPressPlayVideo(_ sender: UIButton) {
@@ -328,6 +338,19 @@ class PlayMusicBar: BaseViewXib {
     
     @IBAction func onPressPrevVideo(_ sender: UIButton) {
         prevVideo()
+    }
+    
+    @IBAction func onChangeVolume(_ sender: UISlider) {
+    }
+    func setSystemVolume(volume: Float) {
+        let volumeView = MPVolumeView()
+
+        for view in volumeView.subviews {
+            if (NSStringFromClass(view.classForCoder) == "MPVolumeSlider") {
+                let slider = view as! UISlider
+                slider.setValue(volume, animated: false)
+            }
+        }
     }
 }
 
@@ -353,5 +376,23 @@ extension PlayMusicBar: YTPlayerViewDelegate
         if state == .unstarted || state == .ended {
             nextVideo()
         }
+    }
+}
+
+extension MPVolumeView {
+    var volumeSlider:UISlider {
+        self.showsRouteButton = false
+        self.showsVolumeSlider = false
+        self.isHidden = true
+        var slider = UISlider()
+        for subview in self.subviews {
+            if subview is UISlider {
+                slider = subview as! UISlider
+                slider.isContinuous = false
+                (subview as! UISlider).value = AVAudioSession.sharedInstance().outputVolume
+                return slider
+            }
+        }
+        return slider
     }
 }
