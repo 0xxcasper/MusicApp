@@ -30,6 +30,8 @@ class PlayMusicBar: BaseViewXib {
     @IBOutlet weak var lblMinValue: UILabel!
     @IBOutlet weak var lblMaxValue: UILabel!
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var imgDisc: UIImageView!
+    @IBOutlet weak var largeIndicator1: UIActivityIndicatorView!
     
     private var timer: Timer?
     private var prevY: CGFloat = 0
@@ -49,6 +51,7 @@ class PlayMusicBar: BaseViewXib {
                     self.lblMusicName.text = video.snippet!.title
                     self.lblChanelName.text = video.snippet!.channelTitle
                     self.img.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "", completion: nil)
+                    self.imgDisc.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "", completion: nil)
                 }
             } else {
                 if items.count > 0, let itemVideos: [ItemSearch] = items as? [ItemSearch] {
@@ -58,6 +61,7 @@ class PlayMusicBar: BaseViewXib {
                     self.lblMusicName.text = video.snippet!.title
                     self.lblChanelName.text = video.snippet!.channelTitle
                     self.img.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "", completion: nil)
+                    self.imgDisc.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "", completion: nil)
                 }
             }
         }
@@ -68,6 +72,7 @@ class PlayMusicBar: BaseViewXib {
             self.videoPlayer.isHidden = true
             self.indicator.isHidden = false
             self.largeIndicator.isHidden = false
+            self.largeIndicator1.isHidden = false
             self.btnControl.isHidden = true
             self.btnControlVideo.isHidden = true
             let playvarsDic = ["controls": 0, "modestbranding": 0, "rel": 0,"showinfo": 0, "fs": 0, "playsinline": 1] as [String : Any]
@@ -77,7 +82,6 @@ class PlayMusicBar: BaseViewXib {
     
     var isPause = true {
         didSet {
-//            self.updateNowPlaying()
             if isPause {
                 self.btnControl.setImage(#imageLiteral(resourceName: "play_small"), for: .normal)
                 self.btnNext.setImage(#imageLiteral(resourceName: "cancel"), for: .normal)
@@ -200,6 +204,12 @@ class PlayMusicBar: BaseViewXib {
         
         let volumeControl = MPVolumeView(frame: CGRect(x: (AppConstant.SREEEN_WIDTH - 250) / 2, y: containPlayView.frame.origin.y + containPlayView.bounds.height + 60 , width: 250, height: 120))
         self.addSubview(volumeControl);
+        
+        imgDisc.layer.cornerRadius = imgDisc.bounds.width/2
+        imgDisc.clipsToBounds = true
+        imgDisc.layer.borderWidth = 1.0
+        imgDisc.layer.borderColor = UIColor.black.cgColor
+        imgDisc.rotate(duration: 10)
     }
     
     @objc func progressVideo() {
@@ -229,6 +239,18 @@ class PlayMusicBar: BaseViewXib {
         } else {
             currentIndex = self.items.count - 1
         }
+    }
+    
+    @IBAction func onPressSetRate(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func onPressFullScrenn(_ sender: UIButton) {
+
+    }
+    
+    @IBAction func onPressMusicOrVideo(_ sender: UIButton) {
+        self.videoPlayer.isHidden = !self.videoPlayer.isHidden
     }
     
     @IBAction func onSliderVideo(_ sender: UISlider) {
@@ -303,6 +325,7 @@ extension PlayMusicBar: YTPlayerViewDelegate
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
            self.indicator.isHidden = true
            self.largeIndicator.isHidden = true
+           self.largeIndicator1.isHidden = true
            self.btnControl.isHidden = false
            self.btnControlVideo.isHidden = false
            self.videoPlayer.isHidden = false
