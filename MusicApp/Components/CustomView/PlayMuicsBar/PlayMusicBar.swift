@@ -26,8 +26,11 @@ class PlayMusicBar: BaseViewXib {
     @IBOutlet weak var lblChanelName: UILabel!
     @IBOutlet weak var btnControlVideo: UIButton!
     @IBOutlet weak var largeIndicator: UIActivityIndicatorView!
-    
     @IBOutlet weak var containPlayView: UIView!
+    @IBOutlet weak var lblMinValue: UILabel!
+    @IBOutlet weak var lblMaxValue: UILabel!
+    @IBOutlet weak var slider: UISlider!
+    
     private var timer: Timer?
     private var prevY: CGFloat = 0
     var reproductor = AVAudioPlayer()
@@ -97,7 +100,6 @@ class PlayMusicBar: BaseViewXib {
         contentViewHeader.alpha = 0
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeGradientColor(notification:)), name: .ChangeGradientColor, object: nil)
         setupRemoteTransportControls()
-        setupNotifications()
     }
     
     deinit {
@@ -133,84 +135,11 @@ class PlayMusicBar: BaseViewXib {
             contentViewPlay.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
         }
     }
-    
-    func setupNotifications() {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self,
-                                       selector: #selector(handleInterruption),
-                                       name: AVAudioSession.interruptionNotification,
-                                       object: nil)
-        notificationCenter.addObserver(self,
-                                        selector: #selector(handleRouteChange),
-                                        name: AVAudioSession.routeChangeNotification,
-                                        object: nil)
-    }
 
-    @objc func handleInterruption(notification: Notification) {
-        guard let userInfo = notification.userInfo,
-            let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
-            let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
-                return
-        }
-
-        if type == .began {
-            print("Interruption began")
-            self.isPause = false
-        }
-        else if type == .ended {
-            if let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt {
-                let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
-                if options.contains(.shouldResume) {
-                    // Interruption Ended - playback should resume
-                    print("Interruption Ended - playback should resume")
-                    self.isPause = false
-                } else {
-                    
-                }
-            }
-        }
-    }
-    
-
-    @objc func handleRouteChange(notification: Notification) {
-        guard let userInfo = notification.userInfo,
-            let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
-            let reason = AVAudioSession.RouteChangeReason(rawValue:reasonValue) else {
-                return
-        }
-        switch reason {
-        case .newDeviceAvailable:
-            let session = AVAudioSession.sharedInstance()
-            for output in session.currentRoute.outputs where output.portType == AVAudioSession.Port.lineOut {
-                print("headphones connected")
-                DispatchQueue.main.sync {
-                    self.isPause = false
-                }
-                break
-            }
-        case .oldDeviceUnavailable:
-            if let previousRoute =
-                userInfo[AVAudioSessionRouteChangePreviousRouteKey] as? AVAudioSessionRouteDescription {
-                for output in previousRoute.outputs where output.portType == AVAudioSession.Port.lineOut {
-                    print("headphones disconnected")
-                    DispatchQueue.main.sync {
-                        self.isPause = false
-                    }
-                    break
-                }
-            }
-        default: ()
-        }
-    }
-
-        
     func setupRemoteTransportControls() {
-        // Get the shared MPRemoteCommandCenter
         let commandCenter = MPRemoteCommandCenter.shared()
         
-        // Add handler for Play Command
         commandCenter.playCommand.addTarget { [unowned self] event in
-            print("Play command - is playing")
             if self.videoPlayer.playerState() != .playing {
                 self.isPause = false
                 return .success
@@ -218,7 +147,6 @@ class PlayMusicBar: BaseViewXib {
             return .commandFailed
         }
 
-        // Add handler for Pause Command
         commandCenter.pauseCommand.addTarget { [unowned self] event in
             print("Pause command - is playing")
             if self.videoPlayer.playerState() == .playing {
@@ -239,8 +167,15 @@ class PlayMusicBar: BaseViewXib {
         }
     }
 
+    func setUpSliderView() {
+        lblMinValue.text = self.videoPlayer.currentTime().secondsToHoursMinutesSeconds()
+        lblMaxValue.text = Float(self.videoPlayer.duration()).secondsToHoursMinutesSeconds()
+        slider.minimumValue = self.videoPlayer.currentTime()
+        slider.maximumValue = Float(self.videoPlayer.duration())
+        slider.setValue(self.videoPlayer.currentTime(), animated: true)
+    }
+    
     func updateNowPlaying() {
-        // Define Now Playing Info
         var nowPlayingInfo = [String : Any]()
         if let image = self.img.image {
             nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: image.size) { size in
@@ -248,7 +183,7 @@ class PlayMusicBar: BaseViewXib {
             }
         }
         
-        nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = self.videoPlayer.currentTime
+        nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = self.videoPlayer.currentTime()
         nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = self.videoPlayer.duration
         nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = self.videoPlayer.playbackRate()
         
@@ -276,6 +211,8 @@ class PlayMusicBar: BaseViewXib {
         } else {
             progressView.setProgress(currentTime/(Float(duration) == 0.0 ? 1 : Float(duration)), animated: false)
         }
+        lblMinValue.text = self.videoPlayer.currentTime().secondsToHoursMinutesSeconds()
+        slider.setValue(currentTime, animated: true)
     }
     
     private func nextVideo() {
@@ -292,6 +229,10 @@ class PlayMusicBar: BaseViewXib {
         } else {
             currentIndex = self.items.count - 1
         }
+    }
+    
+    @IBAction func onSliderVideo(_ sender: UISlider) {
+        self.videoPlayer.seek(toSeconds: sender.value, allowSeekAhead: true)
     }
     
     @IBAction func onPressClock(_ sender: Any) {
@@ -358,7 +299,7 @@ extension PlayMusicBar: YTPlayerViewDelegate
 {
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         self.isPause = false
-        
+        self.setUpSliderView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
            self.indicator.isHidden = true
            self.largeIndicator.isHidden = true

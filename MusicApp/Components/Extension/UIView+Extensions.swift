@@ -300,6 +300,21 @@ extension UIImageView{
     }
 }
 
+extension Float {
+    func secondsToHoursMinutesSeconds() -> String {
+        let h = getStringFrom(seconds: (Int(self / 3600)))
+        let m = getStringFrom(seconds: (Int(self) % 3600) / 60)
+        let s = getStringFrom(seconds: (Int(self) % 3600) % 60)
+        
+        return Int(self / 3600) > 0 ? "\(h):\(m):\(s)" : "\(m):\(s)"
+    }
+
+    private func getStringFrom(seconds: Int) -> String {
+
+        return seconds < 10 ? "0\(seconds)" : "\(seconds)"
+    }
+}
+
 extension UISearchBar {
 
         func getTextField() -> UITextField? { return value(forKey: "searchField") as? UITextField }
