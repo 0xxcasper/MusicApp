@@ -11,7 +11,7 @@ import UIKit
 
 protocol CreatePlayListViewDelegate: class {
     func pressCancel()
-    func pressApply()
+    func pressCreate(_ text: String)
 }
 
 class CreatePlayListView: BaseViewXib {
@@ -39,7 +39,7 @@ class CreatePlayListView: BaseViewXib {
     }
     
     @IBAction func pressApply(_ sender: Any) {
-        delegate?.pressCancel()
+        delegate?.pressCreate(self.txfInput.text!)
         self.txfInput.text = ""
     }
 }

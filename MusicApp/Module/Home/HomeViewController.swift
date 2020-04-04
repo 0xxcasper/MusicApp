@@ -26,7 +26,7 @@ class HomeViewController: BaseViewController, HomeViewProtocol {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            bottomAnchorCreateBar.constant = keyboardHeight - AppConstant.STATUS_BAR_BOTTOM - AppConstant.TAB_BAR_HEIGHT + 110
+            bottomAnchorCreateBar.constant = keyboardHeight
             view.layoutIfNeeded()
         }
     }
@@ -46,7 +46,7 @@ extension HomeViewController: CreatePlayListViewDelegate {
         self.view.endEditing(true)
     }
     
-    func pressApply() {
-         self.view.endEditing(true)
+    func pressCreate(_ text: String) {
+        self.view.endEditing(true)
     }
 }

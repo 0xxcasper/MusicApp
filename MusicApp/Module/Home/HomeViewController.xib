@@ -21,7 +21,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XM4-68-CZK">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="250" id="zYm-3G-ZQl"/>
                     </constraints>
@@ -54,7 +54,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="LIg-qx-TZe" secondAttribute="trailing" constant="10" id="Oda-0B-8wF"/>
                         <constraint firstItem="LIg-qx-TZe" firstAttribute="centerY" secondItem="fU0-fg-aJs" secondAttribute="centerY" id="T1w-7o-qqk"/>
