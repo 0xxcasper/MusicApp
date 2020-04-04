@@ -17,6 +17,7 @@
                 <outlet property="btnHalf" destination="Exa-8A-5Xa" id="sOE-Fb-NuX"/>
                 <outlet property="btnMaximum" destination="jbe-0S-dvS" id="YDI-Nv-aVw"/>
                 <outlet property="btnNext" destination="QUA-hk-hpe" id="83s-yb-Gc8"/>
+                <outlet property="btnRate" destination="mwK-je-iZo" id="ueB-Wh-gh2"/>
                 <outlet property="containPlayView" destination="JSo-lN-bXL" id="g15-49-t2r"/>
                 <outlet property="containVolume" destination="Ujy-4z-jTt" id="cyZ-Rc-yoX"/>
                 <outlet property="contentView" destination="gdc-Dw-qJn" id="Ju7-MR-261"/>

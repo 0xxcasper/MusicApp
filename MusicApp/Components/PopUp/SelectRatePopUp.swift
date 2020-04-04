@@ -8,10 +8,19 @@
 
 import Foundation
 
+protocol SelectRatePopUpDelegate: class {
+    func didSelectRate(rate: Float)
+}
 
 class SelectRatePopUp: BasePopUp {
     
-    let viewPopUp: SelectRateContent = {
+    weak var delegate: SelectRatePopUpDelegate!
+    var currentRate: Float = 1 {
+        didSet {
+            viewPopUp.currentRate = currentRate
+        }
+    }
+    var viewPopUp: SelectRateContent = {
         let view = SelectRateContent()
         return view
     }()
@@ -33,11 +42,10 @@ class SelectRatePopUp: BasePopUp {
     
     @objc func btnCancelTapped() {
         hidePopUp()
-        completionYes?()
     }
     
     @objc func btnApplyTapped() {
         hidePopUp()
-        completionYes?()
+        delegate.didSelectRate(rate: viewPopUp.currentRate)
     }
 }
