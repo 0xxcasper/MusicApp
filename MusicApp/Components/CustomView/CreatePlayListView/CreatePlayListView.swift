@@ -11,12 +11,18 @@ import UIKit
 
 protocol CreatePlayListViewDelegate: class {
     func pressCancel()
-    func pressCreate(_ text: String)
+    func pressCreate(_ text: String, type: CreatePlayListType)
+}
+
+enum CreatePlayListType {
+    case create
+    case edit
 }
 
 class CreatePlayListView: BaseViewXib {
     
     weak var delegate: CreatePlayListViewDelegate?
+    var cellType: CreatePlayListType = .create
 
     @IBOutlet weak var txfInput: UITextField!
     @IBOutlet weak var btnApply: UIButton!
@@ -39,7 +45,7 @@ class CreatePlayListView: BaseViewXib {
     }
     
     @IBAction func pressApply(_ sender: Any) {
-        delegate?.pressCreate(self.txfInput.text!)
+        delegate?.pressCreate(self.txfInput.text!, type: self.cellType)
         self.txfInput.text = ""
     }
 }

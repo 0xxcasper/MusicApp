@@ -31,6 +31,13 @@ class BaseViewController: UIViewController {
         addKeyboardNotification()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        DispatchQueue.main.async {
+            self.view.setGradient(startColor: UIColor(displayP3Red: 100/255, green: 50/255, blue: 194/255, alpha: 1), secondColor: UIColor(displayP3Red: 62/255, green: 17/255, blue: 145/255, alpha: 1))
+        }
+    }
+    
     private func addNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeLanguage(notification:)), name: .ChangeLanguage, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeRegion(notification:)), name: .ChangeRegion, object: nil)

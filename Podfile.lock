@@ -9,6 +9,7 @@ PODS:
     - SDWebImage/Core (= 5.4.1)
   - SDWebImage/Core (5.4.1)
   - SVProgressHUD (2.2.5)
+  - SwipeCellKit (2.7.1)
   - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
@@ -16,6 +17,7 @@ DEPENDENCIES:
   - RealmSwift
   - SDWebImage (~> 5.0)
   - SVProgressHUD
+  - SwipeCellKit
   - youtube-ios-player-helper (~> 0.1.4)
 
 SPEC REPOS:
@@ -25,6 +27,7 @@ SPEC REPOS:
     - RealmSwift
     - SDWebImage
     - SVProgressHUD
+    - SwipeCellKit
     - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
@@ -33,8 +36,9 @@ SPEC CHECKSUMS:
   RealmSwift: 402f1e379a8ef82c635313037b043f0f06de880c
   SDWebImage: 29c340dbdcef342bb13125553f4e19ce056b07a7
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 793a91bd636f4fbb7d5f1dc8117d95bf3e79bf4d
+PODFILE CHECKSUM: b5fe818024d74d682558ed3c4fff84fd81bdeba5
 
 COCOAPODS: 1.9.1

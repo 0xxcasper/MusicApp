@@ -9,10 +9,12 @@
 //
 
 import UIKit
+import SwipeCellKit
 
 class HomeViewController: BaseViewController, HomeViewProtocol {
 
 	var presenter: HomePresenterProtocol?
+    var rowEdit: Int = 0
     private var data: [PlaylistModel] = [] {
         didSet{
             tbView.reloadData()
@@ -63,20 +65,35 @@ class HomeViewController: BaseViewController, HomeViewProtocol {
     }
 
     @IBAction func createPlaylist(_ sender: Any) {
+        createPLView.cellType = .create
         createPLView.txfInput.becomeFirstResponder()
     }
 }
 
 extension HomeViewController: CreatePlayListViewDelegate {
+    func pressCreate(_ text: String, type: CreatePlayListType) {
+        switch type {
+        case .create:
+            if !self.data.contains(where: {$0.name == text}) {
+                let _ = PlaylistModel.add(name: text)
+            }
+            break
+        default:
+            if !self.data.contains(where: {$0.name == text}) {
+                self.data[self.rowEdit].editName(name: text)
+            }
+        }
+        self.view.endEditing(true)
+        self.getPlayListData()
+
+    }
+    
     func pressCancel() {
         self.view.endEditing(true)
     }
     
     func pressCreate(_ text: String) {
-        if !self.data.contains(where: {$0.name == text}) {
-            let _ = PlaylistModel.add(name: text)
-            self.getPlayListData()
-        }
+        
         self.view.endEditing(true)
     }
 }
@@ -88,30 +105,42 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(PlayListCell.self, for: indexPath)
-//        cell.backgroundColor = .red
+        
+        let item = data[indexPath.row]
+        cell.lblName.text = item.name
+        cell.lblNumber.text = String(item.items.count) + " Tracks"
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 80
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = data[indexPath.row]
+        let vc = PersonPlayListViewController()
+        vc.playList = item
+        self.push(controller: vc)
         debugPrint(item)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if (editingStyle == .delete) {
-//            data[indexPath.row].delete()
-//            self.getPlayListData()
-//        }
-    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {}
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "") { (_, _) in
-            print("")
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+            let item = self.data[indexPath.row]
+            self.rowEdit = indexPath.row
+            self.createPLView.cellType = .edit
+            self.createPLView.txfInput.text = item.name
+            self.createPLView.txfInput.becomeFirstResponder()
         }
-        return [deleteAction]
+        editAction.backgroundColor = .green
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            self.data[indexPath.row].delete()
+            self.getPlayListData()
+        }
+        return [deleteAction, editAction]
     }
+
 }
+
