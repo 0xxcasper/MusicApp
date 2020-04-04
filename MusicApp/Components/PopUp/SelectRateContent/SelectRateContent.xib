@@ -7,7 +7,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectRateContent" customModule="MusicApp" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectRateContent" customModule="MusicApp" customModuleProvider="target">
+            <connections>
+                <outlet property="btnApply" destination="lO0-Bu-OX9" id="KVm-vk-LMq"/>
+                <outlet property="btnCancel" destination="dm0-cI-c02" id="OB9-xo-kfV"/>
+                <outlet property="lblRate" destination="XPg-RS-GAg" id="Rgd-4g-rky"/>
+                <outlet property="pickerView" destination="gwm-4f-5bz" id="F4k-Iw-35X"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="551" height="400"/>
@@ -22,7 +29,7 @@
                                 <constraint firstAttribute="width" constant="80" id="CIJ-hF-bTd"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
-                            <state key="normal" title="Create">
+                            <state key="normal" title="Apply">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                         </button>
@@ -54,10 +61,17 @@
                         <constraint firstAttribute="trailing" secondItem="lO0-Bu-OX9" secondAttribute="trailing" constant="15" id="sYX-Iu-ZM4"/>
                     </constraints>
                 </view>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gwm-4f-5bz">
+                    <rect key="frame" x="0.0" y="50" width="551" height="350"/>
+                </pickerView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="gwm-4f-5bz" secondAttribute="trailing" id="9zY-UE-bA4"/>
                 <constraint firstItem="gDu-vZ-lBL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="F3h-W6-VYl"/>
+                <constraint firstItem="gwm-4f-5bz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HdS-nw-arw"/>
+                <constraint firstItem="gwm-4f-5bz" firstAttribute="top" secondItem="gDu-vZ-lBL" secondAttribute="bottom" id="O5A-La-A1T"/>
+                <constraint firstAttribute="bottom" secondItem="gwm-4f-5bz" secondAttribute="bottom" id="TCO-0o-SGi"/>
                 <constraint firstAttribute="trailing" secondItem="gDu-vZ-lBL" secondAttribute="trailing" id="cOC-YE-ik9"/>
                 <constraint firstItem="gDu-vZ-lBL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nuc-VD-ts3"/>
             </constraints>

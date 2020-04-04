@@ -41,6 +41,7 @@ class PlayMusicBar: BaseViewXib {
     @IBOutlet weak var addPlayListView: AddPlayListView!
     @IBOutlet weak var bottomAddPlayList: NSLayoutConstraint!
     @IBOutlet weak var btnMaximum: UIButton!
+    @IBOutlet weak var btnRate: UIButton!
     
     private var timer: Timer?
     private var prevY: CGFloat = 0
@@ -374,6 +375,8 @@ extension PlayMusicBar
     
     @IBAction func onPressSetRate(_ sender: UIButton) {
         let selectRate = SelectRatePopUp()
+        selectRate.currentRate = self.videoPlayer.playbackRate()
+        selectRate.delegate = self
         selectRate.showPopUp()
     }
     
@@ -383,6 +386,7 @@ extension PlayMusicBar
     
     @IBAction func onPressMusicOrVideo(_ sender: UIButton) {
         self.videoPlayer.isHidden = !self.videoPlayer.isHidden
+        self.btnMaximum.isHidden = self.videoPlayer.isHidden ? true : false
     }
     
     @IBAction func onSliderVideo(_ sender: UISlider) {
@@ -437,8 +441,13 @@ extension PlayMusicBar
 
 // MARK: YTPlayerViewDelegate's Method
 
-extension PlayMusicBar: YTPlayerViewDelegate
+extension PlayMusicBar: YTPlayerViewDelegate, SelectRatePopUpDelegate
 {
+    func didSelectRate(rate: Float) {
+        self.btnRate.setTitle("\(rate)x", for: .normal)
+        self.videoPlayer.setPlaybackRate(rate)
+    }
+    
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         self.isPause = false
         self.setUpSliderView()
