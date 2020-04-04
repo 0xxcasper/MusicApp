@@ -16,13 +16,13 @@ import RealmSwift
     
     dynamic var id = UUID().uuidString
     dynamic var name = ""
-    dynamic var items: [Item] = []
+    dynamic var items: [ItemPlayList] = []
 
     override static func primaryKey() -> String? {
         return PlaylistModel.Property.id.rawValue
     }
     
-    convenience init(_ name: String, item: Item? = nil) {
+    convenience init(_ name: String, item: ItemPlayList? = nil) {
         self.init()
         self.name = name
         if(item != nil) {
@@ -32,7 +32,7 @@ import RealmSwift
 }
 
 extension PlaylistModel {
-    static func add(name: String, item: Item? = nil, in realm: Realm = try! Realm()) -> PlaylistModel {
+    static func add(name: String, item: ItemPlayList? = nil, in realm: Realm = try! Realm()) -> PlaylistModel {
         let playList = PlaylistModel(name, item: item)
         try! realm.write {
             realm.add(playList)
@@ -51,14 +51,14 @@ extension PlaylistModel {
         }
     }
     
-    func addItem(item: Item) {
+    func addItem(item: ItemPlayList) {
         guard let realm = realm else { return }
         try! realm.write {
             self.items.append(item)
         }
     }
     
-    func removeItem(item: Item) {
+    func removeItem(item: ItemPlayList) {
         guard let realm = realm else { return }
         try! realm.write {
             for (index, value) in self.items.enumerated() {
@@ -76,4 +76,19 @@ extension PlaylistModel {
         }
     }
     
+}
+
+
+class ItemPlayList {
+    var name: String = ""
+    var id: String = ""
+    var thumbnail: String = ""
+    var channelTitle: String = ""
+    
+    init(name: String, id: String, thumbnail: String, channelTitle: String) {
+        self.name = name
+        self.id = id
+        self.thumbnail = thumbnail
+        self.channelTitle = channelTitle
+    }
 }

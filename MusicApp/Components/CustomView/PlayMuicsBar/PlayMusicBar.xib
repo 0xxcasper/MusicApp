@@ -12,10 +12,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayMusicBar" customModule="MusicApp" customModuleProvider="target">
             <connections>
                 <outlet property="addPlayListView" destination="tJ4-zK-Lbh" id="zC7-rR-I0E"/>
+                <outlet property="bottomAddPlayList" destination="Hla-hD-La7" id="0B2-Vs-fXA"/>
                 <outlet property="btnContentFull" destination="xN3-cj-rs3" id="aRB-VB-yTH"/>
                 <outlet property="btnControl" destination="vk6-if-1EO" id="5Ih-kT-bq1"/>
                 <outlet property="btnControlVideo" destination="QMS-x3-p8Y" id="mSU-ub-DvA"/>
                 <outlet property="btnHalf" destination="Exa-8A-5Xa" id="sOE-Fb-NuX"/>
+                <outlet property="btnMaximum" destination="jbe-0S-dvS" id="YDI-Nv-aVw"/>
                 <outlet property="btnNext" destination="QUA-hk-hpe" id="83s-yb-Gc8"/>
                 <outlet property="containPlayView" destination="JSo-lN-bXL" id="g15-49-t2r"/>
                 <outlet property="containVolume" destination="Ujy-4z-jTt" id="cyZ-Rc-yoX"/>
@@ -183,8 +185,8 @@
                             <rect key="frame" x="0.0" y="125" width="414" height="233"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwK-je-iZo">
-                                    <rect key="frame" x="5" y="0.0" width="32" height="30"/>
-                                    <state key="normal" title="Rate">
+                                    <rect key="frame" x="5" y="0.0" width="30" height="30"/>
+                                    <state key="normal" title="1x">
                                         <color key="titleColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="titleShadowColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>

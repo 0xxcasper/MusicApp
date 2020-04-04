@@ -46,25 +46,19 @@ extension PersonPlayListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueTableCell(TrendingTbvCell.self)
-        let snippet = playList.items[indexPath.row].snippet
-        let thumbnails = snippet?.thumbnails
-        if(snippet != nil && thumbnails != nil) {
-            cell.img.loadImageFromInternet(link: (thumbnails?.defaults!.url!)!, completion: nil)
-            cell.lblTitle.text = snippet?.title
-            cell.lblChanel.text = snippet?.channelTitle
-            cell.lblRow.text = "#\(indexPath.row + 1)"
-        }
+        let item = playList.items[indexPath.row]
+        cell.img.loadImageFromInternet(link: item.thumbnail, completion: nil)
+        cell.lblTitle.text = item.name
+        cell.lblChanel.text = item.channelTitle
+        cell.lblRow.text = "#\(indexPath.row + 1)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         headerView.delegate = self
         if (playList.items.count > 0) {
-            let items = playList.items
-            let item = items.first
-            let snippet = item?.snippet
-            let thumbnails = snippet?.thumbnails
-            headerView.img.loadImageFromInternet(link: (thumbnails?.defaults!.url!)!, completion: nil)
+            let item = playList.items.last
+            headerView.img.loadImageFromInternet(link: item!.thumbnail, completion: nil)
             headerView.lblTracks.text = "\(playList.items.count) tracks"
         } else {
             headerView.lblTracks.text = "0 tracks"
@@ -77,7 +71,7 @@ extension PersonPlayListViewController: HeaderViewDelegate {
     func onPressPlay() {
         let data = ["items": playList.items,
                     "currentIndex": 0,
-                    "type": PlaylistType.trending] as [String : Any]
+                    "type": PlaylistType.playlist] as [String : Any]
         NotificationCenter.default.post(name: .OpenPlayBar, object: nil, userInfo: data)
     }
 

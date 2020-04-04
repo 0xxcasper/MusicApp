@@ -13,6 +13,7 @@ import UIKit
 enum PlaylistType {
     case trending
     case search
+    case playlist
 }
 
 class PlaylistViewController: BaseTableViewController, HeaderViewDelegate {

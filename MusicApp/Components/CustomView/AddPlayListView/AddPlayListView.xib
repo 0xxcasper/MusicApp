@@ -8,7 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddPlayListView"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddPlayListView">
+            <connections>
+                <outlet property="tbView" destination="FkU-gB-NPJ" id="cXT-NB-T9X"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="373" height="302"/>
@@ -23,6 +27,9 @@
                             <state key="normal" title="Cancel">
                                 <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="pressCancel:" destination="-1" eventType="touchUpInside" id="lVk-Xo-P96"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add to playlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iL5-JI-m4k">
                             <rect key="frame" x="10" y="16.5" width="91" height="17"/>
@@ -41,11 +48,19 @@
                         <constraint firstAttribute="bottom" secondItem="lVk-jF-4MD" secondAttribute="bottom" id="mvG-ld-665"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FkU-gB-NPJ">
+                    <rect key="frame" x="0.0" y="50" width="373" height="252"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="FkU-gB-NPJ" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="1E1-zJ-cvz"/>
                 <constraint firstItem="88X-NE-hJA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3Oe-tk-FU3"/>
+                <constraint firstItem="FkU-gB-NPJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ddf-zb-JpY"/>
+                <constraint firstItem="FkU-gB-NPJ" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="EAa-kU-uBM"/>
                 <constraint firstItem="88X-NE-hJA" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="bBQ-tQ-X9B"/>
+                <constraint firstItem="FkU-gB-NPJ" firstAttribute="top" secondItem="88X-NE-hJA" secondAttribute="bottom" id="fm0-ug-RJg"/>
                 <constraint firstItem="88X-NE-hJA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="xDa-EK-mcK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

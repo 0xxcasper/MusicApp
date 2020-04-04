@@ -12,6 +12,25 @@ import SDWebImage
 
 // MARK: Auto Layout
 extension UIView {
+    
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder?.next
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
+        }
+        return nil
+    }
+    
+    func setBorder(borderWidth: CGFloat = 0, borderColor: UIColor = UIColor.clear, cornerRadius: CGFloat) {
+        self.layer.masksToBounds        = true
+        self.layer.borderWidth          = borderWidth
+        self.layer.borderColor          = borderColor.cgColor
+        self.layer.cornerRadius         = cornerRadius
+    }
+    
     func addConstraintsWithFormat(_ format: String, views: UIView...) {
 
         var viewsDictionary = [String: UIView]()

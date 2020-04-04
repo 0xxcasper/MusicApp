@@ -39,6 +39,8 @@ class PlayMusicBar: BaseViewXib {
     @IBOutlet weak var btnHalf: UIButton!
     @IBOutlet weak var btnContentFull: UIButton!
     @IBOutlet weak var addPlayListView: AddPlayListView!
+    @IBOutlet weak var bottomAddPlayList: NSLayoutConstraint!
+    @IBOutlet weak var btnMaximum: UIButton!
     
     private var timer: Timer?
     private var prevY: CGFloat = 0
@@ -61,7 +63,7 @@ class PlayMusicBar: BaseViewXib {
                     self.img.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "", completion: nil)
                     self.imgDisc.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "", completion: nil)
                 }
-            } else {
+            } else if type == .search {
                 if items.count > 0, let itemVideos: [ItemSearch] = items as? [ItemSearch] {
                     let video = itemVideos[currentIndex]
                     self.currentId = video.id!.videoId ?? ""
@@ -70,6 +72,16 @@ class PlayMusicBar: BaseViewXib {
                     self.lblChanelName.text = video.snippet!.channelTitle
                     self.img.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "", completion: nil)
                     self.imgDisc.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "", completion: nil)
+                }
+            } else {
+                if items.count > 0, let itemVideos: [ItemPlayList] = items as? [ItemPlayList] {
+                    let video = itemVideos[currentIndex]
+                    self.currentId = video.id
+                    self.lblTitle.text = video.name
+                    self.lblMusicName.text = video.name
+                    self.lblChanelName.text = video.channelTitle
+                    self.img.loadImageFromInternet(link: video.thumbnail, completion: nil)
+                    self.imgDisc.loadImageFromInternet(link: video.thumbnail, completion: nil)
                 }
             }
         }
@@ -156,8 +168,9 @@ class PlayMusicBar: BaseViewXib {
         contentViewHeader.alpha = 0
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeGradientColor(notification:)), name: .ChangeGradientColor, object: nil)
         setupRemoteTransportControls()
-        
         self.containVolume.addSubview(volumeControl);
+        self.addPlayListView.alpha = 0
+        self.addPlayListView.delegate = self
     }
     
     override func layoutSubviews() {
@@ -281,7 +294,6 @@ private extension PlayMusicBar
     }
     
     func prevVideo() {
-        
         if isRepeat {
             self.videoPlayer.seek(toSeconds: 0, allowSeekAhead: true)
         } else {
@@ -322,7 +334,12 @@ extension PlayMusicBar
     }
     
     @IBAction func onPressScreenShot(_ sender: UIButton) {
-        
+        let bounds = UIScreen.main.bounds
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+        self.drawHierarchy(in: bounds, afterScreenUpdates: false)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        let activityViewController = UIActivityViewController(activityItems: [img ?? UIImage()], applicationActivities: nil)
+        self.parentViewController!.present(activityViewController, animated: true, completion: nil)
     }
     
     @IBAction func onPressRandom(_ sender: UIButton) {
@@ -340,7 +357,15 @@ extension PlayMusicBar
     }
     
     @IBAction func onPressSaveToPlaylist(_ sender: UIButton) {
-        
+        self.layoutIfNeeded()
+        self.addPlayListView.alpha = 0
+        UIView.animate(withDuration: 0.3, animations: {
+            self.layoutIfNeeded()
+            self.addPlayListView.alpha = 1
+            self.bottomAddPlayList.constant = 0
+            self.layoutIfNeeded()
+        }) { (_) in
+        }
     }
     
     @IBAction func onPressSeeHalf(_ sender: UIButton) {
@@ -348,7 +373,8 @@ extension PlayMusicBar
     }
     
     @IBAction func onPressSetRate(_ sender: UIButton) {
-        
+        let selectRate = SelectRatePopUp()
+        selectRate.showPopUp()
     }
     
     @IBAction func onPressFullScrenn(_ sender: UIButton) {
@@ -435,6 +461,21 @@ extension PlayMusicBar: YTPlayerViewDelegate
         if state == .unstarted || state == .ended {
             nextVideo()
             if isFull == true { self.isFull = false }
+        }
+    }
+}
+
+
+extension PlayMusicBar: AddPlayListViewDelegate {
+    func hideAddPlayListView() {
+        self.layoutIfNeeded()
+        self.addPlayListView.alpha = 1
+        UIView.animate(withDuration: 0.3, animations: {
+            self.layoutIfNeeded()
+            self.addPlayListView.alpha = 0
+            self.bottomAddPlayList.constant = -400
+            self.layoutIfNeeded()
+        }) { (_) in
         }
     }
 }
