@@ -22,9 +22,22 @@ class SelectRatePopUp: BasePopUp {
         vContent.backgroundColor = .black
         vContent.addSubview(viewPopUp)
         viewPopUp.fillSuperview()
+        
+        viewPopUp.btnCancel.addTarget(self, action: #selector(btnCancelTapped), for: .touchUpInside)
+        viewPopUp.btnApply.addTarget(self, action: #selector(btnApplyTapped), for: .touchUpInside)
     }
     
     func showPopUp() {
         super.showPopUp(width: AppConstant.SREEEN_WIDTH, height: 300, type: .showFromBottom)
+    }
+    
+    @objc func btnCancelTapped() {
+        hidePopUp()
+        completionYes?()
+    }
+    
+    @objc func btnApplyTapped() {
+        hidePopUp()
+        completionYes?()
     }
 }

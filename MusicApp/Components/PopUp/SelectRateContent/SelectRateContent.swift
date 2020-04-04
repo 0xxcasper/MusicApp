@@ -7,11 +7,17 @@
 //
 
 import Foundation
+import UIKit
 
 class SelectRateContent: BaseViewXib {
     
+    @IBOutlet weak var lblRate: UILabel!
+    @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var btnApply: UIButton!
+    @IBOutlet weak var pickerView: UIPickerView!
     
     override func firstInit() {
-        
+        btnApply.isUserInteractionEnabled = true
+        btnCancel.isUserInteractionEnabled = true
     }
 }
