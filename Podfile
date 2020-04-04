@@ -11,6 +11,7 @@ target 'MusicApp' do
   pod 'SDWebImage', '~> 5.0'
   pod 'youtube-ios-player-helper', '~> 0.1.4'
   pod 'RealmSwift'
+  pod 'SwipeCellKit'
   
   target 'MusicAppTests' do
     inherit! :search_paths

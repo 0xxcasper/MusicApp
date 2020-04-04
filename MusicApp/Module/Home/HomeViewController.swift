@@ -13,13 +13,39 @@ import UIKit
 class HomeViewController: BaseViewController, HomeViewProtocol {
 
 	var presenter: HomePresenterProtocol?
+    private var data: [PlaylistModel] = [] {
+        didSet{
+            tbView.reloadData()
+        }
+    }
 
     @IBOutlet weak var createPLView: CreatePlayListView!
     @IBOutlet weak var bottomAnchorCreateBar: NSLayoutConstraint!
+    @IBOutlet weak var tbView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createPLView.delegate = self
+        self.setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.getPlayListData()
+    }
+    
+    private func setupView() {
+        tbView.delegate = self
+        tbView.dataSource = self
+        tbView.rowHeight = 60
+        tbView.separatorStyle = .none
+        tbView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 45, right: 0)
+        tbView.registerXibFile(PlayListCell.self)
+    }
+    
+    func getPlayListData() {
+        self.data = []
+        self.data = Array(PlaylistModel.getAll())
     }
     
     override func keyboardWillShow(_ notification: NSNotification) {
@@ -47,6 +73,45 @@ extension HomeViewController: CreatePlayListViewDelegate {
     }
     
     func pressCreate(_ text: String) {
+        if !self.data.contains(where: {$0.name == text}) {
+            let _ = PlaylistModel.add(name: text)
+            self.getPlayListData()
+        }
         self.view.endEditing(true)
+    }
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeue(PlayListCell.self, for: indexPath)
+//        cell.backgroundColor = .red
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = data[indexPath.row]
+        debugPrint(item)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if (editingStyle == .delete) {
+//            data[indexPath.row].delete()
+//            self.getPlayListData()
+//        }
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "") { (_, _) in
+            print("")
+        }
+        return [deleteAction]
     }
 }
