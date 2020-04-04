@@ -12,6 +12,7 @@ import MediaPlayer
 import youtube_ios_player_helper
 
 class PlayMusicBar: BaseViewXib {
+    @IBOutlet weak var contentViewControl: UIStackView!
     @IBOutlet weak var contentViewSeek: UIView!
     @IBOutlet weak var contentViewFull: UIView!
     @IBOutlet weak var contentViewHeader: UIView!
@@ -40,7 +41,8 @@ class PlayMusicBar: BaseViewXib {
     
     private var timer: Timer?
     private var prevY: CGFloat = 0
-    var reproductor = AVAudioPlayer()
+    private var reproductor = AVAudioPlayer()
+    private let volumeControl = MPVolumeView()
 
     var type: PlaylistType = .search
     
@@ -109,35 +111,39 @@ class PlayMusicBar: BaseViewXib {
     var isFull = false {
         didSet {
             if isFull {
-                self.videoPlayer.pauseVideo()
                 self.contentViewHeader.isHidden = true
                 self.contentViewFull.isHidden = true
                 self.contentViewSeek.isHidden = true
                 self.containPlayView.isHidden = true
+                self.volumeControl.isHidden = true
+                self.contentViewControl.isHidden = true
                 self.btnHalf.isHidden = false
                 UIView.animate(withDuration: 0.3, animations: {
                     self.videoPlayer.transform = CGAffineTransform(rotationAngle: .pi/2)
                     self.videoPlayer.frame = CGRect(x: 0, y: 44, width: AppConstant.SREEEN_WIDTH, height: AppConstant.SCREEN_HEIGHT)
                 }) { (Bool) in
                     self.contentViewPlay.layoutIfNeeded()
-                    self.videoPlayer.playVideo()
                 }
             } else {
-                self.videoPlayer.pauseVideo()
                 self.contentViewHeader.isHidden = false
                 self.contentViewSeek.isHidden = false
                 self.containPlayView.isHidden = false
+                self.volumeControl.isHidden = false
+                self.contentViewControl.isHidden = false
                 self.btnHalf.isHidden = true
                 UIView.animate(withDuration: 0.3, animations: {
                     self.videoPlayer.transform = .identity
                     self.videoPlayer.frame = self.contentViewFull.frame
                 }) { (Bool) in
                     self.contentViewPlay.layoutIfNeeded()
-                    self.videoPlayer.playVideo()
                 }
             }
         }
     }
+    
+    var isRandom = false
+    
+    var isRepeat = false
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: .ChangeGradientColor, object: nil)
@@ -150,9 +156,7 @@ class PlayMusicBar: BaseViewXib {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeGradientColor(notification:)), name: .ChangeGradientColor, object: nil)
         setupRemoteTransportControls()
         
-        let volumeControl = MPVolumeView()
-        volumeControl.frame = containVolume.frame
-        self.view.addSubview(volumeControl);
+        self.containVolume.addSubview(volumeControl);
     }
     
     override func layoutSubviews() {
@@ -167,6 +171,9 @@ class PlayMusicBar: BaseViewXib {
         imgDisc.layer.borderWidth = 1.0
         imgDisc.layer.borderColor = UIColor.black.cgColor
         imgDisc.rotate(duration: 10)
+        
+        volumeControl.frame.origin = CGPoint(x: 0, y: 0)
+        volumeControl.frame.size = containVolume.frame.size
     }
     
     @objc func didChangeGradientColor(notification: Notification) {
@@ -184,12 +191,6 @@ class PlayMusicBar: BaseViewXib {
         }
         lblMinValue.text = self.videoPlayer.currentTime().secondsToHoursMinutesSeconds()
         slider.setValue(currentTime, animated: true)
-    }
-    
-    @IBAction func onPressShowContentFull(_ sender: UIButton) {
-        if !isFull {
-            hideOrShowContentViewFull(isShow: true)
-        }
     }
 }
 
@@ -262,18 +263,37 @@ private extension PlayMusicBar
     }
     
     func nextVideo() {
-        if currentIndex + 1 < items.count {
-            currentIndex = currentIndex + 1
+        if self.isRepeat {
+            self.videoPlayer.seek(toSeconds: 0, allowSeekAhead: true)
         } else {
-            currentIndex = 0
+            if self.isRandom {
+                let randomInt = Int.random(in: 0..<items.count-1)
+                currentIndex = randomInt
+            } else {
+                if currentIndex + 1 < items.count {
+                    currentIndex = currentIndex + 1
+                } else {
+                    currentIndex = 0
+                }
+            }
         }
     }
     
     func prevVideo() {
-        if currentIndex - 1 > 0 {
-            currentIndex = currentIndex - 1
+        
+        if isRepeat {
+            self.videoPlayer.seek(toSeconds: 0, allowSeekAhead: true)
         } else {
-            currentIndex = self.items.count - 1
+            if isRandom {
+                let randomInt = Int.random(in: 0..<items.count-1)
+                currentIndex = randomInt
+            } else {
+                if currentIndex - 1 > 0 {
+                    currentIndex = currentIndex - 1
+                } else {
+                    currentIndex = self.items.count - 1
+                }
+            }
         }
     }
     
@@ -293,6 +313,34 @@ private extension PlayMusicBar
 
 extension PlayMusicBar
 {
+    
+    @IBAction func onPressShowContentFull(_ sender: UIButton) {
+        if !isFull {
+            hideOrShowContentViewFull(isShow: true)
+        }
+    }
+    
+    @IBAction func onPressScreenShot(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func onPressRandom(_ sender: UIButton) {
+        self.isRandom = !self.isRandom
+        sender.tintColor = self.isRandom ? .systemPink : .white
+    }
+    
+    @IBAction func onPressLike(_ sender: UIButton) {
+        //sender.tintColor = UIColor.systemPink
+    }
+    
+    @IBAction func onPressRepeat(_ sender: UIButton) {
+        self.isRepeat = !self.isRepeat
+        sender.tintColor = self.isRepeat ? .systemPink : .white
+    }
+    
+    @IBAction func onPressSaveToPlaylist(_ sender: UIButton) {
+        
+    }
     
     @IBAction func onPressSeeHalf(_ sender: UIButton) {
         self.isFull = false
