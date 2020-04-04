@@ -10,8 +10,8 @@ target 'MusicApp' do
   pod 'Alamofire', '4.8.2'
   pod 'SDWebImage', '~> 5.0'
   pod 'youtube-ios-player-helper', '~> 0.1.4'
+  pod 'RealmSwift'
   
-
   target 'MusicAppTests' do
     inherit! :search_paths
     # Pods for testing

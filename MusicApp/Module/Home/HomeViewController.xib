@@ -30,18 +30,24 @@
                     <rect key="frame" x="0.0" y="250" width="375" height="417"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal playlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fU0-fg-aJs">
-                            <rect key="frame" x="10" y="10" width="124" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <rect key="frame" x="10" y="10" width="117.5" height="19.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LIg-qx-TZe">
-                            <rect key="frame" x="317" y="-3.5" width="48" height="48"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add" translatesAutoresizingMaskIntoConstraints="NO" id="d7V-2e-cVT">
+                            <rect key="frame" x="328" y="9" width="22" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="22" id="KNK-Lf-01Y"/>
+                                <constraint firstAttribute="height" constant="22" id="sYW-vk-sja"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LIg-qx-TZe">
+                            <rect key="frame" x="317" y="-4" width="48" height="48"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="Vfj-eh-xBl"/>
                                 <constraint firstAttribute="width" constant="48" id="lQv-t9-uMH"/>
                             </constraints>
-                            <state key="normal" title="Create"/>
                             <connections>
                                 <action selector="createPlaylist:" destination="-1" eventType="touchUpInside" id="323-vx-U0L"/>
                             </connections>
@@ -56,6 +62,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="d7V-2e-cVT" secondAttribute="trailing" constant="25" id="KWG-XT-hyf"/>
                         <constraint firstAttribute="trailing" secondItem="LIg-qx-TZe" secondAttribute="trailing" constant="10" id="Oda-0B-8wF"/>
                         <constraint firstItem="LIg-qx-TZe" firstAttribute="centerY" secondItem="fU0-fg-aJs" secondAttribute="centerY" id="T1w-7o-qqk"/>
                         <constraint firstAttribute="trailing" secondItem="Rw2-wf-1Hy" secondAttribute="trailing" id="UO4-Ql-p95"/>
@@ -63,6 +70,7 @@
                         <constraint firstItem="Rw2-wf-1Hy" firstAttribute="leading" secondItem="gWg-vc-Azn" secondAttribute="leading" id="Wy4-l7-Uh2"/>
                         <constraint firstAttribute="bottom" secondItem="Rw2-wf-1Hy" secondAttribute="bottom" constant="-170" id="ilo-tJ-Qzz"/>
                         <constraint firstItem="fU0-fg-aJs" firstAttribute="top" secondItem="gWg-vc-Azn" secondAttribute="top" constant="10" id="vbq-IC-cHe"/>
+                        <constraint firstItem="d7V-2e-cVT" firstAttribute="centerY" secondItem="fU0-fg-aJs" secondAttribute="centerY" id="wcT-aY-o78"/>
                     </constraints>
                 </view>
             </subviews>
@@ -79,4 +87,7 @@
             <point key="canvasLocation" x="136.80000000000001" y="152.47376311844079"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_add" width="64" height="64"/>
+    </resources>
 </document>
