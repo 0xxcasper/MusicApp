@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayMusicBar" customModule="MusicApp" customModuleProvider="target">
             <connections>
+                <outlet property="addPlayListView" destination="tJ4-zK-Lbh" id="zC7-rR-I0E"/>
                 <outlet property="btnContentFull" destination="xN3-cj-rs3" id="aRB-VB-yTH"/>
                 <outlet property="btnControl" destination="vk6-if-1EO" id="5Ih-kT-bq1"/>
                 <outlet property="btnControlVideo" destination="QMS-x3-p8Y" id="mSU-ub-DvA"/>
@@ -485,14 +486,23 @@
                         <action selector="onPressSeeHalf:" destination="-1" eventType="touchUpInside" id="xhG-Au-28Y"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJ4-zK-Lbh" customClass="AddPlayListView" customModule="MusicApp" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="816" width="414" height="400"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="400" id="1ny-iA-RsH"/>
+                    </constraints>
+                </view>
             </subviews>
             <constraints>
                 <constraint firstItem="GeJ-z4-Zx8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3vO-cz-W61"/>
+                <constraint firstItem="tJ4-zK-Lbh" firstAttribute="trailing" secondItem="KfO-S8-LEf" secondAttribute="trailing" id="46n-FC-4Vy"/>
                 <constraint firstItem="qoT-Y8-tMb" firstAttribute="centerY" secondItem="gN3-7H-nYr" secondAttribute="centerY" id="4vi-qU-5GE"/>
                 <constraint firstItem="RW7-dr-Yax" firstAttribute="centerY" secondItem="GeJ-z4-Zx8" secondAttribute="centerY" id="7Rt-14-QmU"/>
                 <constraint firstItem="gdc-Dw-qJn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="B74-eq-wNX"/>
                 <constraint firstItem="GeJ-z4-Zx8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Go0-sE-raJ"/>
                 <constraint firstItem="wmG-f3-NGv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HRb-5h-Bf4"/>
+                <constraint firstAttribute="bottom" secondItem="tJ4-zK-Lbh" secondAttribute="bottom" constant="-400" id="Hla-hD-La7"/>
                 <constraint firstAttribute="trailing" secondItem="GeJ-z4-Zx8" secondAttribute="trailing" constant="120" id="L2q-e5-4vs"/>
                 <constraint firstItem="qoT-Y8-tMb" firstAttribute="centerX" secondItem="gN3-7H-nYr" secondAttribute="centerX" id="Qi4-j1-t5T"/>
                 <constraint firstItem="hHA-40-khL" firstAttribute="top" secondItem="KfO-S8-LEf" secondAttribute="top" id="Sqe-HS-0yN"/>
@@ -506,6 +516,7 @@
                 <constraint firstAttribute="bottom" secondItem="wmG-f3-NGv" secondAttribute="bottom" constant="-50" id="jEi-ZX-qDF"/>
                 <constraint firstItem="hHA-40-khL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jJl-gS-2SC"/>
                 <constraint firstAttribute="trailing" secondItem="gdc-Dw-qJn" secondAttribute="trailing" id="tzF-Uv-OjA"/>
+                <constraint firstItem="tJ4-zK-Lbh" firstAttribute="leading" secondItem="KfO-S8-LEf" secondAttribute="leading" id="wQl-Ic-oix"/>
                 <constraint firstAttribute="trailing" secondItem="hHA-40-khL" secondAttribute="trailing" id="yNX-Cb-aLb"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

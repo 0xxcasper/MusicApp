@@ -38,6 +38,7 @@ class PlayMusicBar: BaseViewXib {
     @IBOutlet weak var containVolume: UIView!
     @IBOutlet weak var btnHalf: UIButton!
     @IBOutlet weak var btnContentFull: UIButton!
+    @IBOutlet weak var addPlayListView: AddPlayListView!
     
     private var timer: Timer?
     private var prevY: CGFloat = 0

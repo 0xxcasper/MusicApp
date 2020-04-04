@@ -23,6 +23,7 @@ class PlaylistViewController: BaseTableViewController, HeaderViewDelegate {
     var type: PlaylistType = .search
     var keyword: String = ""
     
+    
     private var nextPageToken = ""
     
 	override func viewDidLoad() {

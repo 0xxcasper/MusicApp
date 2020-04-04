@@ -25,6 +25,8 @@
 		25A432DA2438BCCD005403DF /* PersonPlayListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A432D42438BCCD005403DF /* PersonPlayListViewController.xib */; };
 		25A432DE2438BED7005403DF /* PersonHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A432DC2438BED7005403DF /* PersonHeaderCell.swift */; };
 		25A432DF2438BED7005403DF /* PersonHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A432DD2438BED7005403DF /* PersonHeaderCell.xib */; };
+		25A432E22438D0BE005403DF /* AddPlayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A432E12438D0BE005403DF /* AddPlayListView.swift */; };
+		25A432E42438D0C6005403DF /* AddPlayListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A432E32438D0C6005403DF /* AddPlayListView.xib */; };
 		2DB35C26C2EABB360A7C7D2D /* libPods-MusicApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A215B88DA2FFD872BB7F629D /* libPods-MusicApp.a */; };
 		506C5773FDE69134E70EEDA5 /* libPods-MusicApp-MusicAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23CF922CD47A1DF78B949E22 /* libPods-MusicApp-MusicAppUITests.a */; };
 		843D4672242F97EF007BE44A /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4671242F97EF007BE44A /* UIView+Extensions.swift */; };
@@ -141,6 +143,8 @@
 		25A432D42438BCCD005403DF /* PersonPlayListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonPlayListViewController.xib; sourceTree = "<group>"; };
 		25A432DC2438BED7005403DF /* PersonHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonHeaderCell.swift; sourceTree = "<group>"; };
 		25A432DD2438BED7005403DF /* PersonHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonHeaderCell.xib; sourceTree = "<group>"; };
+		25A432E12438D0BE005403DF /* AddPlayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayListView.swift; sourceTree = "<group>"; };
+		25A432E32438D0C6005403DF /* AddPlayListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPlayListView.xib; sourceTree = "<group>"; };
 		2A754C4A087DFA220FE797CB /* Pods-MusicApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicApp.release.xcconfig"; path = "Target Support Files/Pods-MusicApp/Pods-MusicApp.release.xcconfig"; sourceTree = "<group>"; };
 		3003398453C74BCE5B9C7C99 /* Pods-MusicAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MusicAppTests/Pods-MusicAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3EB03189C44DC2D04E47E90C /* Pods-MusicAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicAppTests.release.xcconfig"; path = "Target Support Files/Pods-MusicAppTests/Pods-MusicAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -342,6 +346,15 @@
 				25A432DD2438BED7005403DF /* PersonHeaderCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		25A432E02438D09E005403DF /* AddPlayListView */ = {
+			isa = PBXGroup;
+			children = (
+				25A432E12438D0BE005403DF /* AddPlayListView.swift */,
+				25A432E32438D0C6005403DF /* AddPlayListView.xib */,
+			);
+			path = AddPlayListView;
 			sourceTree = "<group>";
 		};
 		843D4670242F97D7007BE44A /* Extension */ = {
@@ -671,6 +684,7 @@
 		84FF00A1242A12F500463A88 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				25A432E02438D09E005403DF /* AddPlayListView */,
 				251DE210243779660066AE9F /* CreatePlayListView */,
 				84A618EF2432E83B002DF921 /* PlayMuicsBar */,
 			);
@@ -864,6 +878,7 @@
 				848212D224308AF30077AC45 /* Language.json in Resources */,
 				25A0B3882435BFAF0077608C /* GradientCell.xib in Resources */,
 				848212D024308A5A0077AC45 /* SettingViewController.xib in Resources */,
+				25A432E42438D0C6005403DF /* AddPlayListView.xib in Resources */,
 				848212B524305A5E0077AC45 /* HomeViewController.xib in Resources */,
 				848212BD24305D390077AC45 /* Localizable.strings in Resources */,
 				848212C52430825F0077AC45 /* Region.json in Resources */,
@@ -1020,6 +1035,7 @@
 				25A0B3872435BFAF0077608C /* GradientCell.swift in Sources */,
 				84E5BEB724272693004F74FF /* BaseTableViewController.swift in Sources */,
 				84E5BEB924272693004F74FF /* BaseViewController.swift in Sources */,
+				25A432E22438D0BE005403DF /* AddPlayListView.swift in Sources */,
 				84E5BEEA24273141004F74FF /* MorePresenter.swift in Sources */,
 				25A0B3822435BDC90077608C /* BackGroundViewController.swift in Sources */,
 				25A432D72438BCCD005403DF /* PersonPlayListViewController.swift in Sources */,
@@ -1249,7 +1265,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DGFP28D4W6;
+				DEVELOPMENT_TEAM = SRSNPE33B8;
 				INFOPLIST_FILE = MusicApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1270,7 +1286,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DGFP28D4W6;
+				DEVELOPMENT_TEAM = SRSNPE33B8;
 				INFOPLIST_FILE = MusicApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
