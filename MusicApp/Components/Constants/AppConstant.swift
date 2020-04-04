@@ -22,7 +22,8 @@ struct AppConstant {
     static let NAVI_BAR_HEIGHT = CGFloat(44)
     
     static let HEIGTH_TABBAR: CGFloat = 30 + STATUS_BAR_BOTTOM
-    
+    static let TAB_BAR_HEIGHT = CGFloat(49)
+
     static let colors: [[UIColor]] =
     [
         [UIColor(displayP3Red: 100/255, green: 50/255, blue: 194/255, alpha: 1), UIColor(displayP3Red: 62/255, green: 17/255, blue: 145/255, alpha: 1)],

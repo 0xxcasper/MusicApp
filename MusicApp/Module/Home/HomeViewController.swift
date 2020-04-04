@@ -10,12 +10,43 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, HomeViewProtocol {
+class HomeViewController: BaseViewController, HomeViewProtocol {
 
 	var presenter: HomePresenterProtocol?
 
-	override func viewDidLoad() {
+    @IBOutlet weak var createPLView: CreatePlayListView!
+    @IBOutlet weak var bottomAnchorCreateBar: NSLayoutConstraint!
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
+        self.createPLView.delegate = self
+    }
+    
+    override func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            bottomAnchorCreateBar.constant = keyboardHeight - AppConstant.STATUS_BAR_BOTTOM - AppConstant.TAB_BAR_HEIGHT + 110
+            view.layoutIfNeeded()
+        }
+    }
+    
+    override func keyboardWillHide(_ notification: NSNotification) {
+        bottomAnchorCreateBar.constant = -170
+        view.layoutIfNeeded()
     }
 
+    @IBAction func createPlaylist(_ sender: Any) {
+        createPLView.txfInput.becomeFirstResponder()
+    }
+}
+
+extension HomeViewController: CreatePlayListViewDelegate {
+    func pressCancel() {
+        self.view.endEditing(true)
+    }
+    
+    func pressApply() {
+         self.view.endEditing(true)
+    }
 }

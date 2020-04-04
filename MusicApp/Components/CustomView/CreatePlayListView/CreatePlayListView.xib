@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreatePlayListView" customModule="MusicApp" customModuleProvider="target">
+            <connections>
+                <outlet property="btnApply" destination="BXF-2c-xej" id="8HE-7K-sXA"/>
+                <outlet property="txfInput" destination="p8Z-aC-zVP" id="ZSC-hQ-0Xz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="126"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJ8-uz-WTb">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXF-2c-xej">
+                            <rect key="frame" x="319" y="0.0" width="80" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="iUy-wx-FRB"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                            <state key="normal" title="Apply">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="pressApply:" destination="-1" eventType="touchUpInside" id="f26-jE-Qep"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvg-RB-nTK">
+                            <rect key="frame" x="229" y="0.0" width="80" height="50"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="pressCancel:" destination="-1" eventType="touchUpInside" id="z9M-5C-Sba"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New playlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bo-mr-END">
+                            <rect key="frame" x="10" y="16" width="82.5" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="BXF-2c-xej" firstAttribute="top" secondItem="bJ8-uz-WTb" secondAttribute="top" id="3QM-RK-JhW"/>
+                        <constraint firstItem="3bo-mr-END" firstAttribute="centerY" secondItem="bJ8-uz-WTb" secondAttribute="centerY" id="4Eg-Du-zvv"/>
+                        <constraint firstItem="Xvg-RB-nTK" firstAttribute="top" secondItem="bJ8-uz-WTb" secondAttribute="top" id="8sY-pZ-k3d"/>
+                        <constraint firstItem="Xvg-RB-nTK" firstAttribute="width" secondItem="BXF-2c-xej" secondAttribute="width" id="Khi-8x-dw2"/>
+                        <constraint firstAttribute="bottom" secondItem="BXF-2c-xej" secondAttribute="bottom" id="Uza-hj-eQO"/>
+                        <constraint firstItem="BXF-2c-xej" firstAttribute="leading" secondItem="Xvg-RB-nTK" secondAttribute="trailing" constant="10" id="bCy-RQ-fGo"/>
+                        <constraint firstAttribute="trailing" secondItem="BXF-2c-xej" secondAttribute="trailing" constant="15" id="eJg-RX-6Qh"/>
+                        <constraint firstAttribute="bottom" secondItem="Xvg-RB-nTK" secondAttribute="bottom" id="lsa-uU-9bQ"/>
+                        <constraint firstItem="3bo-mr-END" firstAttribute="leading" secondItem="bJ8-uz-WTb" secondAttribute="leading" constant="10" id="mQG-kO-ZQM"/>
+                        <constraint firstAttribute="height" constant="50" id="uDE-uh-2VE"/>
+                    </constraints>
+                </view>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p8Z-aC-zVP">
+                    <rect key="frame" x="15" y="55" width="384" height="66"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Rll-4Y-yXN"/>
+                    </constraints>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="p8Z-aC-zVP" secondAttribute="bottom" constant="5" id="3g8-P2-Lj9"/>
+                <constraint firstItem="p8Z-aC-zVP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="CAm-YG-HBi"/>
+                <constraint firstAttribute="trailing" secondItem="p8Z-aC-zVP" secondAttribute="trailing" constant="15" id="GTk-NP-Nr3"/>
+                <constraint firstItem="bJ8-uz-WTb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="L2Y-6B-ds8"/>
+                <constraint firstItem="bJ8-uz-WTb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="W03-6E-1u9"/>
+                <constraint firstItem="p8Z-aC-zVP" firstAttribute="top" secondItem="bJ8-uz-WTb" secondAttribute="bottom" constant="5" id="bG2-od-pAc"/>
+                <constraint firstAttribute="trailing" secondItem="bJ8-uz-WTb" secondAttribute="trailing" id="fCc-D0-zwJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="137.68115942028987" y="-105.13392857142857"/>
+        </view>
+    </objects>
+</document>

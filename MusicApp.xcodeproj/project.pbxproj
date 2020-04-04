@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		251DE212243779C00066AE9F /* CreatePlayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251DE211243779C00066AE9F /* CreatePlayListView.swift */; };
+		251DE214243779E20066AE9F /* CreatePlayListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 251DE213243779E20066AE9F /* CreatePlayListView.xib */; };
 		25A0B3822435BDC90077608C /* BackGroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A0B3802435BDC90077608C /* BackGroundViewController.swift */; };
 		25A0B3832435BDC90077608C /* BackGroundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A0B3812435BDC90077608C /* BackGroundViewController.xib */; };
 		25A0B3872435BFAF0077608C /* GradientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A0B3852435BFAF0077608C /* GradientCell.swift */; };
@@ -110,6 +112,8 @@
 /* Begin PBXFileReference section */
 		16029BDE20AE4C80BCFDFCB1 /* libPods-MusicAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MusicAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23CF922CD47A1DF78B949E22 /* libPods-MusicApp-MusicAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MusicApp-MusicAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		251DE211243779C00066AE9F /* CreatePlayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayListView.swift; sourceTree = "<group>"; };
+		251DE213243779E20066AE9F /* CreatePlayListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatePlayListView.xib; sourceTree = "<group>"; };
 		25A0B3802435BDC90077608C /* BackGroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundViewController.swift; sourceTree = "<group>"; };
 		25A0B3812435BDC90077608C /* BackGroundViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackGroundViewController.xib; sourceTree = "<group>"; };
 		25A0B3852435BFAF0077608C /* GradientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientCell.swift; sourceTree = "<group>"; };
@@ -240,6 +244,15 @@
 				16029BDE20AE4C80BCFDFCB1 /* libPods-MusicAppTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		251DE210243779660066AE9F /* CreatePlayListView */ = {
+			isa = PBXGroup;
+			children = (
+				251DE211243779C00066AE9F /* CreatePlayListView.swift */,
+				251DE213243779E20066AE9F /* CreatePlayListView.xib */,
+			);
+			path = CreatePlayListView;
 			sourceTree = "<group>";
 		};
 		25A0B37B2435B7BC0077608C /* BackGround */ = {
@@ -585,6 +598,7 @@
 		84FF00A1242A12F500463A88 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				251DE210243779660066AE9F /* CreatePlayListView */,
 				84A618EF2432E83B002DF921 /* PlayMuicsBar */,
 			);
 			path = CustomView;
@@ -785,6 +799,7 @@
 				84FF007C2429A46000463A88 /* SearchViewController.xib in Resources */,
 				848212DA243094A80077AC45 /* SettingCell.xib in Resources */,
 				DB42B57E242716B100CF1458 /* Assets.xcassets in Resources */,
+				251DE214243779E20066AE9F /* CreatePlayListView.xib in Resources */,
 				25A0B3832435BDC90077608C /* BackGroundViewController.xib in Resources */,
 				84FF00A02429F7A300463A88 /* PlaylistViewController.xib in Resources */,
 				84E5BEF524275D76004F74FF /* TrendingTbvCell.xib in Resources */,
@@ -969,6 +984,7 @@
 				84FF007B2429A46000463A88 /* SearchInteractor.swift in Sources */,
 				848212B124305A5E0077AC45 /* HomeRouter.swift in Sources */,
 				84FF006224299AE000463A88 /* NetworkRequest.swift in Sources */,
+				251DE212243779C00066AE9F /* CreatePlayListView.swift in Sources */,
 				84E5BEEE24273141004F74FF /* MoreInteractor.swift in Sources */,
 				84FF009C2429F7A300463A88 /* PlaylistRouter.swift in Sources */,
 				84FF00792429A46000463A88 /* SearchViewController.swift in Sources */,

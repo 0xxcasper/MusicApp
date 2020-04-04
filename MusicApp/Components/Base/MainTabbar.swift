@@ -12,7 +12,6 @@ import UIKit
 class MainTabbar: UITabBarController {
     
     var playBar = PlayMusicBar(frame: CGRect(x: -AppConstant.SREEEN_WIDTH, y: 0, width: AppConstant.SREEEN_WIDTH, height: 48))
-    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }

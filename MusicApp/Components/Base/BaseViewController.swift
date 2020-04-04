@@ -28,6 +28,7 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addNotification()
+        addKeyboardNotification()
     }
     
     private func addNotification() {
@@ -129,7 +130,7 @@ extension BaseViewController {
     }
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
-        
+        print("")
     }
     
     @objc func keyboardWillHide(_ notification: NSNotification) {

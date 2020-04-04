@@ -13,6 +13,7 @@
                 <outlet property="btnControlVideo" destination="QMS-x3-p8Y" id="mSU-ub-DvA"/>
                 <outlet property="btnNext" destination="QUA-hk-hpe" id="83s-yb-Gc8"/>
                 <outlet property="containPlayView" destination="JSo-lN-bXL" id="g15-49-t2r"/>
+                <outlet property="containVolume" destination="Ujy-4z-jTt" id="cyZ-Rc-yoX"/>
                 <outlet property="contentView" destination="gdc-Dw-qJn" id="Ju7-MR-261"/>
                 <outlet property="contentViewHeader" destination="hHA-40-khL" id="iJq-oP-P6h"/>
                 <outlet property="contentViewPlay" destination="wmG-f3-NGv" id="sgu-Nr-y3g"/>
@@ -88,8 +89,8 @@
                                 </label>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TXX-eD-lfd">
                                     <rect key="frame" x="60" y="15" width="296" height="31"/>
-                                    <color key="tintColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="thumbTintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <connections>
                                         <action selector="onSliderVideo:" destination="-1" eventType="valueChanged" id="ZeD-mF-Ay3"/>
                                     </connections>
@@ -212,6 +213,14 @@
                                 <constraint firstItem="mwK-je-iZo" firstAttribute="leading" secondItem="1rl-xk-H60" secondAttribute="leading" constant="8" id="h9Z-Y2-WsN"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ujy-4z-jTt">
+                            <rect key="frame" x="67" y="593" width="280" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="C2N-Qd-PMq"/>
+                                <constraint firstAttribute="width" constant="280" id="ax7-sV-A8v"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -226,8 +235,10 @@
                         <constraint firstItem="1rl-xk-H60" firstAttribute="top" secondItem="gN3-7H-nYr" secondAttribute="top" id="ahx-iO-mhY"/>
                         <constraint firstItem="wsZ-Dw-Hdy" firstAttribute="trailing" secondItem="gN3-7H-nYr" secondAttribute="trailing" id="bVw-SG-ggy"/>
                         <constraint firstItem="gN3-7H-nYr" firstAttribute="top" secondItem="wmG-f3-NGv" secondAttribute="top" constant="150" id="dFi-Yg-5EJ"/>
+                        <constraint firstItem="Ujy-4z-jTt" firstAttribute="top" secondItem="JSo-lN-bXL" secondAttribute="bottom" constant="40" id="fVU-35-LCN"/>
                         <constraint firstItem="ZDW-Ay-iZd" firstAttribute="top" secondItem="gN3-7H-nYr" secondAttribute="bottom" constant="10" id="h6j-td-62j"/>
                         <constraint firstItem="gN3-7H-nYr" firstAttribute="leading" secondItem="wmG-f3-NGv" secondAttribute="leading" id="ilQ-l8-no2"/>
+                        <constraint firstItem="Ujy-4z-jTt" firstAttribute="centerX" secondItem="wmG-f3-NGv" secondAttribute="centerX" id="ioH-NE-7rU"/>
                         <constraint firstAttribute="trailing" secondItem="ZDW-Ay-iZd" secondAttribute="trailing" id="pZz-is-gYe"/>
                         <constraint firstItem="wsZ-Dw-Hdy" firstAttribute="top" secondItem="gN3-7H-nYr" secondAttribute="top" id="qaF-ta-IoR"/>
                         <constraint firstItem="JSo-lN-bXL" firstAttribute="top" secondItem="ZDW-Ay-iZd" secondAttribute="bottom" constant="20" id="tb6-LJ-xFi"/>

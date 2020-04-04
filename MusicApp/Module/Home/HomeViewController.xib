@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
+                <outlet property="bottomAnchorCreateBar" destination="ilo-tJ-Qzz" id="G95-Tu-n7x"/>
+                <outlet property="createPLView" destination="Rw2-wf-1Hy" id="jln-D2-Hh3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,8 +18,65 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XM4-68-CZK">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="zYm-3G-ZQl"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWg-vc-Azn">
+                    <rect key="frame" x="0.0" y="250" width="375" height="417"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal playlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fU0-fg-aJs">
+                            <rect key="frame" x="10" y="10" width="124" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LIg-qx-TZe">
+                            <rect key="frame" x="317" y="-3.5" width="48" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="Vfj-eh-xBl"/>
+                                <constraint firstAttribute="width" constant="48" id="lQv-t9-uMH"/>
+                            </constraints>
+                            <state key="normal" title="Create"/>
+                            <connections>
+                                <action selector="createPlaylist:" destination="-1" eventType="touchUpInside" id="323-vx-U0L"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rw2-wf-1Hy" customClass="CreatePlayListView" customModule="MusicApp" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="477" width="375" height="110"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="110" id="STe-yk-vj2"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="LIg-qx-TZe" secondAttribute="trailing" constant="10" id="Oda-0B-8wF"/>
+                        <constraint firstItem="LIg-qx-TZe" firstAttribute="centerY" secondItem="fU0-fg-aJs" secondAttribute="centerY" id="T1w-7o-qqk"/>
+                        <constraint firstAttribute="trailing" secondItem="Rw2-wf-1Hy" secondAttribute="trailing" id="UO4-Ql-p95"/>
+                        <constraint firstItem="fU0-fg-aJs" firstAttribute="leading" secondItem="gWg-vc-Azn" secondAttribute="leading" constant="10" id="WAV-Kl-wQ2"/>
+                        <constraint firstItem="Rw2-wf-1Hy" firstAttribute="leading" secondItem="gWg-vc-Azn" secondAttribute="leading" id="Wy4-l7-Uh2"/>
+                        <constraint firstAttribute="bottom" secondItem="Rw2-wf-1Hy" secondAttribute="bottom" constant="-170" id="ilo-tJ-Qzz"/>
+                        <constraint firstItem="fU0-fg-aJs" firstAttribute="top" secondItem="gWg-vc-Azn" secondAttribute="top" constant="10" id="vbq-IC-cHe"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <point key="canvasLocation" x="138" y="154"/>
+            <constraints>
+                <constraint firstItem="XM4-68-CZK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="518-f2-YN8"/>
+                <constraint firstAttribute="trailing" secondItem="XM4-68-CZK" secondAttribute="trailing" id="Opd-jH-Rfj"/>
+                <constraint firstItem="XM4-68-CZK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Skw-0x-4oA"/>
+                <constraint firstItem="gWg-vc-Azn" firstAttribute="top" secondItem="XM4-68-CZK" secondAttribute="bottom" id="XRz-Ms-MgW"/>
+                <constraint firstAttribute="trailing" secondItem="gWg-vc-Azn" secondAttribute="trailing" id="gdF-gi-BuS"/>
+                <constraint firstAttribute="bottom" secondItem="gWg-vc-Azn" secondAttribute="bottom" id="kze-af-19n"/>
+                <constraint firstItem="gWg-vc-Azn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wCV-8f-bN9"/>
+            </constraints>
+            <point key="canvasLocation" x="136.80000000000001" y="152.47376311844079"/>
         </view>
     </objects>
 </document>

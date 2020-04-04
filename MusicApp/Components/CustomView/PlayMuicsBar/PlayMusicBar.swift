@@ -32,6 +32,7 @@ class PlayMusicBar: BaseViewXib {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var imgDisc: UIImageView!
     @IBOutlet weak var largeIndicator1: UIActivityIndicatorView!
+    @IBOutlet weak var containVolume: UIView!
     
     private var timer: Timer?
     private var prevY: CGFloat = 0
@@ -104,6 +105,10 @@ class PlayMusicBar: BaseViewXib {
         contentViewHeader.alpha = 0
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeGradientColor(notification:)), name: .ChangeGradientColor, object: nil)
         setupRemoteTransportControls()
+        
+        let volumeControl = MPVolumeView()
+        volumeControl.frame = containVolume.frame
+        self.view.addSubview(volumeControl);
     }
     
     deinit {
@@ -202,14 +207,12 @@ class PlayMusicBar: BaseViewXib {
             contentViewPlay.setGradient(startColor: gradientColor[0], secondColor: gradientColor[1])
         }
         
-        let volumeControl = MPVolumeView(frame: CGRect(x: (AppConstant.SREEEN_WIDTH - 250) / 2, y: containPlayView.frame.origin.y + containPlayView.bounds.height + 60 , width: 250, height: 120))
-        self.addSubview(volumeControl);
-        
         imgDisc.layer.cornerRadius = imgDisc.bounds.width/2
         imgDisc.clipsToBounds = true
         imgDisc.layer.borderWidth = 1.0
         imgDisc.layer.borderColor = UIColor.black.cgColor
         imgDisc.rotate(duration: 10)
+        
     }
     
     @objc func progressVideo() {
@@ -242,11 +245,10 @@ class PlayMusicBar: BaseViewXib {
     }
     
     @IBAction func onPressSetRate(_ sender: UIButton) {
-        
     }
     
     @IBAction func onPressFullScrenn(_ sender: UIButton) {
-
+        
     }
     
     @IBAction func onPressMusicOrVideo(_ sender: UIButton) {
@@ -302,19 +304,6 @@ class PlayMusicBar: BaseViewXib {
     @IBAction func onPressPrevVideo(_ sender: UIButton) {
         prevVideo()
     }
-    
-    @IBAction func onChangeVolume(_ sender: UISlider) {
-    }
-    func setSystemVolume(volume: Float) {
-        let volumeView = MPVolumeView()
-
-        for view in volumeView.subviews {
-            if (NSStringFromClass(view.classForCoder) == "MPVolumeSlider") {
-                let slider = view as! UISlider
-                slider.setValue(volume, animated: false)
-            }
-        }
-    }
 }
 
 extension PlayMusicBar: YTPlayerViewDelegate
@@ -340,23 +329,5 @@ extension PlayMusicBar: YTPlayerViewDelegate
         if state == .unstarted || state == .ended {
             nextVideo()
         }
-    }
-}
-
-extension MPVolumeView {
-    var volumeSlider:UISlider {
-        self.showsRouteButton = false
-        self.showsVolumeSlider = false
-        self.isHidden = true
-        var slider = UISlider()
-        for subview in self.subviews {
-            if subview is UISlider {
-                slider = subview as! UISlider
-                slider.isContinuous = false
-                (subview as! UISlider).value = AVAudioSession.sharedInstance().outputVolume
-                return slider
-            }
-        }
-        return slider
     }
 }
