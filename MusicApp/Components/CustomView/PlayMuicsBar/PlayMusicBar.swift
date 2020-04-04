@@ -38,6 +38,7 @@ class PlayMusicBar: BaseViewXib {
     @IBOutlet weak var containVolume: UIView!
     @IBOutlet weak var btnHalf: UIButton!
     @IBOutlet weak var btnContentFull: UIButton!
+    @IBOutlet weak var btnMaximum: UIButton!
     
     private var timer: Timer?
     private var prevY: CGFloat = 0
@@ -280,7 +281,6 @@ private extension PlayMusicBar
     }
     
     func prevVideo() {
-        
         if isRepeat {
             self.videoPlayer.seek(toSeconds: 0, allowSeekAhead: true)
         } else {
@@ -321,7 +321,12 @@ extension PlayMusicBar
     }
     
     @IBAction func onPressScreenShot(_ sender: UIButton) {
-        
+        let bounds = UIScreen.main.bounds
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+        self.drawHierarchy(in: bounds, afterScreenUpdates: false)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        let activityViewController = UIActivityViewController(activityItems: [img ?? UIImage()], applicationActivities: nil)
+        self.parentViewController!.present(activityViewController, animated: true, completion: nil)
     }
     
     @IBAction func onPressRandom(_ sender: UIButton) {
@@ -347,7 +352,8 @@ extension PlayMusicBar
     }
     
     @IBAction func onPressSetRate(_ sender: UIButton) {
-        
+        let selectRate = SelectRatePopUp()
+        selectRate.showPopUp()
     }
     
     @IBAction func onPressFullScrenn(_ sender: UIButton) {
