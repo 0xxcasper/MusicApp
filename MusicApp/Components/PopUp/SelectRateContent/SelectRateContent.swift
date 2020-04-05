@@ -29,7 +29,9 @@ class SelectRateContent: BaseViewXib {
         btnCancel.isUserInteractionEnabled = true
         pickerView.dataSource = self
         pickerView.delegate = self
-        
+        btnCancel.setTitle(LocalizableKey.cancel.localizeLanguage, for: .normal)
+        btnApply.setTitle(LocalizableKey.apply.localizeLanguage, for: .normal)
+        lblRate.text = LocalizableKey.rate.localizeLanguage
     }
     
     override func layoutSubviews() {

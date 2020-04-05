@@ -80,18 +80,24 @@ class MainTabbar: UITabBarController {
         homeVC.title = LocalizableKey.playList.localizeLanguage
         homeVC.tabBarItem.image = #imageLiteral(resourceName: "ic_music")
         let homeNC = BaseNavigationController(rootViewController: homeVC)
+        homeNC.tabBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "playlists"), tag: 0)
+        homeNC.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         homeNC.navigationBar.prefersLargeTitles = true
         
         let searchVC = SearchRouter.createModule()
         searchVC.title = LocalizableKey.search.localizeLanguage
         searchVC.tabBarItem.image = #imageLiteral(resourceName: "ic_search")
         let searchNC = BaseNavigationController(rootViewController: searchVC)
+        searchNC.tabBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "search"), tag: 1)
+        searchNC.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         searchNC.navigationBar.prefersLargeTitles = true
 
         let moreVC = MoreRouter.createModule()
         moreVC.title = LocalizableKey.more.localizeLanguage
         moreVC.tabBarItem.image = #imageLiteral(resourceName: "ic_more")
         let moreNC = BaseNavigationController(rootViewController: moreVC)
+        moreNC.tabBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "more"), tag: 2)
+        moreNC.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         moreNC.navigationBar.prefersLargeTitles = true
         
         viewControllers = [ homeNC, searchNC, moreNC ]

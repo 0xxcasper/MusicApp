@@ -45,7 +45,8 @@ class PlayMusicBar: BaseViewXib {
     private var prevY: CGFloat = 0
     private var reproductor = AVAudioPlayer()
     private let volumeControl = MPVolumeView()
-
+    private var currentRate: Float = 1.0
+    
     var type: PlaylistType = .search
     
     var items: [Any] = []
@@ -440,11 +441,13 @@ extension PlayMusicBar: YTPlayerViewDelegate, SelectRatePopUpDelegate
 {
     func didSelectRate(rate: Float) {
         self.btnRate.setTitle("\(rate)x", for: .normal)
+        self.currentRate = rate
         self.videoPlayer.setPlaybackRate(rate)
     }
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         self.isPause = false
+        self.videoPlayer.setPlaybackRate(currentRate)
         self.setUpSliderView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
            self.indicator.isHidden = true
