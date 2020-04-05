@@ -13,7 +13,9 @@ import UIKit
 class PersonPlayListViewController: BaseViewController, PersonPlayListViewProtocol {
 
 	var presenter: PersonPlayListPresenterProtocol?
+    
     var playList: PlaylistModel! = nil
+    
     let headerView = HeaderView()
 
     @IBOutlet weak var tbView: UITableView!
@@ -25,12 +27,21 @@ class PersonPlayListViewController: BaseViewController, PersonPlayListViewProtoc
     
     private func setUpViews() {
         tbView.registerXibFile(PersonHeaderCell.self)
+        tbView.registerXibFile(TrendingTbvCell.self)
         tbView.dataSource = self
         tbView.delegate = self
         tbView.separatorStyle = .none
         tbView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 45, right: 0)
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if(playList != nil) {
+            self.playList = PlaylistModel.getItemWith(id: playList.id)
+            tbView.reloadData()
+        }
     }
     
     override func didChangeLanguage() {
@@ -56,23 +67,61 @@ extension PersonPlayListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         headerView.delegate = self
+        headerView.lblName.text = playList.name
         if (playList.items.count > 0) {
             let item = playList.items.last
             headerView.img.loadImageFromInternet(link: item!.thumbnail, completion: nil)
             headerView.lblTracks.text = "\(playList.items.count) tracks"
+            headerView.btnPlay.setTitle("Play",for: .normal)
         } else {
+            headerView.img.image = #imageLiteral(resourceName: "ic_icon")
             headerView.lblTracks.text = "0 tracks"
+            headerView.btnPlay.titleLabel?.text = "Search"
+            headerView.btnPlay.setTitle("Search",for: .normal)
+
         }
         return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            let item = self.playList.items[indexPath.row]
+            self.playList.removeItem(item: item)
+            self.playList = PlaylistModel.getItemWith(id: self.playList.id)
+            self.tbView.reloadData()
+        }
+        return [deleteAction]
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = ["items": self.playList.items,
+                    "currentIndex": indexPath.row,
+                    "type":  PlaylistType.playlist] as [String : Any]
+        NotificationCenter.default.post(name: .OpenPlayBar, object: nil, userInfo: data)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 270
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65
     }
 }
 
 extension PersonPlayListViewController: HeaderViewDelegate {
     func onPressPlay() {
-        let data = ["items": playList.items,
-                    "currentIndex": 0,
-                    "type": PlaylistType.playlist] as [String : Any]
-        NotificationCenter.default.post(name: .OpenPlayBar, object: nil, userInfo: data)
+        if(self.playList != nil) {
+            if(self.playList.items.count > 0) {
+                let data = ["items": playList.items,
+                            "currentIndex": 0,
+                            "type": PlaylistType.playlist] as [String : Any]
+                NotificationCenter.default.post(name: .OpenPlayBar, object: nil, userInfo: data)
+            } else {
+                self.tabBarController?.selectedIndex = 1
+            }
+        }
+
     }
 
 }

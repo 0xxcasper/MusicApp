@@ -27,4 +27,9 @@ struct LocalizableKey {
 
     static let changeLanguage = "ChangeLanguage"
     static let changeRegion = "ChangeRegion"
+    static let recentPlayed = "RecentPlayed"
+    static let personPlaylist = "PlayListPerson"
+    static let newPlaylist = "NewPlaylist"
+    static let create = "Create"
+    static let typePlaylistName = "TypePlaylistName"
 }

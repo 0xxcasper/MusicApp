@@ -22,3 +22,9 @@
 
 "ChangeLanguage" = "Đổi ngôn ngữ";
 "ChangeRegion" = "Đổi quốc gia bạn đang sinh sống";
+
+"RecentPlayed" = "Play gần đây";
+"PlayListPerson" = "Playlist cá nhân";
+"NewPlaylist" = "Playlist mới";
+"Create" = "Tạo";
+"TypePlaylistName" = "Nhập tên playlist";

@@ -10,7 +10,7 @@
 
 import UIKit
 import SwipeCellKit
-
+import RealmSwift
 class HomeViewController: BaseViewController, HomeViewProtocol {
 
 	var presenter: HomePresenterProtocol?
@@ -20,34 +20,88 @@ class HomeViewController: BaseViewController, HomeViewProtocol {
             tbView.reloadData()
         }
     }
+    @IBOutlet weak var topHeaderView: NSLayoutConstraint!
+    @IBOutlet weak var heightCollectionView: NSLayoutConstraint!
+    @IBOutlet weak var lblRecent: UILabel!
+    @IBOutlet weak var lblPersonPlaylist: UILabel!
+    
+    private var recentList: [ItemPlayList] = [] {
+        didSet{
+            if(recentList.count == 0) {
+                self.view.layoutIfNeeded()
+                UIView.animate(withDuration: 0.1) {
+                    self.view.layoutIfNeeded()
+                    self.heightCollectionView.constant = 0
+                    self.view.layoutIfNeeded()
+                }
+            } else {
+                self.view.layoutIfNeeded()
+                UIView.animate(withDuration: 0.1) {
+                    self.view.layoutIfNeeded()
+                    self.heightCollectionView.constant = 200
+                    self.view.layoutIfNeeded()
+                }
+            }
+            collectionView.reloadData()
+        }
+    }
 
     @IBOutlet weak var createPLView: CreatePlayListView!
     @IBOutlet weak var bottomAnchorCreateBar: NSLayoutConstraint!
     @IBOutlet weak var tbView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createPLView.delegate = self
-        self.setupView()
+        self.setupTbView()
+        self.setupCollectionView()
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        
+        self.setText()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.getPlayListData()
+        self.getRecentData()
     }
     
-    private func setupView() {
+    override func didChangeLanguage() {
+        self.setText()
+    }
+    
+    func setText() {
+        lblRecent.text = LocalizableKey.recentPlayed.localizeLanguage
+        lblPersonPlaylist.text = LocalizableKey.personPlaylist.localizeLanguage
+    }
+    
+    private func setupTbView() {
         tbView.delegate = self
         tbView.dataSource = self
         tbView.rowHeight = 60
         tbView.separatorStyle = .none
         tbView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 45, right: 0)
         tbView.registerXibFile(PlayListCell.self)
+        topHeaderView.constant = AppConstant.STATUS_BAR_TOP + AppConstant.NAVI_BAR_HEIGHT
+    }
+    
+    private func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(nibWithCellClass: RecentCell.self)
     }
     
     func getPlayListData() {
         self.data = []
         self.data = Array(PlaylistModel.getAll())
+    }
+    
+    func getRecentData() {
+        self.recentList = []
+        self.recentList = Array(ItemPlayList.getAll()).reversed()
     }
     
     override func keyboardWillShow(_ notification: NSNotification) {
@@ -109,6 +163,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let item = data[indexPath.row]
         cell.lblName.text = item.name
         cell.lblNumber.text = String(item.items.count) + " Tracks"
+        
+        if(item.items.count > 0) {
+            cell.img.loadImageFromInternet(link: item.items.last!.thumbnail, completion: nil)
+        } else {
+            cell.img.image = #imageLiteral(resourceName: "ic_icon")
+        }
         return cell
     }
     
@@ -144,3 +204,30 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 }
 
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return recentList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withClass: RecentCell.self, for: indexPath)
+        let item = recentList[indexPath.row]
+        cell.lblName.text = item.name + " | " + item.channelTitle
+        if(item.thumbnail != "") {
+            cell.img.loadImageFromInternet(link: item.thumbnail, completion: nil)
+        } else {
+            cell.img.image = #imageLiteral(resourceName: "ic_icon")
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.height * 0.8, height: collectionView.height)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = ["items": self.recentList,
+                    "currentIndex": indexPath.row,
+                    "type":  PlaylistType.playlist] as [String : Any]
+        NotificationCenter.default.post(name: .OpenPlayBar, object: nil, userInfo: data)
+    }
+}

@@ -92,15 +92,15 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Kyc-NM-iFB" secondAttribute="bottom" id="5sg-Zx-4Nu"/>
-                <constraint firstItem="Srq-71-VNU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="RFW-Ti-PDX"/>
-                <constraint firstItem="Kyc-NM-iFB" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="dFm-7I-eel"/>
+                <constraint firstItem="Srq-71-VNU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="RFW-Ti-PDX"/>
+                <constraint firstItem="Kyc-NM-iFB" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="dFm-7I-eel"/>
                 <constraint firstItem="Kyc-NM-iFB" firstAttribute="top" secondItem="Srq-71-VNU" secondAttribute="bottom" id="fiq-dg-o3x"/>
-                <constraint firstItem="Kyc-NM-iFB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mYU-bY-Ane"/>
+                <constraint firstItem="Kyc-NM-iFB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mYU-bY-Ane"/>
                 <constraint firstItem="Srq-71-VNU" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1:2" id="rqj-xV-EDX"/>
-                <constraint firstItem="Srq-71-VNU" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="tSs-Bh-nn0"/>
+                <constraint firstItem="Srq-71-VNU" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="tSs-Bh-nn0"/>
                 <constraint firstItem="Srq-71-VNU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="uGY-g5-aI9"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <viewLayoutGuide key="safeArea" id="s5U-mj-E4k"/>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </view>
     </objects>

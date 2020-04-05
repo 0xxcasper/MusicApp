@@ -10,6 +10,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreatePlayListView" customModule="MusicApp" customModuleProvider="target">
             <connections>
                 <outlet property="btnApply" destination="BXF-2c-xej" id="8HE-7K-sXA"/>
+                <outlet property="btnCancel" destination="Xvg-RB-nTK" id="HoI-R5-h8d"/>
+                <outlet property="lblTitle" destination="3bo-mr-END" id="NDB-Gb-2hf"/>
                 <outlet property="txfInput" destination="p8Z-aC-zVP" id="ZSC-hQ-0Xz"/>
             </connections>
         </placeholder>

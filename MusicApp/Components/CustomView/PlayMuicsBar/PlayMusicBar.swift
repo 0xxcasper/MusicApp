@@ -38,8 +38,6 @@ class PlayMusicBar: BaseViewXib {
     @IBOutlet weak var containVolume: UIView!
     @IBOutlet weak var btnHalf: UIButton!
     @IBOutlet weak var btnContentFull: UIButton!
-    @IBOutlet weak var addPlayListView: AddPlayListView!
-    @IBOutlet weak var bottomAddPlayList: NSLayoutConstraint!
     @IBOutlet weak var btnMaximum: UIButton!
     @IBOutlet weak var btnRate: UIButton!
     
@@ -63,6 +61,8 @@ class PlayMusicBar: BaseViewXib {
                     self.lblChanelName.text = video.snippet!.channelTitle
                     self.img.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "", completion: nil)
                     self.imgDisc.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "", completion: nil)
+                    
+                    let _ = ItemPlayList.add(item: ItemPlayList(name: video.snippet!.title ?? "", id: video.id ?? "", thumbnail: video.snippet!.thumbnails!.defaults!.url ?? "", channelTitle: video.snippet!.channelTitle ?? ""))
                 }
             } else if type == .search {
                 if items.count > 0, let itemVideos: [ItemSearch] = items as? [ItemSearch] {
@@ -73,6 +73,7 @@ class PlayMusicBar: BaseViewXib {
                     self.lblChanelName.text = video.snippet!.channelTitle
                     self.img.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "", completion: nil)
                     self.imgDisc.loadImageFromInternet(link: video.snippet!.thumbnails!.defaults!.url ?? "", completion: nil)
+                    let _ = ItemPlayList.add(item: ItemPlayList(name: video.snippet!.title ?? "", id: video.id!.videoId ?? "", thumbnail: video.snippet!.thumbnails!.defaults!.url ?? "", channelTitle: video.snippet!.channelTitle ?? ""))
                 }
             } else {
                 if items.count > 0, let itemVideos: [ItemPlayList] = items as? [ItemPlayList] {
@@ -83,6 +84,7 @@ class PlayMusicBar: BaseViewXib {
                     self.lblChanelName.text = video.channelTitle
                     self.img.loadImageFromInternet(link: video.thumbnail, completion: nil)
                     self.imgDisc.loadImageFromInternet(link: video.thumbnail, completion: nil)
+                    let _ = ItemPlayList.add(item: video)
                 }
             }
         }
@@ -170,8 +172,6 @@ class PlayMusicBar: BaseViewXib {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeGradientColor(notification:)), name: .ChangeGradientColor, object: nil)
         setupRemoteTransportControls()
         self.containVolume.addSubview(volumeControl);
-        self.addPlayListView.alpha = 0
-        self.addPlayListView.delegate = self
     }
     
     override func layoutSubviews() {
@@ -349,7 +349,7 @@ extension PlayMusicBar
     }
     
     @IBAction func onPressLike(_ sender: UIButton) {
-        //sender.tintColor = UIColor.systemPink
+//        sender.tintColor = UIColor.systemPink
     }
     
     @IBAction func onPressRepeat(_ sender: UIButton) {
@@ -358,15 +358,10 @@ extension PlayMusicBar
     }
     
     @IBAction func onPressSaveToPlaylist(_ sender: UIButton) {
-        self.layoutIfNeeded()
-        self.addPlayListView.alpha = 0
-        UIView.animate(withDuration: 0.3, animations: {
-            self.layoutIfNeeded()
-            self.addPlayListView.alpha = 1
-            self.bottomAddPlayList.constant = 0
-            self.layoutIfNeeded()
-        }) { (_) in
-        }
+        let addPlayList = AddPlayListPopup()
+        addPlayList.song = getItemAdd()
+        addPlayList.delegate = self
+        addPlayList.showPopUp()
     }
     
     @IBAction func onPressSeeHalf(_ sender: UIButton) {
@@ -474,17 +469,30 @@ extension PlayMusicBar: YTPlayerViewDelegate, SelectRatePopUpDelegate
     }
 }
 
-
 extension PlayMusicBar: AddPlayListViewDelegate {
-    func hideAddPlayListView() {
-        self.layoutIfNeeded()
-        self.addPlayListView.alpha = 1
-        UIView.animate(withDuration: 0.3, animations: {
-            self.layoutIfNeeded()
-            self.addPlayListView.alpha = 0
-            self.bottomAddPlayList.constant = -400
-            self.layoutIfNeeded()
-        }) { (_) in
+    func showCreatePlayList() {
+        let viewPopUp = CreatePlayListPopup()
+        viewPopUp.song = self.getItemAdd()
+        viewPopUp.showPopUp()
+    }
+    
+    
+    func getItemAdd() -> ItemPlayList {
+        if type == .trending {
+            if items.count > 0, let itemVideos: [Item] = items as? [Item] {
+                let video = itemVideos[currentIndex]
+                return ItemPlayList(name: video.snippet!.title ?? "", id: video.id ?? "", thumbnail: video.snippet!.thumbnails!.defaults!.url ?? "", channelTitle: video.snippet!.channelTitle ?? "")
+            }
+        } else if type == .search {
+            if items.count > 0, let itemVideos: [ItemSearch] = items as? [ItemSearch] {
+                let video = itemVideos[currentIndex]
+                return ItemPlayList(name: video.snippet!.title ?? "", id: video.id!.videoId ?? "", thumbnail: video.snippet!.thumbnails!.defaults!.url ?? "", channelTitle: video.snippet!.channelTitle ?? "")
+            }
+        } else {
+            if items.count > 0, let itemVideos: [ItemPlayList] = items as? [ItemPlayList] {
+                return itemVideos[currentIndex]
+            }
         }
+        return ItemPlayList(name: "", id: "", thumbnail: "", channelTitle: "")
     }
 }

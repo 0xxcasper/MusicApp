@@ -13,6 +13,7 @@ class PlayListCell: UITableViewCell {
 
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblNumber: UILabel!
+    @IBOutlet weak var img: UIImageView!
     
     var row: Int = 0
     override func awakeFromNib() {

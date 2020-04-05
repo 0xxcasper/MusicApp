@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="btnPlay" destination="URm-Gf-VZX" id="HWU-7f-aLZ"/>
                 <outlet property="img" destination="OBY-cr-Ads" id="XVP-OG-M4c"/>
+                <outlet property="lblName" destination="8Z0-L0-SI7" id="Vf2-LS-VQk"/>
                 <outlet property="lblTracks" destination="IOf-vZ-1pf" id="Bcj-a4-1fI"/>
             </connections>
         </placeholder>

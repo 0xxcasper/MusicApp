@@ -24,6 +24,11 @@
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" image="bg_trending" translatesAutoresizingMaskIntoConstraints="NO" id="DJv-KC-atO">
                         <rect key="frame" x="16" y="44.5" width="342" height="481.5"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENc-Yx-Xee">
                         <rect key="frame" x="16" y="44.5" width="342" height="481.5"/>
@@ -55,6 +60,11 @@
                             <constraint firstItem="Plh-Z4-V2c" firstAttribute="leading" secondItem="ENc-Yx-Xee" secondAttribute="leading" id="PEZ-k1-G9d"/>
                             <constraint firstItem="6yO-2s-EVG" firstAttribute="top" secondItem="Plh-Z4-V2c" secondAttribute="bottom" constant="5" id="nbq-d8-HOR"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l5A-Jb-ZxQ">
                         <rect key="frame" x="8" y="0.0" width="358" height="30"/>

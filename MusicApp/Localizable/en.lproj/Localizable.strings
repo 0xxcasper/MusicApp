@@ -22,3 +22,10 @@
 
 "ChangeLanguage" = "Change Language";
 "ChangeRegion" = "Change country you're living";
+
+"RecentPlayed" = "Recently played";
+"PlayListPerson" = "Personal playlist";
+"NewPlaylist" = "New playlist";
+"Create" = "Create";
+"TypePlaylistName" = "Type playlist name";
+

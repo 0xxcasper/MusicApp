@@ -17,6 +17,7 @@ class HeaderView: BaseViewXib {
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var btnPlay: UIButton!
     @IBOutlet weak var lblTracks: UILabel!
+    @IBOutlet weak var lblName: UILabel!
     
     weak var delegate: HeaderViewDelegate!
     

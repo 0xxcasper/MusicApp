@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 class MainTabbar: UITabBarController {
     
@@ -45,8 +46,19 @@ class MainTabbar: UITabBarController {
         }
         
         if let data = notification.userInfo as? [String: Any] {
-            playBar.items = data["items"] as! [Any]
             playBar.type = data["type"] as! PlaylistType
+            switch playBar.type {
+            case .playlist:
+                let items = data["items"]
+                if(items is List<ItemPlayList>) {
+                    playBar.items = Array(items as! List<ItemPlayList>)
+                } else if (items is [ItemPlayList]) {
+                    playBar.items = items as! [Any]
+                }
+                break
+            default:
+                playBar.items = data["items"] as! [Any]
+            }
             playBar.currentIndex = data["currentIndex"] as! Int
             playBar.animateLeftToRight()
         }
@@ -66,16 +78,19 @@ class MainTabbar: UITabBarController {
         
         let homeVC = HomeRouter.createModule()
         homeVC.title = LocalizableKey.playList.localizeLanguage
+        homeVC.tabBarItem.image = #imageLiteral(resourceName: "ic_music")
         let homeNC = BaseNavigationController(rootViewController: homeVC)
         homeNC.navigationBar.prefersLargeTitles = true
         
         let searchVC = SearchRouter.createModule()
         searchVC.title = LocalizableKey.search.localizeLanguage
+        searchVC.tabBarItem.image = #imageLiteral(resourceName: "ic_search")
         let searchNC = BaseNavigationController(rootViewController: searchVC)
         searchNC.navigationBar.prefersLargeTitles = true
 
         let moreVC = MoreRouter.createModule()
         moreVC.title = LocalizableKey.more.localizeLanguage
+        moreVC.tabBarItem.image = #imageLiteral(resourceName: "ic_more")
         let moreNC = BaseNavigationController(rootViewController: moreVC)
         moreNC.navigationBar.prefersLargeTitles = true
         
@@ -109,7 +124,6 @@ class BaseNavigationController : UINavigationController, UIGestureRecognizerDele
 extension UITabBar {
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
         super.sizeThatFits(size)
-        
         var sizeThatFits = super.sizeThatFits(size)
         sizeThatFits.height = AppConstant.HEIGTH_TABBAR
         return sizeThatFits

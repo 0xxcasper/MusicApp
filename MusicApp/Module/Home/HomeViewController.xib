@@ -10,8 +10,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
                 <outlet property="bottomAnchorCreateBar" destination="ilo-tJ-Qzz" id="G95-Tu-n7x"/>
+                <outlet property="collectionView" destination="D8g-8v-kqx" id="RYl-aD-BXE"/>
                 <outlet property="createPLView" destination="Rw2-wf-1Hy" id="jln-D2-Hh3"/>
+                <outlet property="heightCollectionView" destination="CPO-nY-9pG" id="dpn-FN-6Dt"/>
+                <outlet property="lblPersonPlaylist" destination="fU0-fg-aJs" id="m1Z-Fs-Ofm"/>
+                <outlet property="lblRecent" destination="yK9-nr-t19" id="f9a-JN-2jb"/>
                 <outlet property="tbView" destination="eFj-mV-Jll" id="831-Ww-aV9"/>
+                <outlet property="topHeaderView" destination="j9y-qk-Sa4" id="awE-hL-Gx6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,14 +26,41 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XM4-68-CZK">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="D8g-8v-kqx">
+                            <rect key="frame" x="0.0" y="50" width="375" height="200"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="CPO-nY-9pG"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="TSy-CO-JJZ">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recently played" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yK9-nr-t19">
+                            <rect key="frame" x="10" y="0.0" width="115" height="50"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="250" id="zYm-3G-ZQl"/>
+                        <constraint firstItem="yK9-nr-t19" firstAttribute="leading" secondItem="XM4-68-CZK" secondAttribute="leading" constant="10" id="AZP-AA-Vyz"/>
+                        <constraint firstItem="D8g-8v-kqx" firstAttribute="top" secondItem="XM4-68-CZK" secondAttribute="top" constant="50" id="H1l-oM-nRf"/>
+                        <constraint firstAttribute="trailing" secondItem="D8g-8v-kqx" secondAttribute="trailing" id="Ssj-XX-ttx"/>
+                        <constraint firstAttribute="bottom" secondItem="D8g-8v-kqx" secondAttribute="bottom" constant="10" id="fQh-KA-6Gy"/>
+                        <constraint firstItem="yK9-nr-t19" firstAttribute="top" secondItem="XM4-68-CZK" secondAttribute="top" id="kYR-vE-1TG"/>
+                        <constraint firstItem="D8g-8v-kqx" firstAttribute="leading" secondItem="XM4-68-CZK" secondAttribute="leading" id="toz-s2-zVg"/>
+                        <constraint firstItem="D8g-8v-kqx" firstAttribute="top" secondItem="yK9-nr-t19" secondAttribute="bottom" id="uN5-3N-y9H"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWg-vc-Azn">
-                    <rect key="frame" x="0.0" y="250" width="375" height="417"/>
+                    <rect key="frame" x="0.0" y="260" width="375" height="407"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal playlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fU0-fg-aJs">
                             <rect key="frame" x="10" y="10" width="117.5" height="19.5"/>
@@ -54,14 +86,14 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rw2-wf-1Hy" customClass="CreatePlayListView" customModule="MusicApp" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="477" width="375" height="110"/>
+                            <rect key="frame" x="0.0" y="467" width="375" height="110"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="110" id="STe-yk-vj2"/>
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eFj-mV-Jll">
-                            <rect key="frame" x="0.0" y="44" width="375" height="433"/>
+                            <rect key="frame" x="0.0" y="44" width="375" height="423"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>
@@ -85,11 +117,11 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="XM4-68-CZK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="518-f2-YN8"/>
                 <constraint firstAttribute="trailing" secondItem="XM4-68-CZK" secondAttribute="trailing" id="Opd-jH-Rfj"/>
                 <constraint firstItem="XM4-68-CZK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Skw-0x-4oA"/>
                 <constraint firstItem="gWg-vc-Azn" firstAttribute="top" secondItem="XM4-68-CZK" secondAttribute="bottom" id="XRz-Ms-MgW"/>
                 <constraint firstAttribute="trailing" secondItem="gWg-vc-Azn" secondAttribute="trailing" id="gdF-gi-BuS"/>
+                <constraint firstItem="XM4-68-CZK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="j9y-qk-Sa4"/>
                 <constraint firstAttribute="bottom" secondItem="gWg-vc-Azn" secondAttribute="bottom" id="kze-af-19n"/>
                 <constraint firstItem="gWg-vc-Azn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wCV-8f-bN9"/>
             </constraints>

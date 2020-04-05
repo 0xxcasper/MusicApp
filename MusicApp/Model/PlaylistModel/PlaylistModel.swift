@@ -16,7 +16,7 @@ import RealmSwift
     
     dynamic var id = UUID().uuidString
     dynamic var name = ""
-    dynamic var items: [ItemPlayList] = []
+    dynamic var items = List<ItemPlayList>()
 
     override static func primaryKey() -> String? {
         return PlaylistModel.Property.id.rawValue
@@ -38,6 +38,16 @@ extension PlaylistModel {
             realm.add(playList)
         }
         return playList
+    }
+    
+    static func getItemWith(id: String, in realm: Realm = try! Realm()) -> PlaylistModel {
+        let list = realm.objects(PlaylistModel.self)
+        for value in list {
+            if(value.id == id) {
+                return value
+            }
+        }
+        return PlaylistModel("")
     }
     
     static func getAll(in realm: Realm = try! Realm()) -> Results<PlaylistModel> {
@@ -79,16 +89,45 @@ extension PlaylistModel {
 }
 
 
-class ItemPlayList {
-    var name: String = ""
-    var id: String = ""
-    var thumbnail: String = ""
-    var channelTitle: String = ""
+@objcMembers class ItemPlayList: Object {
+
+    dynamic var name: String = ""
+    dynamic var id: String = ""
+    dynamic var thumbnail: String = ""
+    dynamic var channelTitle: String = ""
     
-    init(name: String, id: String, thumbnail: String, channelTitle: String) {
+    convenience init(name: String, id: String, thumbnail: String, channelTitle: String) {
+        self.init()
         self.name = name
         self.id = id
         self.thumbnail = thumbnail
         self.channelTitle = channelTitle
+    }
+}
+
+extension ItemPlayList {
+    
+    static func getAll(in realm: Realm = try! Realm()) -> Results<ItemPlayList> {
+        return realm.objects(ItemPlayList.self)
+    }
+    
+    static func add(item: ItemPlayList, in realm: Realm = try! Realm()) -> ItemPlayList {
+        let _item = Array(ItemPlayList.getAll()).filter { $0.id == item.id }
+        if(_item.count == 0) {
+            if(ItemPlayList.getAll().count >= 50) {
+                ItemPlayList.getAll()[0].delete()
+            }
+            try! realm.write {
+                realm.add(item)
+            }
+        }
+        return item
+    }
+    
+    func delete() {
+        guard let realm = realm else { return }
+        try! realm.write {
+            realm.delete(self)
+        }
     }
 }
