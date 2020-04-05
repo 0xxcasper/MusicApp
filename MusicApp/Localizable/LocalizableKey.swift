@@ -17,6 +17,8 @@ struct LocalizableKey {
     
     static let searchMusic = "SearchMusic"
     static let cancel = "Cancel"
+    static let apply = "Apply"
+    static let rate = "Rate"
     
     static let trending = "Trending"
     static let seeAll = "SeeAll"
