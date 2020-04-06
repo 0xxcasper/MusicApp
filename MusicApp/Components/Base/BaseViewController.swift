@@ -65,7 +65,7 @@ class BaseViewController: UIViewController {
     
     func setUpNavigation() {
         guard let navigationController = self.navigationController else { return }
-        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController.navigationBar.setBackgroundImage(UIImage(named: "IMG_6722"), for: .default)
         navigationController.navigationBar.shadowImage = UIImage()
         navigationController.navigationBar.isTranslucent = false
         navigationController.navigationBar.isHidden = false

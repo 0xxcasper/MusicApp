@@ -43,7 +43,7 @@ class PlayMusicBar: BaseViewXib {
     
     private var timer: Timer?
     private var prevY: CGFloat = 0
-    private var reproductor = AVAudioPlayer()
+    private var player = AVAudioPlayer()
     private let volumeControl = MPVolumeView()
     private var currentRate: Float = 1.0
     
@@ -173,6 +173,7 @@ class PlayMusicBar: BaseViewXib {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeGradientColor(notification:)), name: .ChangeGradientColor, object: nil)
         setupRemoteTransportControls()
         self.containVolume.addSubview(volumeControl);
+        self.setupNotifications()
     }
     
     override func layoutSubviews() {
@@ -497,5 +498,81 @@ extension PlayMusicBar: AddPlayListViewDelegate {
             }
         }
         return ItemPlayList(name: "", id: "", thumbnail: "", channelTitle: "")
+    }
+}
+
+
+extension PlayMusicBar {
+    func setupNotifications() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(handleInterruption),
+                                       name: AVAudioSession.interruptionNotification,
+                                       object: nil)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(handleRouteChange),
+                                       name: AVAudioSession.routeChangeNotification,
+                                       object: nil)
+    }
+
+    @objc func handleInterruption(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+            let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
+                return
+        }
+
+        if type == .began {
+            print("Interruption began")
+            // Interruption began, take appropriate actions
+        }
+            
+        else if type == .ended {
+            if let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt {
+                let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
+                if options.contains(.shouldResume) {
+                    // Interruption Ended - playback should resume
+                    print("Interruption Ended - playback should resume")
+                    if (self.videoPlayer.playerState() != .playing) {
+                        self.videoPlayer.playVideo()
+                    }
+                } else {
+                    // Interruption Ended - playback should NOT resume
+                    print("Interruption Ended - playback should NOT resume")
+                    self.videoPlayer.playVideo()
+                }
+            }
+        }
+    }
+    
+    @objc func handleRouteChange(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
+            let reason = AVAudioSession.RouteChangeReason(rawValue:reasonValue) else {
+                return
+        }
+        switch reason {
+        case .newDeviceAvailable:
+            let session = AVAudioSession.sharedInstance()
+            for output in session.currentRoute.outputs where output.portType == AVAudioSession.Port.headphones {
+                print("headphones connected")
+                DispatchQueue.main.sync {
+                    self.videoPlayer.playVideo()
+                }
+                break
+            }
+        case .oldDeviceUnavailable:
+            if let previousRoute =
+                userInfo[AVAudioSessionRouteChangePreviousRouteKey] as? AVAudioSessionRouteDescription {
+                for output in previousRoute.outputs where output.portType == AVAudioSession.Port.headphones {
+                    print("headphones disconnected")
+                    DispatchQueue.main.sync {
+                        self.videoPlayer.pauseVideo()
+                    }
+                    break
+                }
+            }
+        default: ()
+        }
     }
 }

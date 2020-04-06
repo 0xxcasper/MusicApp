@@ -46,6 +46,7 @@ class SearchViewController: BaseViewController {
         setTitle(title: LocalizableKey.search.localizeLanguage)
         setUpViews()
         setUpTbView()
+        self.setUpNavigation()
     }
     
     private func setUpViews() {
@@ -63,7 +64,7 @@ class SearchViewController: BaseViewController {
         tbView.dataSource = self
         tbView.delegate = self
         tbView.contentInsetAdjustmentBehavior = .always
-
+        searchVC.searchBar.setPlaceholder(textColor: .white)
         tbView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 45, right: 0)
     }
     
@@ -74,7 +75,12 @@ class SearchViewController: BaseViewController {
     
     override func didChangeLanguage() {
         searchVC.searchBar.placeholder = LocalizableKey.searchMusic.localizeLanguage
+        searchVC.searchBar.setPlaceholder(textColor: .white)
         setTitle(title: LocalizableKey.search.localizeLanguage)
+    }
+    
+    func checkIsSearch() -> Bool {
+        return searchVC.searchBar.text != nil && searchVC.searchBar.text != ""
     }
 }
 
@@ -102,11 +108,13 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate, Tren
             }
         } else {
             let cell = tableView.dequeueTableCell(SearchCell.self)
-            let item = results[indexPath.row]
-            if let snippet = item.snippet, let thumbnails = snippet.thumbnails {
-                cell.img.loadImageFromInternet(link: thumbnails.defaults!.url!, completion: nil)
-                cell.lblTitle.text = snippet.title
-                cell.lblChanel.text = snippet.channelTitle
+            if(results.count - 1 >= indexPath.row) {
+                let item = results[indexPath.row]
+                if let snippet = item.snippet, let thumbnails = snippet.thumbnails {
+                    cell.img.loadImageFromInternet(link: thumbnails.defaults!.url!, completion: nil)
+                    cell.lblTitle.text = snippet.title
+                    cell.lblChanel.text = snippet.channelTitle
+                }
             }
             return cell
         }
@@ -178,6 +186,6 @@ extension SearchViewController: UISearchBarDelegate
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        isSearch = false
+        self.view.endEditing(true)
     }
 }
