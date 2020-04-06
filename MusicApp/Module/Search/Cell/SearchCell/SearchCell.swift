@@ -8,21 +8,30 @@
 
 import UIKit
 
+protocol SearchCellDelegate: class {
+    func addPlayList(item: ItemPlayList)
+}
+
 class SearchCell: BaseTableViewCell {
 
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblChanel: UILabel!
     
+    weak var delegate: SearchCellDelegate?
+    var item: ItemPlayList! = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
+    @IBAction func pressAddPlayList(_ sender: Any) {
+        if(self.item != nil) {
+            self.delegate?.addPlayList(item: self.item)
+        }
+    }
 }

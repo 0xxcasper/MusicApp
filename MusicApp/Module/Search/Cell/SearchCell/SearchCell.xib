@@ -35,6 +35,17 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3J-lm-mTF">
+                        <rect key="frame" x="343" y="10.5" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="Hxu-f1-rMc"/>
+                            <constraint firstAttribute="width" constant="48" id="v5l-pH-oOd"/>
+                        </constraints>
+                        <state key="normal" image="add"/>
+                        <connections>
+                            <action selector="pressAddPlayList:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kTW-rg-YY9"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
@@ -42,8 +53,10 @@
                     <constraint firstItem="c4f-IH-SaY" firstAttribute="leading" secondItem="55m-sX-5ua" secondAttribute="leading" id="J14-BX-3kZ"/>
                     <constraint firstAttribute="trailing" secondItem="55m-sX-5ua" secondAttribute="trailing" constant="40" id="PsC-mF-aHb"/>
                     <constraint firstItem="55m-sX-5ua" firstAttribute="top" secondItem="1Mw-WQ-0hA" secondAttribute="top" id="epm-py-5Jz"/>
+                    <constraint firstAttribute="trailing" secondItem="m3J-lm-mTF" secondAttribute="trailing" constant="10" id="gpN-sc-yJL"/>
                     <constraint firstItem="55m-sX-5ua" firstAttribute="leading" secondItem="1Mw-WQ-0hA" secondAttribute="trailing" constant="8" id="igF-ha-auW"/>
                     <constraint firstItem="1Mw-WQ-0hA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kmR-uR-8m0"/>
+                    <constraint firstItem="m3J-lm-mTF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="n7e-qG-ywJ"/>
                     <constraint firstItem="1Mw-WQ-0hA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="t2y-Wb-hdt"/>
                     <constraint firstItem="c4f-IH-SaY" firstAttribute="top" secondItem="55m-sX-5ua" secondAttribute="bottom" constant="3" id="ygD-O0-Dp1"/>
                 </constraints>
@@ -57,4 +70,7 @@
             <point key="canvasLocation" x="196.37681159420291" y="148.32589285714286"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="add" width="32" height="32"/>
+    </resources>
 </document>

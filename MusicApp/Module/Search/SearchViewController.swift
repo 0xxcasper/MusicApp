@@ -15,6 +15,7 @@ class SearchViewController: BaseViewController {
     @IBOutlet weak var tbView: UITableView!
     
     var presenter: SearchPresenterProtocol?
+    var song: ItemPlayList! = nil
     
     private lazy var searchVC = { () -> UISearchController in
         let search = UISearchController(searchResultsController: nil)
@@ -47,6 +48,11 @@ class SearchViewController: BaseViewController {
         setUpViews()
         setUpTbView()
         self.setUpNavigation()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.song = nil
     }
     
     private func setUpViews() {
@@ -109,7 +115,9 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate, Tren
         } else {
             let cell = tableView.dequeueTableCell(SearchCell.self)
             if(results.count - 1 >= indexPath.row) {
+                cell.delegate = self
                 let item = results[indexPath.row]
+                cell.item = ItemPlayList(name: item.snippet!.title ?? "", id: item.id!.videoId ?? "", thumbnail: item.snippet!.thumbnails!.defaults!.url ?? "", channelTitle: item.snippet!.channelTitle ?? "")
                 if let snippet = item.snippet, let thumbnails = snippet.thumbnails {
                     cell.img.loadImageFromInternet(link: thumbnails.defaults!.url!, completion: nil)
                     cell.lblTitle.text = snippet.title
@@ -186,6 +194,25 @@ extension SearchViewController: UISearchBarDelegate
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+    }
+}
+extension SearchViewController: SearchCellDelegate, AddPlayListViewDelegate {
+    
+    func showCreatePlayList() {
+        let viewPopUp = CreatePlayListPopup()
+        if(self.song != nil) {
+            viewPopUp.song = self.song
+            viewPopUp.showPopUp()
+        }
+    }
+    
+    func addPlayList(item: ItemPlayList) {
+        let addPlayList = AddPlayListPopup()
+        addPlayList.song = item
+        self.song = item
+        addPlayList.delegate = self
+        addPlayList.showPopUp()
         self.view.endEditing(true)
     }
 }
