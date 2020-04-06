@@ -49,10 +49,10 @@ extension YouTubeEndPoint: EndPointType
                     "regionCode": UserDefaultHelper.shared.regionCode ?? "VN",
                     "pageToken": pageToken,
                     "type": "video",
-                    "eventType": "completed",
+//                    "eventType": "completed",
                     "q": keyword,
                     "videoCategoryId": 10,
-                    "videoDuration": "medium",
+//                    "videoDuration": "medium",
                     "key": api_key]
         case .getVideoWith(let id):
         return ["part": "snippet",
