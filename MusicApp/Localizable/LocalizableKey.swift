@@ -34,4 +34,12 @@ struct LocalizableKey {
     static let newPlaylist = "NewPlaylist"
     static let create = "Create"
     static let typePlaylistName = "TypePlaylistName"
+    
+    static let done = "Done"
+    static let start = "Start"
+    static let setTimer = "SetTimer"
+    static let pause = "Pause"
+    static let resume = "Resume"
+    static let reset = "Reset"
+    static let countdown = "Countdown"
 }

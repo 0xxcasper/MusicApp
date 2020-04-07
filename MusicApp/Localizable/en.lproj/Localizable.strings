@@ -31,3 +31,10 @@
 "Create" = "Create";
 "TypePlaylistName" = "Type playlist name";
 
+"Done" = "Done";
+"Start" = "Start";
+"SetTimer" = "Set timer";
+"Pause" = "Pause";
+"Resume" = "Resume";
+"Reset" = "Reset";
+"Countdown" = "Countdown";

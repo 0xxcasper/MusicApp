@@ -342,6 +342,14 @@ extension Float {
         
         return Int(self / 3600) > 0 ? "\(h):\(m):\(s)" : "\(m):\(s)"
     }
+    
+    func secondsToHoursMinutesSecondsTimer() -> String {
+        let h = getStringFrom(seconds: (Int(self / 3600)))
+        let m = getStringFrom(seconds: (Int(self) % 3600) / 60)
+        let s = getStringFrom(seconds: (Int(self) % 3600) % 60)
+        
+        return Int(self / 3600) > 0 ? "\(h) : \(m) : \(s)" : "00 : \(m) : \(s)"
+    }
 
     private func getStringFrom(seconds: Int) -> String {
 

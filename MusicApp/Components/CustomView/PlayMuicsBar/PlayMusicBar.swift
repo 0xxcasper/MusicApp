@@ -45,6 +45,7 @@ class PlayMusicBar: BaseViewXib {
     private var prevY: CGFloat = 0
     private var player = AVAudioPlayer()
     private let volumeControl = MPVolumeView()
+    private let timerPopUp = SelectTimerPopUp()
     private var currentRate: Float = 1.0
     
     var type: PlaylistType = .search
@@ -169,6 +170,7 @@ class PlayMusicBar: BaseViewXib {
     
     override func firstInit() {
         videoPlayer.delegate = self
+        timerPopUp.delegate = self
         contentViewPlay.alpha = 0
         contentViewHeader.alpha = 0
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeGradientColor(notification:)), name: .ChangeGradientColor, object: nil)
@@ -332,6 +334,11 @@ private extension PlayMusicBar
 extension PlayMusicBar
 {
     
+    @IBAction func onPressOnTimer(_ sender: UIButton) {
+        
+        timerPopUp.showPopUp()
+    }
+    
     @IBAction func onPressShowContentFull(_ sender: UIButton) {
         if !isFull {
             hideOrShowContentViewFull(isShow: true)
@@ -440,8 +447,12 @@ extension PlayMusicBar
 
 // MARK: YTPlayerViewDelegate's Method
 
-extension PlayMusicBar: YTPlayerViewDelegate, SelectRatePopUpDelegate
+extension PlayMusicBar: YTPlayerViewDelegate, SelectRatePopUpDelegate, SelectTimerPopUpDelegate
 {
+    func didEndTimerCountDown() {
+        self.isPause = true
+    }
+    
     func didSelectRate(rate: Float) {
         self.btnRate.setTitle("\(rate)x", for: .normal)
         self.currentRate = rate

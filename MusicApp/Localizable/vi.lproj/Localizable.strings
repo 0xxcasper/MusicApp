@@ -30,3 +30,11 @@
 "NewPlaylist" = "Playlist mới";
 "Create" = "Tạo";
 "TypePlaylistName" = "Nhập tên playlist";
+
+"Done" = "Xong";
+"Start" = "Bắt đầu";
+"SetTimer" = "Hẹn giờ";
+"Pause" = "Tạm dừng";
+"Resume" = "Tiếp tục";
+"Reset" = "Cài lại";
+"Countdown" = "Đếm ngược";

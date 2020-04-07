@@ -443,6 +443,7 @@
                             <state key="normal" image="clock"/>
                             <connections>
                                 <action selector="onPressClock:" destination="-1" eventType="touchUpInside" id="SyW-pq-tUI"/>
+                                <action selector="onPressOnTimer:" destination="-1" eventType="touchUpInside" id="dc0-M8-X8h"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgp-py-721">
